@@ -86,6 +86,9 @@ section.h-navbar_2 ul.navbar_item_2 {
   justify-content: space-between;
   padding: 17px;
 }
+ul.navbar_item_2 li a {
+  text-transform: uppercase;
+}
 /* main */
 main section.m-font .title_1 a {
   line-height: 80px;
@@ -100,7 +103,50 @@ main section.m-font .title_1 {
   transform: translate(-50%, -50%);
   margin-top: -350px;
 }
+main .icon_left_right {
+  /* display: flex;
+  justify-content: space-between;
+  margin-top: -200px; */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 200;
+  display: flex;
+  gap: 1300px;
+}
+main .icon_left_right button.button_1,
+main .icon_left_right button.button_2 {
+  border: 1px solid #000;
+  width: 50px;
+  height: 50px;
+  background-color: #e5e5e5;
+}
+main .icon_left_right button.button_1:hover,
+main .icon_left_right button.button_2:hover {
+  border: 1px solid #dc3545;
+}
 /*  */
+section div.font_3item {
+  max-width: 550px;
+  text-align: center;
+  line-height: 50px;
+  margin-left: 50px;
+}
+section.m-find div > input {
+  width: 385px;
+  height: 48px;
+  padding: 1px 40px 1px 20px;
+  margin: 55px;
+}
+section.m-find div > i {
+  margin-left: -85px;
+}
+section div.font_3item_2 {
+  text-align: center;
+  line-height: 50px;
+  max-width: 500px;
+}
 @media (max-width: 768px) {
   section.h_navbar div.h_navbar {
     flex-direction: column;
