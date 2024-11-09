@@ -59,6 +59,9 @@
 header {
   border-top: 4px solid #000;
 }
+body img {
+  object-fit: cover;
+}
 body a {
   text-decoration: none;
   color: #000;
@@ -76,9 +79,22 @@ header section.h-navbar_2 {
 }
 header section.h_navbar ul.navbar_item {
   display: inherit;
-  gap: 100px;
+  gap: 45px;
   padding: 20px;
-  margin-left: 300px;
+  margin-left: 350px;
+}
+.navbar_item > li:nth-child(4) {
+  margin-left: 250px;
+}
+.navbar_item li:last-child {
+  border-right: 1px solid #ddd;
+  padding: 0 35px 0 0;
+}
+.navbar_item > li > a {
+  text-decoration: none;
+  font-weight: 500;
+  padding: 0 0 0 30px;
+  border-left: 1px solid #ddd;
 }
 section.h-navbar_2 ul.navbar_item_2 {
   display: inherit;
@@ -86,8 +102,50 @@ section.h-navbar_2 ul.navbar_item_2 {
   justify-content: space-between;
   padding: 17px;
 }
-ul.navbar_item_2 li a {
-  text-transform: uppercase;
+ul.navbar_item_2 li > a {
+  /* display: inline-block; */
+  font-weight: 700;
+  font-size: 17px;
+  z-index: 999;
+}
+/* navbar */
+ul li#li_first_1 {
+  position: relative;
+}
+ul li#li_first_1::before {
+  position: absolute;
+  content: "";
+  padding: 50px;
+}
+ul li#li_first_1 > ul {
+  background-color: rgba(53, 53, 53, 0.82);
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.3);
+  position: absolute;
+  z-index: 11;
+  transform-origin: 0 0 0; /**  help cho khi user hover on thi its che chữ*/
+  overflow: hidden;
+  width: 120px;
+  height: 0;
+  margin-top: 35px;
+  transition: height 0.25s linear, box-shadow 0.25s linear;
+}
+ul li#li_first_1:hover > ul {
+  height: 92px;
+}
+ul li#li_first_1 ul > li {
+  border-bottom: 2px solid white;
+  margin-left: -32px;
+}
+ul li#li_first_1 ul > li:hover {
+  display: block;
+}
+ul li#li_first_1 > ul > li > a {
+  display: inline-block;
+  color: white;
+  margin: 10px 0 10px 10px;
+}
+ul li#li_first_1 > ul > li > a:hover {
+  color: #dc3545;
 }
 /* main */
 main section.m-font .title_1 a {
@@ -104,9 +162,6 @@ main section.m-font .title_1 {
   margin-top: -350px;
 }
 main .icon_left_right {
-  /* display: flex;
-  justify-content: space-between;
-  margin-top: -200px; */
   position: absolute;
   top: 50%;
   left: 50%;
@@ -118,13 +173,14 @@ main .icon_left_right {
 main .icon_left_right button.button_1,
 main .icon_left_right button.button_2 {
   border: 1px solid #000;
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
   background-color: #e5e5e5;
 }
 main .icon_left_right button.button_1:hover,
 main .icon_left_right button.button_2:hover {
   border: 1px solid #dc3545;
+  color: #dc3545;
 }
 /*  */
 section div.font_3item {
@@ -134,13 +190,16 @@ section div.font_3item {
   margin-left: 50px;
 }
 section.m-find div > input {
-  width: 385px;
+  outline: none;
+  border: none;
+  width: 485px;
   height: 48px;
   padding: 1px 40px 1px 20px;
   margin: 55px;
 }
 section.m-find div > i {
   margin-left: -85px;
+  cursor: pointer;
 }
 section div.font_3item_2 {
   text-align: center;

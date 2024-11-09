@@ -38,9 +38,22 @@
     <header>
       <section class="h_navbar">
         <ul class="navbar_item">
-          <li><a href="#">VND</a></li>
+          <li id="li_first_1">
+            <a href="#">VND</a>
+            <ul>
+              <li><a href="#">Menu_1</a></li>
+              <li><a href="#">Menu_2</a></li>
+            </ul>
+          </li>
           <li><a href="#">Language</a></li>
-          <li><a href="#">Call support free: (800) 123 456 789</a></li>
+          <li>
+            <a href="#"
+              >Call support free:
+              <span style="font-weight: 500" class="text-danger"
+                >(800) 123 456 789</span
+              ></a
+            >
+          </li>
           <li>
             <a href="#"><i class="fa-solid fa-bars"></i></a>
           </li>
@@ -125,16 +138,16 @@
           <button
             style="width: 120px; height: 40px"
             type="submit"
-            class="btn btn-outline-dark"
+            class="btn btn-outline-danger"
           >
-            <a href="#"> Read Move</a>
+            <span>Read Move</span>
           </button>
         </div>
       </section>
       <!--  -->
       <div class="row">
         <section style="background-color: white" class="col-5">
-          <div class="font_3item">
+          <div style="margin: 30px" class="font_3item">
             <a style="color: #dc3545" href="#">NIKE ARI MAX 2015</a><br />
             <a style="font-size: 30px; font-weight: 700" href="#"
               >AIR SUPERIORITY</a
@@ -144,7 +157,7 @@
               industry.</a
             ><br />
             <button type="button" class="btn btn-outline-secondary">
-              Secondary
+              Shopping Now
             </button>
           </div>
           <div>
@@ -175,12 +188,12 @@
               <a style="font-size: 30px; font-weight: 700" href="#"
                 >AIR SUPERIORITY</a
               ><br />
-              <a href="#"
+              <a style="font-size: 14px; font-stretch: expanded" href="#"
                 >Lorem Ipsum is simply dummy text of the printing and
                 typesetting industry.</a
               ><br />
               <button type="button" class="btn btn-outline-secondary">
-                Secondary
+                Shopping Now
               </button>
             </div>
           </section>
