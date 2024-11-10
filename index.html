@@ -39,14 +39,21 @@
       <section class="h_navbar">
         <ul class="navbar_item">
           <li id="li_first_1">
-            <a href="#">VND</a>
+            <a href="#">VND <i class="fa-solid fa-caret-down px-2"></i></a>
             <ul>
+              <li><a href="#">Menu_1</a></li>
               <li><a href="#">Menu_1</a></li>
               <li><a href="#">Menu_2</a></li>
             </ul>
           </li>
-          <li><a href="#">Language</a></li>
-          <li>
+          <li id="li_item2">
+            <a href="#">Language<i class="fa-solid fa-caret-down px-2"></i></a>
+            <ul>
+              <li><a href="#">Menu_2</a></li>
+              <li><a href="#">Menu_3</a></li>
+            </ul>
+          </li>
+          <li id="">
             <a href="#"
               >Call support free:
               <span style="font-weight: 500" class="text-danger"
@@ -54,11 +61,68 @@
               ></a
             >
           </li>
-          <li>
+          <li id="li-item4">
             <a href="#"><i class="fa-solid fa-bars"></i></a>
+            <ul class="hover_item4">
+              <li><a href="my-account.html">my account</a></li>
+              <li><a href="wishlist.html">my wishlist</a></li>
+              <li><a href="cart.html">my cart</a></li>
+              <li><a href="checkout.html">Checkout</a></li>
+              <li><a href="blog.html">Blog</a></li>
+              <li><a href="#">Log in</a></li>
+            </ul>
           </li>
-          <li>
+          <li id="last-child">
             <a href="#"><i class="fa-solid fa-cart-shopping"></i></a>
+            <div>
+              <ul>
+                <li>
+                  <a href="#">
+                    <img src="img/icon-cart.png" alt="" />
+                  </a>
+                  <div class="cart-info">
+                    <ul>
+                      <li class="row">
+                        <div class="cart-img col-5">
+                          <img
+                            src="https://htmldemo.net/james/james/img/cart/1.png"
+                            alt=""
+                          />
+                        </div>
+                        <div class="cart-details col-7">
+                          <a href="#">Fusce aliquam</a>
+                          <p>1 x $174.00</p>
+                          <!--  -->
+                          <a href="#">Thêm </a> -
+                          <a href="#">xóa</a>
+                        </div>
+                      </li>
+                      <li class="row pt-4">
+                        <div class="cart-img col-5">
+                          <img
+                            src="https://htmldemo.net/james/james/img/cart/2.png"
+                            alt=""
+                          />
+                        </div>
+                        <div class="cart-details col-7">
+                          <a href="#">Fusce aliquam</a>
+                          <p>1 x $777.00</p> 
+                          <!--  -->
+                          <a href="#">Thêm</a> -
+                          <a href="#">xóa</a>
+                        </div>
+                      </li>
+                    </ul>
+                    <li>
+                       <div class="text-white pt-4">
+                         <span style=" border-bottom: 1px solid #e5e5e5;">Subtotal: <span> <span style="display: inline-block; margin-left: 150px;">$951.00</span><br>
+                         <a id="checkout" href="#" class="checkout ">checkout</a>
+                       </div>
+                    </li>
+                  </div>
+                </li>
+              </ul>
+            </div>
           </li>
         </ul>
       </section>
