@@ -72,6 +72,7 @@
               <li><a href="#">Log in</a></li>
             </ul>
           </li>
+          <!-- checkOut -->
           <li id="last-child">
             <a href="#"><i class="fa-solid fa-cart-shopping"></i></a>
             <div>
@@ -146,20 +147,35 @@
       </section>
     </header>
     <main>
-      <div class="img">
-        <img
-          style="
-            object-fit: cover;
-            width: 100%; /* Đảm bảo hình ảnh chiếm 100% chiều rộng của phần tử chứa */
-            max-width: 100%; /* Đảm bảo không vượt quá chiều rộng màn hình */
-            height: auto;
-            position: relative;
-            z-index: -1;
-          "
-          src="https://htmldemo.net/james/james/img/slider/slider-2.jpg"
-          alt=""
-        />
-      </div>
+<section style="overflow: hidden;" class="d-flex list_img">
+        <div class="img">
+          <img class="img_move"
+            style="
+              object-fit: cover;
+              width: 100vw;                      
+              height: auto;
+              position: relative;
+              z-index: -1;
+            "
+            src="https://htmldemo.net/james/james/img/slider/slider-2.jpg"
+            alt=""
+          />
+        </div>
+        <div class="img col-6">
+          <img class="img_move"
+            style="
+              object-fit: cover;
+              width: 100vw;
+              height: auto;
+              position: relative;
+              z-index: -1;
+            "
+            src="https://htmldemo.net/james/james/img/slider/slider-1.jpg"
+            alt=""
+          />
+        </div>
+</section>
+      <!--  -->
       <div class="icon_left_right">
         <button class="button_1">
           <i class="fa-solid fa-chevron-left"></i>
@@ -168,46 +184,51 @@
           <i class="fa-solid fa-chevron-right"></i>
         </button>
       </div>
+      <!--  part word run  -->
       <section class="m-font">
         <div class="title_1">
-          <span
-            ><a
-              style="font-family: 'Norican', cursive; font-size: 60px"
-              href="#"
-              >Sale products</a
-            ></span
-          ><br />
-          <span
-            ><a
+        <div class="content">
+            <span class=""
+              ><a class="a_sale"
+                style="font-family: 'Norican', cursive; font-size: 60px"
+                href="#"
+                >Sale products</a
+              ></span
+            ><br />
+            <span
+              ><a class="a_sale_2"
+                style="
+                  font-family: 'Montserrat', sans-serif;
+                  font-size: 62px;
+                  font-weight: 700;
+                  font-stretch: expanded;
+                "
+                href="#" 
+                >GET UP TO 50% SALE</a
+              ></span
+            ><br />
+            <span
               style="
                 font-family: 'Montserrat', sans-serif;
-                font-size: 62px;
+                font-size: 20px;
                 font-weight: 700;
-                font-stretch: expanded;
               "
-              href="#"
-              >GET UP TO 50% SALE</a
-            ></span
-          ><br />
-          <span
-            style="
-              font-family: 'Montserrat', sans-serif;
-              font-size: 20px;
-              font-weight: 700;
-            "
-            ><a href="#"
-              >Lorem Ipsum is simply dummy text of the printing</a
-            ></span
-          ><br />
-          <button
-            style="width: 120px; height: 40px"
-            type="submit"
-            class="btn btn-outline-danger"
-          >
-            <span>Read Move</span>
-          </button>
+              ><a href="#" class="lorem"
+                >Lorem Ipsum is simply dummy text of the printing</a
+              ></span
+            ><br />
+            <button
+              style="width: 120px; height: 40px"
+              type="submit"
+              class="btn btn-outline-danger"
+            >
+              <span class="b-span">Read Move</span>
+            </button>
         </div>
+        </div>
+        <div class="progress-bar"></div>
       </section>
+        <!-- time running -->
       <!--  -->
       <div class="row">
         <section style="background-color: white" class="col-5">
@@ -248,7 +269,7 @@
             </div>
             <!--  -->
             <div class="font_3item_2 col-5">
-              <a style="color: #dc3545" href="#">NIKE ARI MAX 2015</a><br />
+              <a style="color: #dc3545" href="#">NIKE ARI Md</a><br />
               <a style="font-size: 30px; font-weight: 700" href="#"
                 >AIR SUPERIORITY</a
               ><br />
@@ -284,6 +305,6 @@
     <footer></footer>
     <!-- link js bootstrap -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
-    <script src="public/js/js"></script>
+    <script src="public/js/js_Da9.js"></script>
   </body>
 </html>

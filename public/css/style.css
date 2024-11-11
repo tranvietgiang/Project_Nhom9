@@ -372,9 +372,72 @@ section div.font_3item_2 {
   line-height: 50px;
   max-width: 500px;
 }
+/* animation */
+/* Đặt z-index cho phần tử a_sale để nó hiển thị trên cùng */
+/* Hiệu ứng ban đầu cho các phần tử */
+.m-font .title_1:nth-child(1) .content .a_sale,
+.m-font .title_1:nth-child(1) .content .lorem,
+.m-font .title_1:nth-child(1) .content .a_sale_2,
+.m-font .title_1:nth-child(1) .content button {
+  display: inline-block;
+  transform: translateY(50px); /* Đưa chữ từ dưới lên */
+  filter: blur(20px); /* Giảm độ mờ */
+  opacity: 0;
+  animation: showContent 0.7s ease-out forwards;
+  /* animation-iteration-count: infinite; /*Lặp vô hạn */
+  /* animation-direction: alternate; Chạy ngược lại */
+  /* animation-duration: 3.7s; Tổng thời gian lặp lại, bao gồm cả thời gian nghỉ */
+}
+/* Đặt delay khác nhau cho từng phần tử để tạo hiệu ứng xuất hiện lần lượt */
+.m-font .title_1:nth-child(1) .content .a_sale {
+  animation-delay: 0.8s;
+}
+.m-font .title_1:nth-child(1) .content .a_sale_2 {
+  animation-delay: 1s;
+}
+.m-font .title_1:nth-child(1) .content .lorem {
+  animation-delay: 1.2s;
+}
+.m-font .title_1:nth-child(1) .content > button {
+  animation-delay: 1.4s;
+}
+/** create progress-bar*/
+/* Thanh tiến trình */
+.progress-bar {
+  height: 3px;
+  width: 0;
+  background-color: #dc3545 !important;
+  position: absolute;
+}
+.progress-bar {
+  animation: runningTime 3s ease-in-out 1 forwards;
+}
+
+/* image move */
+@keyframes runningTime {
+  to {
+    width: 100%;
+  }
+  from {
+    width: 0;
+  }
+}
+/* Keyframes cho hiệu ứng showContent */
+@keyframes showContent {
+  to {
+    transform: translateY(0px);
+    filter: blur(0px);
+    opacity: 1;
+  }
+}
+/* phone */
+/* Điều chỉnh cho màn hình có chiều rộng tối đa là 768px */
 @media (max-width: 768px) {
-  section.h_navbar div.h_navbar {
+  /* Điều chỉnh thanh điều hướng */
+  section.h_navbar ul.navbar_item {
+    display: flex;
     flex-direction: column;
-    gap: 20px; /* Reduce gap for smaller screens */
+    align-items: flex-start;
+    gap: 10px;
   }
 }
