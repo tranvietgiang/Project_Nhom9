@@ -52,6 +52,7 @@
   --bs-success-bg-subtle: #d1e7dd;
 }
 * {
+  font-family: "Montserrat", sans-serif;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -247,7 +248,7 @@ ul.navbar_item
   > div
   > img {
   margin-left: -30px;
-  transition: all 0.25s linear;
+  transition: all 0.45s ease-in-out;
   border-radius: 5px;
   object-fit: contain;
 }
@@ -312,6 +313,90 @@ li#last-child:nth-child(4) > div > ul > li:hover > a {
 #checkout:hover {
   background-color: #dc3545;
   border: 1px solid #dc3545;
+}
+/** dropdown navbar_item_2 */
+.navbar_item_2 > li#item_2_fl::before {
+  position: absolute;
+  content: "";
+  width: 60px;
+  height: 70px;
+}
+.navbar_item_2 > li#item_2_fl > ul {
+  position: absolute;
+  background-color: rgba(53, 53, 53, 0.82);
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.3);
+  transform-origin: 0 0 0;
+  width: 200px;
+  height: 0px;
+  margin-top: 30px;
+  overflow: hidden; /* Thêm overflow để ẩn nội dung khi height là 0 */
+  transition: height 0.25s ease-in-out;
+}
+.navbar_item_2 > li#item_2_fl > ul > li {
+  margin: 10px;
+  margin-left: -40px;
+  border: none;
+}
+.navbar_item_2 > li#item_2_fl:hover > ul {
+  height: 95.5px;
+}
+/** item_2_fl1 */
+.navbar_item_2 > li#item_2_fl1::before {
+  position: absolute;
+  content: "";
+  width: 80px;
+  background-color: #052c65;
+  height: 70px;
+}
+.navbar_item_2 > li#item_2_fl1 > ul {
+  position: absolute;
+  background-color: rgba(53, 53, 53, 0.82);
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.3);
+  transform-origin: 0 0 0;
+  width: 800px;
+  border-radius: 5px;
+  height: 0px;
+  margin-top: 30px;
+  overflow: hidden; /* Thêm overflow để ẩn nội dung khi height là 0 */
+  transition: height 0.25s ease-in-out;
+  z-index: 999;
+}
+.navbar_item_2 > li#item_2_fl1 > ul > li {
+  border-bottom: 1px solid white;
+}
+#item_2_fl1 > ul > li > a.item_as {
+  font-family: "Open Sans", sans-serif;
+  display: inline-block;
+  margin-top: 10px;
+  font-weight: normal;
+  color: white;
+  margin: 0 0 10px 0;
+  border-bottom: 1px solid white;
+}
+#item_2_fl1 > ul > li > a:hover {
+  color: #dc3545;
+}
+.navbar_item_2 > li#item_2_fl1 > ul > li#li_image1 {
+  position: absolute;
+  border: none;
+  object-fit: contain;
+  margin-left: -35px;
+  bottom: 0;
+}
+.navbar_item_2 > li#item_2_fl1:hover > ul {
+  height: 400px;
+}
+#item_2_fl1 > ul > li > div > a {
+  font-family: "Montserrat", sans-serif;
+  font-weight: normal;
+  font-size: 14px;
+  display: inline-block;
+  margin: 5px 0 5px 0;
+  color: white;
+  transition: color 0.2s ease-in;
+}
+#item_2_fl1 > ul > li > div > a:hover {
+  color: #dc3545;
 }
 /* main */
 main section.m-font .title_1 a {
