@@ -340,12 +340,14 @@ li#last-child:nth-child(4) > div > ul > li:hover > a {
 .navbar_item_2 > li#item_2_fl:hover > ul {
   height: 95.5px;
 }
+.navbar_item_2 > li#item_2_fl > ul > li > a {
+  font-weight: normal;
+}
 /** item_2_fl1 */
 .navbar_item_2 > li#item_2_fl1::before {
   position: absolute;
   content: "";
   width: 80px;
-  background-color: #052c65;
   height: 70px;
 }
 .navbar_item_2 > li#item_2_fl1 > ul {
@@ -369,6 +371,7 @@ li#last-child:nth-child(4) > div > ul > li:hover > a {
   display: inline-block;
   margin-top: 10px;
   font-weight: normal;
+  text-transform: uppercase;
   color: white;
   margin: 0 0 10px 0;
   border-bottom: 1px solid white;
@@ -398,6 +401,44 @@ li#last-child:nth-child(4) > div > ul > li:hover > a {
 #item_2_fl1 > ul > li > div > a:hover {
   color: #dc3545;
 }
+/** Dropdown item last-child */
+.navbar_item_2 > li#last-child2::before {
+  position: absolute;
+  content: "";
+  width: 100px;
+  height: 70px;
+}
+.navbar_item_2 > li#last-child2 > ul {
+  position: absolute;
+  background-color: rgba(53, 53, 53, 0.82);
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.3);
+  transform-origin: 0 0 0;
+  width: 200px;
+  border: none;
+  height: 0px;
+  text-align: center;
+  margin-top: 30px;
+  z-index: 999;
+  margin-left: -130px;
+  overflow: hidden; /* Thêm overflow để ẩn nội dung khi height là 0 */
+  transition: height 0.25s ease-in-out;
+}
+.navbar_item_2 > li#last-child2 > ul > li {
+  margin: 10px;
+  margin-left: -40px;
+  border: none;
+}
+.navbar_item_2 > li#last-child2 > ul > li > a {
+  color: white;
+  font-weight: normal;
+  font-size: 15px;
+}
+.navbar_item_2 > li#last-child2 > ul > li > a:hover {
+  color: #dc3545;
+}
+.navbar_item_2 > li#last-child2:hover > ul {
+  height: 450px;
+}
 /* main */
 main section.m-font .title_1 a {
   line-height: 80px;
@@ -412,14 +453,31 @@ main section.m-font .title_1 {
   transform: translate(-50%, -50%);
   margin-top: -350px;
 }
-main .icon_left_right {
+main > .icon_left_right {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 200;
   display: flex;
+  opacity: 0;
   gap: 1300px;
+  transition: opacity 0.25s ease-in-out;
+}
+/* create space hover on */
+.icon_left_right::before {
+  width: 100vw;
+  height: 500px;
+  margin-left: -100px;
+  position: absolute;
+  content: "";
+  z-index: -10;
+  cursor: pointer;
+  margin-top: -150px;
+}
+/* Hiển thị các nút điều hướng khi hover vào ảnh */
+.icon_left_right:hover {
+  opacity: 1;
 }
 main .icon_left_right button.button_1,
 main .icon_left_right button.button_2 {
@@ -457,7 +515,7 @@ section div.font_3item_2 {
   line-height: 50px;
   max-width: 500px;
 }
-/* animation */
+/** animation */
 /* Đặt z-index cho phần tử a_sale để nó hiển thị trên cùng */
 /* Hiệu ứng ban đầu cho các phần tử */
 .m-font .title_1:nth-child(1) .content .a_sale,
@@ -465,56 +523,72 @@ section div.font_3item_2 {
 .m-font .title_1:nth-child(1) .content .a_sale_2,
 .m-font .title_1:nth-child(1) .content button {
   display: inline-block;
-  transform: translateY(50px); /* Đưa chữ từ dưới lên */
-  filter: blur(20px); /* Giảm độ mờ */
+  transform: translateY(50px);
+  filter: blur(20px);
   opacity: 0;
   animation: showContent 0.7s ease-out forwards;
-  /* animation-iteration-count: infinite; /*Lặp vô hạn */
-  /* animation-direction: alternate; Chạy ngược lại */
-  /* animation-duration: 3.7s; Tổng thời gian lặp lại, bao gồm cả thời gian nghỉ */
 }
-/* Đặt delay khác nhau cho từng phần tử để tạo hiệu ứng xuất hiện lần lượt */
+
 .m-font .title_1:nth-child(1) .content .a_sale {
-  animation-delay: 0.8s;
+  animation-delay: 0.5s;
 }
 .m-font .title_1:nth-child(1) .content .a_sale_2 {
   animation-delay: 1s;
 }
 .m-font .title_1:nth-child(1) .content .lorem {
-  animation-delay: 1.2s;
+  animation-delay: 1.5s;
 }
 .m-font .title_1:nth-child(1) .content > button {
-  animation-delay: 1.4s;
-}
-/** create progress-bar*/
-/* Thanh tiến trình */
-.progress-bar {
-  height: 3px;
-  width: 0;
-  background-color: #dc3545 !important;
-  position: absolute;
-}
-.progress-bar {
-  animation: runningTime 3s ease-in-out 1 forwards;
+  animation-delay: 2s;
 }
 
-/* image move */
-@keyframes runningTime {
-  to {
-    width: 100%;
-  }
-  from {
-    width: 0;
-  }
-}
-/* Keyframes cho hiệu ứng showContent */
 @keyframes showContent {
+  from {
+    transform: translateY(50px);
+    filter: blur(20px);
+    opacity: 0;
+  }
   to {
-    transform: translateY(0px);
-    filter: blur(0px);
+    transform: translateY(0);
+    filter: blur(0);
     opacity: 1;
   }
 }
+/* time run lopop */
+
+/** imgage move  */
+#shoes_banner {
+  cursor: pointer;
+  overflow: hidden;
+  position: relative;
+  z-index: -1;
+}
+
+#shoes_banner > .d-flex > .img_move > img {
+  object-fit: cover;
+  flex-shrink: 0;
+  z-index: -1;
+  width: 100vw;
+  height: auto;
+}
+/** create progress-bar*/
+.progress-bar {
+  height: 4px;
+  width: 0;
+  background-color: #dc3545 !important;
+  position: absolute;
+  animation: runningTime 4s ease-in-out infinite;
+}
+
+@keyframes runningTime {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
 /* phone */
 /* Điều chỉnh cho màn hình có chiều rộng tối đa là 768px */
 @media (max-width: 768px) {
