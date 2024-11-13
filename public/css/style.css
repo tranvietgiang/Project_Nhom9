@@ -556,11 +556,12 @@ section div.font_3item_2 {
 }
 /* time run lopop */
 
-/** imgage move  */
+/* * imgage move */
 #shoes_banner {
   cursor: pointer;
   overflow: hidden;
   position: relative;
+
   z-index: -1;
 }
 
@@ -570,6 +571,18 @@ section div.font_3item_2 {
   z-index: -1;
   width: 100vw;
   height: auto;
+}
+#shoes_banner > .d-flex > .img_move {
+  animation: imageSlide 10s ease-in-out infinite alternate;
+}
+
+@keyframes imageSlide {
+  to {
+    transform: translateX(-100%);
+  }
+  from {
+    transform: translateX(0);
+  }
 }
 /** create progress-bar*/
 .progress-bar {
