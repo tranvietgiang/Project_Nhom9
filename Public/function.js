@@ -1,3 +1,4 @@
+//Chuyen dong
 $(document).ready(function () {
     $(".person-slider").owlCarousel({
         items: 1,
