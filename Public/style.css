@@ -1,0 +1,299 @@
+.avater-area {
+    position: relative;
+    width: 100%;
+}
+
+.avater-area img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+.container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding-top: 60px;
+    z-index: 2;
+}
+
+.person-slider {
+    position: relative;
+    z-index: 2;
+}
+
+.single-person {
+    background: rgba(4, 4, 4, 0.7);
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin: 10px;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 250px;
+    width: 100%;
+}
+
+.spech span {
+    font-style: italic;
+    color: #ccc;
+    margin-bottom: 20px;
+    display: block;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.avater img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 3px solid #ddd;
+    margin-bottom: 20px;
+}
+
+.post-by span {
+    font-weight: bold;
+    color: #fff;
+}
+
+.owl-carousel .owl-item {
+    display: flex;
+    justify-content: center;
+}
+
+.owl-dots {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.owl-dots .owl-dot {
+    background-color: rgba(255, 255, 255, 0.5);
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin: 0 5px;
+    display: inline-block;
+    transition: background-color 0.3s ease;
+}
+
+.owl-dots .owl-dot.active {
+    background-color: #ff6600;
+}
+
+.owl-dots .owl-dot:hover {
+    background-color: #ff6600;
+}
+
+@media (max-width: 768px) {
+    .single-person {
+        max-width: 200px;
+    }
+
+    .avater img {
+        width: 60px;
+        height: 60px;
+    }
+
+    .spech span {
+        font-size: 14px;
+    }
+}
+
+.blog-text {
+    text-align: center;
+}
+
+
+.blog-text span {
+    display: block;
+    color: #666;
+}
+
+.blog {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    max-width: auto;
+}
+
+.news-card:hover {
+    background-color: rgb(91, 91, 91);
+    color: #eaeaea;
+}
+
+.news-card:hover .news-description {
+    color: #eaeaea;
+}
+
+.news-title:hover {
+    color: #eaeaea;
+    text-decoration: underline;
+}
+
+.news-card:hover .read-more {
+    background-color: #ffffff;
+}
+
+.read-more:hover {
+    color: #f05a5a;
+}
+
+.news-card {
+    background-color: #ffffff;
+    border: 1px solid #eaeaea;
+    padding: 50px 50px;
+    display: flex;
+    align-items: center;
+    gap: 50px;
+}
+
+.news-card img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.news-content {
+    flex: 1;
+}
+
+.news-title {
+    font-weight: bold;
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+.news-meta {
+    color: #f05a5a;
+    font-size: 13px;
+    margin-bottom: 10px;
+}
+
+.news-description {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 15px;
+}
+
+.read-more {
+    color: #333;
+    font-size: 14px;
+    text-decoration: none;
+    padding: 5px 10px;
+    border: 1px solid #333;
+    border-radius: 3px;
+}
+
+.box-container {
+    margin-top: 50px;
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+.box {
+    flex: 1;
+    padding: 30px;
+    box-sizing: border-box;
+}
+
+.box img {
+    width: 80px;
+    height: 80px;
+}
+
+.box-item {
+    display: flex;
+    flex-direction: column;
+    margin-left: 150px;
+    border-top: 1px solid #666;
+}
+
+.box-item1 {
+    border-top: 1px solid #666;
+}
+
+.box-item>div {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.box-item1>div {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.box-item h3 {
+    margin: 0;
+    font-size: 20px;
+}
+
+.box-item p {
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+.search-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.search-input {
+    width: 400px;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    outline: none;
+}
+
+.search-btn {
+    padding: 10px 10px;
+    font-size: 16px;
+    background-color: #000000;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.search-btn:hover {
+    background-color: #ff0000;
+}
+
+.icon {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    font-size: 40px;
+    margin-top: 20px;
+}
+
+.icon i {
+    transition: transform 0.3s ease;
+}
+
+.icon i:hover {
+    transform: scale(1.2);
+    color: #ff0000;
+}
