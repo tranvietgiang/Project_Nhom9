@@ -1,0 +1,109 @@
+
+.BESTSELLER {
+    display: flex;
+  
+   
+}
+
+.produst{
+    
+    overflow: hidden;
+    position: relative;
+    
+  
+}
+.dragging {
+    opacity: 0.5; /* Giảm độ mờ đi để thể hiện rằng nó đang được kéo */
+    cursor: grabbing; /* Thay đổi con trỏ chuột */
+}
+.list-img{
+   
+    display: flex;
+    transition: 0.5s;
+
+}
+li{
+    list-style: none;
+}
+body a{
+    text-decoration: none;
+    display: inline-block;
+    color:black;
+}
+body a:hover{
+    color: #d63384;
+}
+.side-menu :hover{
+    background-color: #d63384;
+}
+.owl-item{
+    margin: 0 40px 0 0px ;
+ 
+}
+.owl-item1{
+    margin: 0 60px 0 20px ;
+ 
+}
+.owl-item2{
+    margin: 0 60px 0 20px ;
+ 
+}
+
+.danhmuc{
+    text-align: center;
+}
+.presentation {
+    padding: 16px 10px;
+    background-color: black;
+    text-align: center;
+    
+}
+.presentation a{
+    color: white;
+}
+
+.check{
+ background-color: #666666;
+}
+.price{
+    display: flex;
+}
+.btn button{
+    padding: 20px;
+    background-color:rgb(234, 228, 228);
+    position: absolute;
+    top: 50%;
+    border: none;
+    transform: tr;
+}
+.btn button:hover{
+   background-color: #d63384;
+}
+.btn1 button:hover{
+    background-color: #d63384;
+ }
+.btn-leght{
+    left:0%;
+    
+}
+.btn-right{
+    right: 0%;
+}
+
+.productsale{
+    overflow: hidden;
+}
+.listpro {
+    transition: 0.5s;
+}
+.listpro1{
+  
+    transition: 0.5s;
+}
+.end{
+    margin-top: 80px;
+}
+.online{
+    margin-top: -400px;
+    padding-left: 20%;
+}
