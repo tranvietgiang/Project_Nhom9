@@ -573,16 +573,7 @@ section div.font_3item_2 {
   height: auto;
 }
 #shoes_banner > .d-flex > .img_move {
-  animation: imageSlide 10s ease-in-out infinite alternate;
-}
-
-@keyframes imageSlide {
-  to {
-    transform: translateX(-100%);
-  }
-  from {
-    transform: translateX(0);
-  }
+  transition: transform 0.5s ease-in-out;
 }
 /** create progress-bar*/
 .progress-bar {

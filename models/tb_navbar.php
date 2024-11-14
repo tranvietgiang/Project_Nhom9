@@ -45,4 +45,28 @@ class navbar extends Db
 
         return $array_new;
     }
+
+    // lấy Navbar_2
+    public function GetNavbar2()
+    {
+        $sql = self::$connection->prepare("SELECT * FROM tb_navbar_2");
+        $sql->execute();
+
+        $result = array();
+        $result = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
+
+        return $result;
+    }
+
+    // lấy Navbar_2_child
+    public function GetNavbar2Child()
+    {
+        $sql = self::$connection->prepare("SELECT * FROM `tb_navbar_2_child`");
+        $sql->execute();
+
+        $result = array();
+        $result = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
+
+        return $result;
+    }
 }

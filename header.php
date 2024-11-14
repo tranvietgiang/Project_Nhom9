@@ -15,6 +15,12 @@ $getVND_child = $item_navbar->GetVND_Child();
 
 // GetLi_thu4_child
 $GetLi_thu4_child = $item_navbar->GetLi_thu4_child();
+
+//get Navbar_2
+$getAllNavbar2 = $item_navbar->GetNavbar2();
+
+//get Navbar_2_child
+$getAllNavbar2Child = $item_navbar->GetNavbar2Child();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -37,6 +43,11 @@ $GetLi_thu4_child = $item_navbar->GetLi_thu4_child();
 <script src="https://kit.fontawesome.com/f6dce9b617.js" crossorigin="anonymous"></script>
 <!-- link font sale product -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Norican&display=swap" />
+<style>
+#shoes_banner>.d-flex>.img_move {
+    transition: transform 0.5s ease-in-out;
+}
+</style>
 
 <body>
     <header>
@@ -172,25 +183,16 @@ $GetLi_thu4_child = $item_navbar->GetLi_thu4_child();
                                     src="https://htmldemo.net/james/james/img/banner/menu-banner.png" alt=""></a></li>
                     </ul>
                 </li>
-                <li><a href="#">MEN</a></li>
-                <li><a href="#">FOOTWEAR</a></li>
-                <li><a href="#">JEWELLERY</a></li>
-                <li><a href="#">ACCSESSORIES</a></li>
+                <!--  -->
+                <?php foreach ($getAllNavbar2 as $value): ?>
+                <li><a href="#"><?php echo $value['name'] ?></a></li>
+                <?php endforeach ?>
                 <li id="last-child2"><a href="#">PAGES</a>
+
                     <ul class="sub-menu  pages">
-                        <li><a href="#">About us</a></li>
-                        <li><a href="#">Blog</a></li>
-                        <li><a href="#">Blog Details</a></li>
-                        <li><a href="#">Cart</a></li>
-                        <li><a href="#">Checkout</a></li>
-                        <li><a href="#">Contact</a></li>
-                        <li><a href="#">My account</a></li>
-                        <li><a href="#">Shop</a></li>
-                        <li><a href="#">Shop list</a></li>
-                        <li><a href="#">Single Shop</a></li>
-                        <li><a href="#">Login page</a></li>
-                        <li><a href="#">Register page</a></li>
-                        <li><a href="#">Wishlist</a></li>
+                        <?php foreach ($getAllNavbar2Child as $value): ?>
+                        <li><a href="#"><?php echo $value['name'] ?></a></li>
+                        <?php endforeach ?>
                     </ul>
 
                 </li>
@@ -199,9 +201,43 @@ $GetLi_thu4_child = $item_navbar->GetLi_thu4_child();
     </header>
     <main>
         <!-- image move -->
+        <?php
+        // Mã PHP chèn CSS vào trong thẻ <head> của HTML
+        echo '
+<style>
+    .sb-img {
+        display: flex;
+        transition: transform 0.5s ease-in-out; 
+    }
+    
+.m-font .title_1:nth-child(1) .showContentjs .a_sale,
+.m-font .title_1:nth-child(1) .showContentjs .lorem,
+.m-font .title_1:nth-child(1) .showContentjs .a_sale_2,
+.m-font .title_1:nth-child(1) .showContentjs button {
+  display: inline-block;
+  transform: translateY(50px);
+  filter: blur(20px);
+  opacity: 0;
+  animation: font 0.7s ease-out forwards;
+}
+   
+  @keyframes font {
+    from {
+      transform: translateY(50px);
+      filter: blur(20px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      filter: blur(0);
+      opacity: 1;
+    }
+  }
+</style>';
+        ?>
         <section id="shoes_banner">
             <div class="sb-img d-flex">
-                <div class="img_move">
+                <div style="transition: transform 0.25s ease-in-out;" class="img_move">
                     <img class="item_imgs" src="https://htmldemo.net/james/james/img/slider/slider-2.jpg" alt="" />
                 </div>
                 <div class="img_move"><img class="item_imgs"
@@ -209,6 +245,7 @@ $GetLi_thu4_child = $item_navbar->GetLi_thu4_child();
                 </div>
             </div>
         </section>
+        <!-- js -->
         <!--  -->
         <div class="icon_left_right">
             <button onclick="prevImage()" class="button_1">
@@ -297,6 +334,16 @@ $GetLi_thu4_child = $item_navbar->GetLi_thu4_child();
         </div>
     </main>
     <footer></footer>
+    <!-- js -->
+    <script>
+    setInterval(function() {
+        const content = document.querySelector('.content');
+        content.classList.add('showContentjs'); // Thêm hiệu ứng di chuyển
+
+        // Loại bỏ class move-up sau khi hiệu ứng hoàn tất
+        setTimeout(() => content.classList.remove('showContentjs'), 0); // Sau 1s, loại bỏ class move-up
+    }, 4000); // Mỗi 4 giây
+    </script>
     <!-- link js bootstrap -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
     <script src="public/js/js_Da9.js"></script>
