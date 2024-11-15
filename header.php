@@ -44,9 +44,9 @@ $getAllNavbar2Child = $item_navbar->GetNavbar2Child();
 <!-- link font sale product -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Norican&display=swap" />
 <style>
-#shoes_banner>.d-flex>.img_move {
-    transition: transform 0.5s ease-in-out;
-}
+    #shoes_banner>.d-flex>.img_move {
+        transition: transform 0.5s ease-in-out;
+    }
 </style>
 
 <body>
@@ -61,7 +61,7 @@ $getAllNavbar2Child = $item_navbar->GetNavbar2Child();
                     </a>
                     <ul>
                         <?php foreach ($getVND_child as $value): ?>
-                        <li><a href="#"><?php echo $value['name_child'] ?></a></li>
+                            <li><a href="#"><?php echo $value['name_child'] ?></a></li>
                         <?php endforeach ?>
                     </ul>
                 </li>
@@ -82,7 +82,7 @@ $getAllNavbar2Child = $item_navbar->GetNavbar2Child();
                     <a href="#"><?php echo $getVND_4 ?></a>
                     <ul style="z-index: 999;" class="hover_item4">
                         <?php foreach ($GetLi_thu4_child as $value): ?>
-                        <li><a href="#"><?php echo $value['name'] ?></a></li>
+                            <li><a href="#"><?php echo $value['name'] ?></a></li>
                         <?php endforeach ?>
                     </ul>
                 </li>
@@ -185,13 +185,13 @@ $getAllNavbar2Child = $item_navbar->GetNavbar2Child();
                 </li>
                 <!--  -->
                 <?php foreach ($getAllNavbar2 as $value): ?>
-                <li><a href="#"><?php echo $value['name'] ?></a></li>
+                    <li><a href="#"><?php echo $value['name'] ?></a></li>
                 <?php endforeach ?>
                 <li id="last-child2"><a href="#">PAGES</a>
 
                     <ul class="sub-menu  pages">
                         <?php foreach ($getAllNavbar2Child as $value): ?>
-                        <li><a href="#"><?php echo $value['name'] ?></a></li>
+                            <li><a href="#"><?php echo $value['name'] ?></a></li>
                         <?php endforeach ?>
                     </ul>
 
@@ -336,13 +336,13 @@ $getAllNavbar2Child = $item_navbar->GetNavbar2Child();
     <footer></footer>
     <!-- js -->
     <script>
-    setInterval(function() {
-        const content = document.querySelector('.content');
-        content.classList.add('showContentjs'); // Thêm hiệu ứng di chuyển
+        setInterval(function() {
+            const content = document.querySelector('.content');
+            content.classList.add('showContentjs'); // Thêm hiệu ứng di chuyển
 
-        // Loại bỏ class move-up sau khi hiệu ứng hoàn tất
-        setTimeout(() => content.classList.remove('showContentjs'), 0); // Sau 1s, loại bỏ class move-up
-    }, 4000); // Mỗi 4 giây
+            // Loại bỏ class move-up sau khi hiệu ứng hoàn tất
+            setTimeout(() => content.classList.remove('showContentjs'), 4000); // Sau 1s, loại bỏ class move-up
+        }, 4000); // Mỗi 4 giây
     </script>
     <!-- link js bootstrap -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
