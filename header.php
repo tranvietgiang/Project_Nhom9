@@ -341,7 +341,11 @@ $getAllNavbar2Child = $item_navbar->GetNavbar2Child();
             content.classList.add('showContentjs'); // Thêm hiệu ứng di chuyển
 
             // Loại bỏ class move-up sau khi hiệu ứng hoàn tất
+<<<<<<< HEAD
             setTimeout(() => content.classList.remove('showContentjs'), 4000); // Sau 1s, loại bỏ class move-up
+=======
+            setTimeout(() => content.classList.remove('showContentjs'), 0); // Sau 1s, loại bỏ class move-up
+>>>>>>> 6d47d4d17eb749e25cd65a7b224b8d5775805c44
         }, 4000); // Mỗi 4 giây
     </script>
     <!-- link js bootstrap -->
