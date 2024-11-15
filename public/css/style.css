@@ -78,11 +78,13 @@ header section.h-navbar_2 {
   display: flex;
   justify-content: center;
 }
+
+/* cần sửa mỗi khi lên srceen */
 header section.h_navbar ul.navbar_item {
   display: inherit;
   gap: 45px;
   padding: 20px;
-  margin-left: 280px;
+  margin-left: 200px;
 }
 .navbar_item > li:nth-child(4) {
   margin-left: 100px;
@@ -97,9 +99,10 @@ header section.h_navbar ul.navbar_item {
   padding: 0 0 0 30px;
   border-left: 1px solid #ddd;
 }
+/* cần sửa mỗi khi lên srceen */
 section.h-navbar_2 ul.navbar_item_2 {
   display: inherit;
-  gap: 70px;
+  gap: 50px;
   justify-content: space-between;
   padding: 17px;
 }
@@ -453,6 +456,7 @@ main section.m-font .title_1 {
   transform: translate(-50%, -50%);
   margin-top: -350px;
 }
+/* lên lớp là sửa cái gap lại */
 main > .icon_left_right {
   position: absolute;
   top: 50%;
@@ -461,7 +465,7 @@ main > .icon_left_right {
   z-index: 200;
   display: flex;
   opacity: 0;
-  gap: 1300px;
+  gap: 1090px;
   transition: opacity 0.25s ease-in-out;
 }
 /* create space hover on */
@@ -498,13 +502,19 @@ section div.font_3item {
   line-height: 50px;
   margin-left: 50px;
 }
-section.m-find div > input {
+section.m-find div > input  {
+  position: relative;
   outline: none;
   border: none;
   width: 485px;
   height: 48px;
   padding: 1px 40px 1px 20px;
   margin: 55px;
+  z-index: 990;
+}
+section.m-find div > input > i{
+position: absolute;
+  z-index: 999;
 }
 section.m-find div > i {
   margin-left: -85px;
