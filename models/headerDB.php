@@ -69,4 +69,18 @@ class navbar extends Db
 
         return $result;
     }
+
+    public function Search($id)
+    {
+        $sql = self::$connection->prepare("SELECT * FROM `tb_shoes` WHERE id = ?");
+
+        // $keySearch = "%" . $id . "%";
+        $sql->bind_param("i", $id);
+        $sql->execute();
+
+        $result = array();
+        $result = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
+
+        return $result;
+    }
 }

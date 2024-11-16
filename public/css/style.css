@@ -57,6 +57,10 @@
   padding: 0;
   box-sizing: border-box;
 }
+body {
+  overflow-x: hidden; /* Ẩn thanh cuộn ngang */
+}
+
 header {
   border-top: 4px solid #000;
 }
@@ -84,7 +88,7 @@ header section.h_navbar ul.navbar_item {
   display: inherit;
   gap: 45px;
   padding: 20px;
-  margin-left: 200px;
+  margin-left: 370px;
 }
 .navbar_item > li:nth-child(4) {
   margin-left: 100px;
@@ -465,7 +469,7 @@ main > .icon_left_right {
   z-index: 200;
   display: flex;
   opacity: 0;
-  gap: 1090px;
+  gap: 1400px;
   transition: opacity 0.25s ease-in-out;
 }
 /* create space hover on */
@@ -502,7 +506,7 @@ section div.font_3item {
   line-height: 50px;
   margin-left: 50px;
 }
-section.m-find div > input  {
+section.m-find div > form > input {
   position: relative;
   outline: none;
   border: none;
@@ -511,14 +515,14 @@ section.m-find div > input  {
   padding: 1px 40px 1px 20px;
   margin: 55px;
   z-index: 990;
+  cursor: url("https://img.pikbest.com/png-images/qiantu/smart-touch-click-pointer_2596583.png!f305cw"),
+    auto;
 }
-section.m-find div > input > i{
-position: absolute;
-  z-index: 999;
-}
-section.m-find div > i {
+section.m-find div > form > a > button > i {
+  position: absolute;
   margin-left: -85px;
-  cursor: pointer;
+  margin-top: -10px;
+  z-index: 999;
 }
 section div.font_3item_2 {
   text-align: center;

@@ -1,7 +1,7 @@
 <?php
 require "models/config.php";
 require "models/Db.php";
-require "models/tb_navbar.php";
+require "models/headerDB.php";
 
 $item_navbar = new navbar();
 $getVND_1 = $item_navbar->GetVND_Navbar(1);
@@ -78,12 +78,21 @@ $getAllNavbar2Child = $item_navbar->GetNavbar2Child();
                         </span>
                     </a>
                 </li>
+                <!--  -->
+                <?php
+                // lấy id login là 6 để 
+
+                // header("Location: Login.php");
+                ?>
+
                 <li id="li-item4">
-                    <a href="#"><?php echo $getVND_4 ?></a>
+                    <a href=""><?php echo $getVND_4 ?></a>
                     <ul style="z-index: 999;" class="hover_item4">
                         <?php foreach ($GetLi_thu4_child as $value): ?>
-                            <li><a href="#"><?php echo $value['name'] ?></a></li>
-                        <?php endforeach ?>
+                            <li>
+                                <a href="#"><?php echo htmlspecialchars($value['name']); ?></a>
+                            </li>
+                        <?php endforeach; ?>
                     </ul>
                 </li>
                 <!-- checkOut -->
@@ -301,7 +310,13 @@ $getAllNavbar2Child = $item_navbar->GetNavbar2Child();
             <!--  -->
             <section class="m-find col-7">
                 <div style="background-color: #e5e5e5">
-                    <input type="text" name="" value="" /><i class="fa-solid fa-magnifying-glass"></i>
+                    <form action="search.php" method="get">
+                        <input type="text" name="search" value="" />
+                        <a href="#">
+                            <button style="border: none;" value="search"><i
+                                    class="fa-solid fa-magnifying-glass"></i></button>
+                        </a>
+                    </form>
                 </div>
                 <section class="row">
                     <div class="col-7">
@@ -341,11 +356,8 @@ $getAllNavbar2Child = $item_navbar->GetNavbar2Child();
             content.classList.add('showContentjs'); // Thêm hiệu ứng di chuyển
 
             // Loại bỏ class move-up sau khi hiệu ứng hoàn tất
-<<<<<<< HEAD
             setTimeout(() => content.classList.remove('showContentjs'), 4000); // Sau 1s, loại bỏ class move-up
-=======
             setTimeout(() => content.classList.remove('showContentjs'), 0); // Sau 1s, loại bỏ class move-up
->>>>>>> 6d47d4d17eb749e25cd65a7b224b8d5775805c44
         }, 4000); // Mỗi 4 giây
     </script>
     <!-- link js bootstrap -->
