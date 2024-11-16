@@ -21,6 +21,9 @@ $getAllNavbar2 = $item_navbar->GetNavbar2();
 
 //get Navbar_2_child
 $getAllNavbar2Child = $item_navbar->GetNavbar2Child();
+
+//get navbar woman
+$getAllWoman  = $item_navbar->GetAllWoman();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -43,11 +46,6 @@ $getAllNavbar2Child = $item_navbar->GetNavbar2Child();
 <script src="https://kit.fontawesome.com/f6dce9b617.js" crossorigin="anonymous"></script>
 <!-- link font sale product -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Norican&display=swap" />
-<style>
-    #shoes_banner>.d-flex>.img_move {
-        transition: transform 0.5s ease-in-out;
-    }
-</style>
 
 <body>
     <header>
@@ -61,7 +59,7 @@ $getAllNavbar2Child = $item_navbar->GetNavbar2Child();
                     </a>
                     <ul>
                         <?php foreach ($getVND_child as $value): ?>
-                            <li><a href="#"><?php echo $value['name_child'] ?></a></li>
+                        <li><a href="#"><?php echo $value['name_child'] ?></a></li>
                         <?php endforeach ?>
                     </ul>
                 </li>
@@ -78,20 +76,18 @@ $getAllNavbar2Child = $item_navbar->GetNavbar2Child();
                         </span>
                     </a>
                 </li>
-                <!--  -->
-                <?php
-                // lấy id login là 6 để 
-
-                // header("Location: Login.php");
-                ?>
-
                 <li id="li-item4">
                     <a href=""><?php echo $getVND_4 ?></a>
                     <ul style="z-index: 999;" class="hover_item4">
+
                         <?php foreach ($GetLi_thu4_child as $value): ?>
-                            <li>
-                                <a href="#"><?php echo htmlspecialchars($value['name']); ?></a>
-                            </li>
+                        <li>
+                            <?php if ($value['name'] === 'Log in'): ?>
+                            <a href="Login.php"><?php echo htmlspecialchars($value['name']); ?></a>
+                            <?php else: ?>
+                            <a href="#"><?php echo htmlspecialchars($value['name']); ?></a>
+                            <?php endif; ?>
+                        </li>
                         <?php endforeach; ?>
                     </ul>
                 </li>
@@ -156,51 +152,35 @@ $getAllNavbar2Child = $item_navbar->GetNavbar2Child();
                 </li>
                 <li id="item_2_fl1"><a href="#">WOMEN</a>
                     <ul class="d-flex gap-4 ">
-                        <li class="col-3"><a class="item_as" href="#">DRESSES</a><br>
+                        <?php foreach ($getAllWoman as $value): ?>
+                        <li class="col-3"><a class="item_as"
+                                href="#"><?php echo htmlspecialchars($value['name']) ?></a><br>
                             <div class="sub-menu">
-                                <a href="#">Cocktail</a><br>
-                                <a href="#">Day</a><br>
-                                <a href="#">Evening</a><br>
-                                <a href="#">Sports</a>
+                                <!-- Hiển thị các mục con nếu có -->
+                                <?php
+                                    if ($value['name_child']) {
+                                        $children  = explode(", ", $value['name_child']);
+                                        foreach ($children  as $child) {
+                                            echo "<a href ='#'>" . htmlspecialchars(trim($child)) . "</a>" . "<br>";
+                                        }
+                                    }
+                                    ?>
                             </div>
                         </li>
-                        <li class="col-3"><a class="item_as" href="#">Shoes</a><br>
-                            <div class="sub-menu">
-                                <a href="#">Sports</a><br>
-                                <a href="#">Run</a><br>
-                                <a href="#">Sandals</a><br>
-                                <a href="#">Books</a>
-                            </div>
-                        </li>
-                        <li class="col-3"><a class="item_as" href="#">Handbags</a><br>
-                            <div class="">
-                                <a href="#">Blazers</a><br>
-                                <a href="#">Table</a><br>
-                                <a href="#">Coats</a><br>
-                                <a href="#">Kids</a>
-                            </div>
-                        </li>
-                        <li class="col-3"><a class="item_as" href="#">Clothing</a><br>
-                            <div>
-                                <a href="#">T-shirts</a><br>
-                                <a href="#">Coats</a><br>
-                                <a href="#">Jackets</a><br>
-                                <a href="#">Jeans</a>
-                            </div>
-                        </li><br>
-                        <li id="li_image1"><a href="#"><img
-                                    src="https://htmldemo.net/james/james/img/banner/menu-banner.png" alt=""></a></li>
+                        <li id="li_image1"><a href="#"><img src="<?php echo $value['image'] ?>" alt=""></a></li>
+                        <?php endforeach ?>
                     </ul>
+
                 </li>
                 <!--  -->
                 <?php foreach ($getAllNavbar2 as $value): ?>
-                    <li><a href="#"><?php echo $value['name'] ?></a></li>
+                <li><a href="#"><?php echo $value['name'] ?></a></li>
                 <?php endforeach ?>
                 <li id="last-child2"><a href="#">PAGES</a>
 
                     <ul class="sub-menu  pages">
                         <?php foreach ($getAllNavbar2Child as $value): ?>
-                            <li><a href="#"><?php echo $value['name'] ?></a></li>
+                        <li><a href="#"><?php echo $value['name'] ?></a></li>
                         <?php endforeach ?>
                     </ul>
 
@@ -351,14 +331,14 @@ $getAllNavbar2Child = $item_navbar->GetNavbar2Child();
     <footer></footer>
     <!-- js -->
     <script>
-        setInterval(function() {
-            const content = document.querySelector('.content');
-            content.classList.add('showContentjs'); // Thêm hiệu ứng di chuyển
+    setInterval(function() {
+        const content = document.querySelector('.content');
+        content.classList.add('showContentjs'); // Thêm hiệu ứng di chuyển
 
-            // Loại bỏ class move-up sau khi hiệu ứng hoàn tất
-            setTimeout(() => content.classList.remove('showContentjs'), 4000); // Sau 1s, loại bỏ class move-up
-            setTimeout(() => content.classList.remove('showContentjs'), 0); // Sau 1s, loại bỏ class move-up
-        }, 4000); // Mỗi 4 giây
+        // Loại bỏ class move-up sau khi hiệu ứng hoàn tất
+        setTimeout(() => content.classList.remove('showContentjs'), 4000); // Sau 1s, loại bỏ class move-up
+        setTimeout(() => content.classList.remove('showContentjs'), 0); // Sau 1s, loại bỏ class move-up
+    }, 4000); // Mỗi 4 giây
     </script>
     <!-- link js bootstrap -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>

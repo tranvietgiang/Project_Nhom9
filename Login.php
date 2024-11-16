@@ -9,7 +9,7 @@
 
 <body>
     <h1>This is Page Login</h1>
-    <!-- <div><a href="index.php">Turn Back</a></div> -->
+    <div><a href="index.php">Turn Back</a></div>
 </body>
 
 </html>

@@ -83,4 +83,17 @@ class navbar extends Db
 
         return $result;
     }
+
+    // Get navbar woman
+    public function GetAllWoman()
+    {
+        $sql = self::$connection->prepare("SELECT * FROM `tb_navbar_woman`");
+
+        $sql->execute();
+
+        $result = array();
+        $result = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
+
+        return $result;
+    }
 }
