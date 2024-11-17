@@ -74,7 +74,7 @@ class navbar extends Db
     {
         $sql = self::$connection->prepare("SELECT * FROM `tb_shoes` WHERE `name` = ?");
 
-        $sql->bind_param("i", $name);
+        $sql->bind_param("s", $name);
         $sql->execute();
 
         $result = array();
