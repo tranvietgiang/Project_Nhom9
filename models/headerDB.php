@@ -70,12 +70,11 @@ class navbar extends Db
         return $result;
     }
 
-    public function Search($id)
+    public function Search($name)
     {
-        $sql = self::$connection->prepare("SELECT * FROM `tb_shoes` WHERE id = ?");
+        $sql = self::$connection->prepare("SELECT * FROM `tb_shoes` WHERE `name` = ?");
 
-        // $keySearch = "%" . $id . "%";
-        $sql->bind_param("i", $id);
+        $sql->bind_param("i", $name);
         $sql->execute();
 
         $result = array();
