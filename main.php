@@ -50,10 +50,10 @@
                                         <a href>
                                             <img src="	https://htmldemo.net/james/james/img/product/2.png" width="255"
                                                 height="255">
-                                            <p>FUSCE ALIQUAM</p>
                                         </a>
                                         <div></div>
                                         <div class="price">
+                                            <p style="z-index: 999;">FUSCE ALIQUAM</p>
                                             <div class="odn col-lg-4">
                                                 <b class="gia ">$170.00</b>
                                             </div>

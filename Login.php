@@ -1,8 +1,9 @@
 <?php session_start(); ?>
 <?php
-require "models/config.php";
-require "models/Db.php";
-require "models/loginDB.php";
+require 'models/config.php';
+require 'models/Db.php';
+require 'models/loginDB.php';
+
 
 $login = new login_shoes;
 ?>
@@ -21,6 +22,7 @@ $login = new login_shoes;
         font-family: Arial, sans-serif;
     }
 
+
     body {
         display: flex;
         justify-content: center;
@@ -29,10 +31,28 @@ $login = new login_shoes;
         background-color: #f4f4f4;
     }
 
+    header>div>img {
+        border: 1px solid #45a049;
+        object-fit: contain;
+        width: 100%;
+        margin-left: -3px;
+        height: 561.5px;
+        border-radius: 5px;
+    }
+
+    header>div>h1 {
+
+        position: absolute;
+        text-transform: uppercase;
+        margin-left: 100px;
+        margin-top: 30px;
+    }
+
     section {
         background-color: #ffffff;
         width: 400px;
         padding: 20px;
+        height: 562px;
         border-radius: 10px;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
@@ -47,7 +67,7 @@ $login = new login_shoes;
     form input[type="password"] {
         width: 100%;
         padding: 10px;
-        margin: 10px 0;
+        margin: 15px 0;
         border: 1px solid #ccc;
         border-radius: 5px;
         font-size: 14px;
@@ -55,7 +75,7 @@ $login = new login_shoes;
     }
 
     form input:focus {
-        border: 2px solid #4CAF50;
+        border: 1px solid #4CAF50;
     }
 
     form input[type="submit"] {
@@ -67,6 +87,7 @@ $login = new login_shoes;
         border: none;
         border-radius: 5px;
         cursor: pointer;
+        margin-top: 30px;
     }
 
     form input[type="submit"]:hover {
@@ -92,7 +113,7 @@ $login = new login_shoes;
         position: absolute;
         cursor: pointer;
         margin-left: -30px;
-        margin-top: 20px;
+        margin-top: 25px;
         width: 20px;
         height: 20px;
     }
@@ -100,6 +121,12 @@ $login = new login_shoes;
 </head>
 
 <body>
+    <header>
+        <div>
+            <h1>Welcome to shoe our</h1>
+            <img src="https://htmldemo.net/james/james/img/product/25.png" alt="">
+        </div>
+    </header>
     <section>
         <h1>Login</h1>
         <form action="" method="POST">
@@ -112,23 +139,46 @@ $login = new login_shoes;
             </div>
             <input type="submit" name="Login" value="Login">
             <div class="options">
-                <a href="#">Forgot password?</a><br>
-                <a href="#">Register</a>
+                <a href="ChangPassword.php">Forgot password?</a><br>
+                <a href="dangki.php">Register</a>
             </div>
         </form>
+        <!-- js -->
+        <script>
+        const showPass = document.getElementById('showPass');
+        const passwordField = document.getElementById('password');
+
+
+        showPass.addEventListener('click', () => {
+            // Ngừng hành động mặc định của sự kiện để tránh reload trang
+            if (passwordField.type === 'password') {
+                passwordField.type = 'text';
+                showPass.src =
+                    "https://static.vecteezy.com/system/resources/previews/006/082/476/non_2x/preview-show-interface-icon-free-vector.jpg"
+            } else {
+                passwordField.type = 'password';
+                showPass.src =
+                    "https://static.vecteezy.com/system/resources/previews/022/782/488/non_2x/hidden-icon-visible-invisible-icon-eye-icon-look-and-vision-hide-unhide-symbol-human-eye-magic-eye-cross-symbol-sencitive-content-see-unsee-incognito-mood-blind-sign-free-vector.jpg"
+            }
+        });
+        </script>
+        <!-- endJs -->
         <?php
+
         if (isset($_POST['Login'])) {
+
             $tk = $_POST['username'];
             $mk = $_POST['password'];
 
-            $_SESSION['tenUser'] = $_POST['username'];
             $checkLG = $login->CheckLogin($tk, $mk);
+
             if (empty($tk) || empty($mk)) {
                 echo "<div style='color:red; text-align:center;'>Username or password empty!</div>";
                 return;
             }
 
             if ($checkLG) {
+                $_SESSION['tenUser'] = $tk;
                 header("location: index.php");
                 exit();
             } else {
@@ -137,22 +187,6 @@ $login = new login_shoes;
         }
         ?>
     </section>
-    <script>
-    const showPass = document.getElementById('showPass');
-    const passwordField = document.getElementById('password');
-
-    showPass.addEventListener('click', () => {
-        if (passwordField.type === 'password') {
-            passwordField.type = 'text';
-            showPass.src =
-                "https://static.vecteezy.com/system/resources/previews/006/082/476/non_2x/preview-show-interface-icon-free-vector.jpg"
-        } else {
-            passwordField.type = 'password';
-            showPass.src =
-                "https://static.vecteezy.com/system/resources/previews/022/782/488/non_2x/hidden-icon-visible-invisible-icon-eye-icon-look-and-vision-hide-unhide-symbol-human-eye-magic-eye-cross-symbol-sencitive-content-see-unsee-incognito-mood-blind-sign-free-vector.jpg"
-        }
-    });
-    </script>
 </body>
 
 </html>
