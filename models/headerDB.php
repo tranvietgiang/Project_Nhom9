@@ -72,12 +72,12 @@ class navbar extends Db
 
     public function Search($name)
     {
-        $sql = self::$connection->prepare("SELECT * FROM `tb_shoes` WHERE `name` = ?");
+        $sql = self::$connection->prepare("SELECT * FROM `tb_shoes` WHERE `name` LIKE ? LIMIT 0,4");
 
-        $sql->bind_param("s", $name);
+        $findGanDung = "%" . $name . "%";
+        $sql->bind_param("s",  $findGanDung);
         $sql->execute();
 
-        $result = array();
         $result = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
 
         return $result;
