@@ -1,9 +1,10 @@
+<?php session_start() ?>
 <?php
 require "models/config.php";
 require "models/db.php";
-require "models/loginDB.php";
+require "models/Users.php";
 
-$thongtin = new login_shoes;
+$thongtin = new Users_shoes;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -81,6 +82,7 @@ $thongtin = new login_shoes;
     <div class="registration-container">
         <h1>Register</h1>
         <form method="POST">
+            <input type="text" name="nameUser" class="input-field" placeholder="My name" required><br>
             <input type="text" name="username" class="input-field" placeholder="Username" required><br>
             <input type="email" name="email" class="input-field" placeholder="Email" required><br>
             <input type="password" name="password" class="input-field" placeholder="Password" required><br>
@@ -97,6 +99,7 @@ $thongtin = new login_shoes;
     </div>
     <?php
     if (isset($_POST['submit'])) {
+        $nameUser = $_POST['nameUser'];
         $username = $_POST['username'];
         $email = $_POST['email'];
         $password = $_POST['password'];
@@ -112,8 +115,8 @@ $thongtin = new login_shoes;
             echo "<p style='color:red; text-align:center;'>email đã tồn tại</p";
         } else {
             // Gọi phương thức dangki và lưu kết quả
-            $dangki = $thongtin->dangki($username, $password, $email);
-            header("location:Login.php");
+            $dangki = $thongtin->Register($nameUser, $username, $password, $email);
+            header("location:Login_users.php");
             echo "<p style='color:red; text-align:center;'>đăng kí thành công</p";
         }
     }

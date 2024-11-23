@@ -82,10 +82,15 @@ $getAllWoman  = $item_navbar->GetAllWoman();
 
                         <?php foreach ($GetLi_thu4_child as $value): ?>
                             <li>
-                                <?php if ($value['name'] === 'Log in'): ?>
-                                    <a href="Login.php"><?php echo htmlspecialchars($value['name']); ?></a>
+                                <?php
+                                $name = htmlspecialchars($value['name']); // Bảo mật đầu vào
+                                if ($name === 'Log in'):
+                                ?>
+                                    <a href="Login_users.php"><?php echo $name; ?></a>
+                                <?php elseif ($name === 'my account'): ?>
+                                    <a href="User_ID.php"><?php echo $name; ?></a>
                                 <?php else: ?>
-                                    <a href="#"><?php echo htmlspecialchars($value['name']); ?></a>
+                                    <a href="#"><?php echo $name; ?></a>
                                 <?php endif; ?>
                             </li>
                         <?php endforeach; ?>
@@ -338,7 +343,7 @@ $getAllWoman  = $item_navbar->GetAllWoman();
             content.classList.add('showContentjs'); // Thêm hiệu ứng di chuyển
 
             // Loại bỏ class move-up sau khi hiệu ứng hoàn tất
-            setTimeout(() => content.classList.remove('showContentjs'), 4000); // Sau 1s, loại bỏ class move-up
+            setTimeout(() => content.classList.remove('showContentjs'), 4000);
         }, 4000); // Mỗi 4 giây
     </script>
     <!-- link js bootstrap -->
