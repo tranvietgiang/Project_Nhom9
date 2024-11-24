@@ -18,16 +18,21 @@ if (isset($_POST['Login'])) {
     $checkLG = $login->CheckLogin($tk, $mk);
 
     if (empty($tk) || empty($mk)) {
-        echo "<div style='color:red; text-align:center;'>Username or password empty!</div>";
-        return;
-    }
-
-    if ($checkLG) {
+        echo "<div style='color: red;
+        text-align: center;
+        position: absolute;
+        margin-left: 570px;
+        margin-top: -140px'>Username or password empty!</div>";
+    } else if ($checkLG) {
         $_SESSION['username'] = $tk;
         header("location: index.php");
         exit();
     } else {
-        echo "<div style='color:red; text-align:center;'>Username or password wrong!</div>";
+        echo "<div style='color: red;
+        text-align: center;
+        position: absolute;
+        margin-left: 570px;
+        margin-top: -140px'>Username or password wrong!</div>";
     }
 }
 ?>
@@ -165,6 +170,9 @@ if (isset($_POST['Login'])) {
             <div class="options">
                 <a href="ChangPassword.php">Forgot password?</a><br>
                 <a href="RegisterCa.php">Register</a>
+            </div>
+            <div>
+                <a href="index.php">Turn back</a>
             </div>
         </form>
         <!-- js -->

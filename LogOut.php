@@ -3,5 +3,5 @@
 <?php
 
 unset($_SESSION['username']);
-header("location: Login_users.php");
+header("location: index.php");
 ?>
