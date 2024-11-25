@@ -300,12 +300,14 @@ $getAllWoman  = $item_navbar->GetAllWoman();
             <section class="m-find col-7">
                 <div style="background-color: #e5e5e5">
                     <form action="search.php" method="get">
-                        <input type="text" name="search" value="" />
+                        <input type="text" id="search-input" name="search" value="" />
                         <a href="#">
                             <button style="border: none;" value="search"><i
                                     class="fa-solid fa-magnifying-glass"></i></button>
                         </a>
                     </form>
+
+
                 </div>
                 <section class="row">
                     <div class="col-7">

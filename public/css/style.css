@@ -515,8 +515,7 @@ section.m-find div > form > input {
   padding: 1px 40px 1px 20px;
   margin: 55px;
   z-index: 990;
-  cursor: url("https://img.pikbest.com/png-images/qiantu/smart-touch-click-pointer_2596583.png!f305cw"),
-    auto;
+  cursor: pointer;
 }
 section.m-find div > form > a > button > i {
   position: absolute;

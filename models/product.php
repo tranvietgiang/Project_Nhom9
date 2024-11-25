@@ -32,6 +32,7 @@ class product extends Db
         return $item;
     }
 
+    // in ra phân trang
     public function SearchPaginate($keyword, $page, $count)
     {
         // Tính số thứ tự trang bắt đầu

@@ -37,24 +37,30 @@ class Users_shoes extends Db
 
 
 
-    public function ChangPassword($pass_new, $email, $pass_old,)
+
+    public function ChangePassword($pass_new, $email, $pass_old)
     {
-        $sql = self::$connection->prepare("UPDATE `tb_users` SET `password` = ? WHERE `email_id` = ? AND `password` = ?");
+        // Truy vấn lấy mật khẩu cũ
+        $getPass = self::$connection->prepare("SELECT `password` FROM `tb_users` WHERE `email_id` = ?");
+        $getPass->bind_param("s", $email);
+        $getPass->execute();
+        $result = $getPass->get_result()->fetch_assoc();
 
-        // Liên kết tham số với kiểu dữ liệu tương ứng
-        $sql->bind_param("sss", $pass_new, $email, $pass_old);
+        // Kiểm tra mật khẩu cũ
+        if ($result && password_verify($pass_old, $result['password'])) {
+            // Hash mật khẩu mới
+            $hash = password_hash($pass_new, PASSWORD_DEFAULT);
 
-        $sql->execute();
-
-
-        if ($sql->affected_rows > 0) {
-            return true;
-        } else {
-            return false;
+            // Cập nhật mật khẩu mới
+            $update = self::$connection->prepare("UPDATE `tb_users` SET `password` = ? WHERE `email_id` = ?");
+            $update->bind_param("ss", $hash, $email);
+            return $update->execute();
         }
 
-        return $result;
+        return false;
     }
+
+
     public function Register($nameUser, $username, $password, $email)
     {
         $encryption = password_hash($password, PASSWORD_DEFAULT);
@@ -90,5 +96,35 @@ class Users_shoes extends Db
         } else {
             return false;
         }
+    }
+
+    public function MyAccount()
+    {
+        $sql = self::$connection->prepare("SELECT * FROM `tb_myaccount`");
+        $sql->execute();
+
+        $result = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
+
+        return $result;
+    }
+
+
+    // save img
+    public function UploadImg($file)
+    {
+        $sql = self::$connection->prepare("INSERT INTO `tb_fileimg` (`filename`) VALUES(?)");
+        $sql->bind_param("s", $file);
+        return $sql->execute(); // Trả về true nếu thành công
+    }
+
+    // save img
+    public function GetImg()
+    {
+        $sql = self::$connection->prepare("SELECT * FROM `tb_fileimg`");
+        $sql->execute();
+
+        $result = $sql->get_result()->fetch_assoc();
+
+        return $result;
     }
 }
