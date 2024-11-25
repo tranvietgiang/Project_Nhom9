@@ -109,7 +109,7 @@ $getNme = $thongtin->GetUserInfo($user);
                                 <?php elseif ($name === 'my account'): ?>
                                     <a href="User_ID.php"><?php echo $name; ?></a>
                                 <?php elseif ($name === 'Log out'): ?>
-                                    <a href="LogOut.php"><?php echo $name; ?></a>
+                                    <a id="exit" href="LogOut.php"><?php echo $name; ?></a>
                                 <?php else: ?>
                                     <a href="#"><?php echo $name; ?></a>
                                 <?php endif; ?>
@@ -349,6 +349,20 @@ $getNme = $thongtin->GetUserInfo($user);
         const imageInput = document.getElementById('imageInput');
         const preview = document.getElementById('preview');
         const saveButton = document.getElementById('saveButton');
+        //in thông thông thoát
+        const exit = document.getElementById('exit');
+
+        exit.addEventListener("click", (event) => {
+            const userConfirmed = confirm("Are you sure you want to log out?");
+            if (userConfirmed) {
+                // Thực hiện hành động đăng xuất ở đây  
+                alert("You have logged out.");
+            } else {
+                event.preventDefault();
+                event.defaultPrevented();
+                // alert("Logout canceled.");
+            }
+        });
 
         imageInput.addEventListener('change', function() {
             const file = this.files[0]; // Lấy file đầu tiên  

@@ -1,5 +1,10 @@
 <?php session_start(); ?>
 <?php
+if (isset($_SESSION['username'])) {
+    header("location: User_ID.php");
+}
+?>
+<?php
 require 'models/config.php';
 require 'models/Db.php';
 require 'models/Users.php';
