@@ -335,10 +335,21 @@ $getNme = $thongtin->GetUserInfo($user);
                 <div class="">
                     <?php foreach ($myAccount as $value): ?>
                     <div>
-                        <span style="display: flex; align-items: center; margin: 20px 0 20px 0; width: 600px; height: 50px; background-color: #e5e5e5; border-radius: 5px;
+                        <span style="display: flex; align-items: center; margin: 20px 0 20px 0; width: 600px; height: 50px; background-color: #e5e5e5; border-radius: 5px; cursor: pointer;
                             border: 1px solid #e5e5e4">
+                            <?php
+                                $name = htmlspecialchars($value['name']);
+                                if ($name === 'my person information'):
+                                ?>
+
+                            <b style="border-right: 1px solid #000"
+                                class="px-2 handleCss"><?php echo $value['icon'] ?></b>
+                            <strong class="px-2 handleCss"><?php echo $value['name'] ?></strong>
+
+                            <?php else: ?>
                             <b style="border-right: 1px solid #000" class="px-2"><?php echo $value['icon'] ?></b>
                             <strong class="px-2"><?php echo $value['name'] ?></strong>
+                            <?php endif ?>
                         </span>
                     </div>
                     <?php endforeach ?>
@@ -346,15 +357,23 @@ $getNme = $thongtin->GetUserInfo($user);
             </div>
         </div>
     </section>
+    <!-- handle css -->
     <style>
     #my-information {
         width: 600px;
+        display: none;
         padding: 20px;
         border: 1px solid #ccc;
         border-radius: 8px;
         background-color: #f9f9f9;
         margin-left: 770px;
         margin-top: -60px;
+        opacity: 0;
+        transition: opacity 0.25s linear;
+    }
+
+    .address {
+        margin-bottom: 15px;
     }
 
     select {
@@ -373,9 +392,13 @@ $getNme = $thongtin->GetUserInfo($user);
         border: 1px solid #ccc;
         border-radius: 4px;
     }
+
+    /* handle css dropdown my-information */
+    #my-information {
+        height: 100%;
+    }
     </style>
 
-    <!-- PHP Section -->
     <?php
     $address = new Address;
     $province = $address->Province();
@@ -385,16 +408,30 @@ $getNme = $thongtin->GetUserInfo($user);
         $districts = $address->District($province_id);
 
         $options = '';
-        foreach ($districts as $district) {
-            $options .= '<option value="' . $district['district_id'] . '">' . htmlspecialchars($district['name']) . '</option>';
+        foreach ($districts as $value) {
+            $options .= '<option value="' . $value['district_id'] . '">' . htmlspecialchars($value['name']) . '</option>';
         }
         echo $options;
-        exit;
+        exit();
     }
+
+    if (isset($_POST['district_id'])) {
+        $wards_id = intval($_POST['district_id']);
+        $wards = $address->wards($wards_id);
+
+        $options2 = '';
+        foreach ($wards as $value) {
+            $options2 .= '<option value="' . $value['wards_id'] . '">' . htmlspecialchars($value['name']) . '</option>';
+        }
+        echo $options2;
+        exit();
+    }
+
+
     ?>
     <section id="my-information">
         <form action="" method="POST">
-            <div style="margin-bottom: 15px;">
+            <div class="address">
                 <select name="province_id" id="province">
                     <option value="" disabled selected>Select province or city</option>
                     <?php foreach ($province as $value): ?>
@@ -405,9 +442,15 @@ $getNme = $thongtin->GetUserInfo($user);
                 </select>
             </div>
 
-            <div style="margin-bottom: 15px;">
+            <div class="address">
                 <select name="district_id" id="district">
                     <option value="" disabled selected>Select District</option>
+                </select>
+            </div>
+
+            <div class="address">
+                <select name="wards_id" id="wards">
+                    <option value="" disabled selected>Select Wards</option>
                 </select>
             </div>
 
@@ -422,13 +465,45 @@ $getNme = $thongtin->GetUserInfo($user);
 
     <!-- handle Ajax -->
     <script>
+    // handle my-information  
+    const handleCss = document.querySelectorAll(".handleCss");
+    const my_information = document.getElementById("my-information");
+
+    handleCss.forEach(item => {
+        item.addEventListener("click", () => {
+            if (my_information.style.display === "none") {
+                my_information.style.display = "block";
+                setTimeout(() => {
+                    my_information.style.opacity = 1;
+                }, 10);
+            } else {
+                my_information.style.opacity = 0;
+                setTimeout(() => {
+                    my_information.style.display = "none";
+                }, 250);
+            }
+        });
+    });
+    // quận or huyện
     $(document).ready(function() {
         $("#province").change(function() {
             var selectedValue = $(this).val();
             $.post("", {
                 province_id: selectedValue
             }, function(data) {
-                $("#district").html(data); // Populate districts  
+                $("#district").html(data);
+            });
+        });
+    });
+
+    // xã or phường
+    $(document).ready(function() {
+        $("#district").change(function() {
+            var selectedValue = $(this).val();
+            $.post("", {
+                district_id: selectedValue
+            }, function(data) {
+                $("#wards").html(data);
             });
         });
     });
@@ -437,12 +512,9 @@ $getNme = $thongtin->GetUserInfo($user);
     <!-- Link js -->
     <script>
     // 
-    const imageInput = document.getElementById('imageInput');
-    const preview = document.getElementById('preview');
-    const saveButton = document.getElementById('saveButton');
+
     //in thông thông thoát
     const exit = document.getElementById('exit');
-
     exit.addEventListener("click", (event) => {
         const userConfirmed = confirm("Are you sure you want to log out?");
         if (userConfirmed) {
@@ -454,6 +526,10 @@ $getNme = $thongtin->GetUserInfo($user);
             // alert("Logout canceled.");
         }
     });
+
+    const imageInput = document.getElementById('imageInput');
+    const preview = document.getElementById('preview');
+
 
     imageInput.addEventListener('change', function() {
         const file = this.files[0]; // Lấy file đầu tiên  
@@ -469,13 +545,6 @@ $getNme = $thongtin->GetUserInfo($user);
             reader.readAsDataURL(file); // Đọc file và chuyển đổi thành URL dữ liệu  
         }
     });
-
-    imageInput.addEventListener("click", () => {
-        saveButton.style.display = 'block'; // Show the button  
-
-        // saveButton.style.display = 'none'; // Hide the button if no file  
-
-    })
     </script>
 </body>
 
