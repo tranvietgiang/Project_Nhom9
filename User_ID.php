@@ -3,6 +3,7 @@
 require "models/db.php";
 require "models/Users.php";
 require "models/headerDB.php";
+require "models/address.php";
 ?>
 
 
@@ -78,7 +79,7 @@ $getNme = $thongtin->GetUserInfo($user);
                     </a>
                     <ul>
                         <?php foreach ($getVND_child as $value): ?>
-                            <li><a href="#"><?php echo $value['name_child'] ?></a></li>
+                        <li><a href="#"><?php echo $value['name_child'] ?></a></li>
                         <?php endforeach ?>
                     </ul>
                 </li>
@@ -100,20 +101,20 @@ $getNme = $thongtin->GetUserInfo($user);
                     <ul style="z-index: 999;" class="hover_item4">
 
                         <?php foreach ($GetLi_thu4_child as $value): ?>
-                            <li>
-                                <?php
+                        <li>
+                            <?php
                                 $name = htmlspecialchars($value['name']); // Bảo mật đầu vào
                                 if ($name === 'Log in'):
                                 ?>
-                                    <a href="Login_users.php"><?php echo $name; ?></a>
-                                <?php elseif ($name === 'my account'): ?>
-                                    <a href="User_ID.php"><?php echo $name; ?></a>
-                                <?php elseif ($name === 'Log out'): ?>
-                                    <a id="exit" href="LogOut.php"><?php echo $name; ?></a>
-                                <?php else: ?>
-                                    <a href="#"><?php echo $name; ?></a>
-                                <?php endif; ?>
-                            </li>
+                            <a href="Login_users.php"><?php echo $name; ?></a>
+                            <?php elseif ($name === 'my account'): ?>
+                            <a href="User_ID.php"><?php echo $name; ?></a>
+                            <?php elseif ($name === 'Log out'): ?>
+                            <a id="exit" href="LogOut.php"><?php echo $name; ?></a>
+                            <?php else: ?>
+                            <a href="#"><?php echo $name; ?></a>
+                            <?php endif; ?>
+                        </li>
                         <?php endforeach; ?>
                     </ul>
                 </li>
@@ -181,11 +182,11 @@ $getNme = $thongtin->GetUserInfo($user);
                 <li id="item_2_fl1"><a href="#">WOMEN</a>
                     <ul class="d-flex gap-4 ">
                         <?php foreach ($getAllWoman as $value): ?>
-                            <li class="col-3"><a class="item_as"
-                                    href="#"><?php echo htmlspecialchars($value['name']) ?></a><br>
-                                <div class="sub-menu">
-                                    <!-- Hiển thị các mục con nếu có -->
-                                    <?php
+                        <li class="col-3"><a class="item_as"
+                                href="#"><?php echo htmlspecialchars($value['name']) ?></a><br>
+                            <div class="sub-menu">
+                                <!-- Hiển thị các mục con nếu có -->
+                                <?php
                                     if ($value['name_child']) {
                                         $children  = explode(", ", $value['name_child']);
                                         foreach ($children  as $child) {
@@ -193,22 +194,22 @@ $getNme = $thongtin->GetUserInfo($user);
                                         }
                                     }
                                     ?>
-                                </div>
-                            </li>
-                            <li id="li_image1"><a href="#"><img src="<?php echo $value['image'] ?>" alt=""></a></li>
+                            </div>
+                        </li>
+                        <li id="li_image1"><a href="#"><img src="<?php echo $value['image'] ?>" alt=""></a></li>
                         <?php endforeach ?>
                     </ul>
 
                 </li>
                 <!--  -->
                 <?php foreach ($getAllNavbar2 as $value): ?>
-                    <li><a href="#"><?php echo $value['name'] ?></a></li>
+                <li><a href="#"><?php echo $value['name'] ?></a></li>
                 <?php endforeach ?>
                 <li id="last-child2"><a href="#">PAGES</a>
 
                     <ul class="sub-menu  pages">
                         <?php foreach ($getAllNavbar2Child as $value): ?>
-                            <li><a href="#"><?php echo $value['name'] ?></a></li>
+                        <li><a href="#"><?php echo $value['name'] ?></a></li>
                         <?php endforeach ?>
                     </ul>
 
@@ -220,10 +221,10 @@ $getNme = $thongtin->GetUserInfo($user);
 
     <!--  -->
     <style>
-        section#user_id>div.container>h2,
-        div>p {
-            color: #000;
-        }
+    section#user_id>div.container>h2,
+    div>p {
+        color: #000;
+    }
     </style>
     <section id="user_id">
         <div class="container">
@@ -306,10 +307,10 @@ $getNme = $thongtin->GetUserInfo($user);
 
     ?>
     <style>
-        section row>col-6 a {
-            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-            font-size: 15px;
-        }
+    section row>col-6 a {
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        font-size: 15px;
+    }
     </style>
     <section class="container">
         <div style="margin: 50px 0 0 0; text-transform: uppercase;" class="row ">
@@ -318,73 +319,163 @@ $getNme = $thongtin->GetUserInfo($user);
                 <div>
                     <h5>Category</h5>
                     <?php foreach ($myAccount as $value): ?>
-                        <div>
-                            <a href="#"><?php echo $value['category'] ?></a>
-                        </div>
+                    <div>
+                        <a href="#"><?php echo $value['category'] ?></a>
+                    </div>
                     <?php endforeach ?>
                     <h5 style="margin-top: 50px;">Color</h5>
                     <?php foreach ($myAccount as $value): ?>
-                        <div>
-                            <a href="#"><?php echo $value['color'] ?></a>
-                        </div>
+                    <div>
+                        <a href="#"><?php echo $value['color'] ?></a>
+                    </div>
                     <?php endforeach ?>
                 </div>
             </div>
             <div class="col-6">
                 <div class="">
                     <?php foreach ($myAccount as $value): ?>
-                        <a href="#">
-                            <span style="display: flex; align-items: center; margin: 20px 0 20px 0; width: 600px; height: 50px; background-color: #e5e5e5; border-radius: 5px;
+                    <div>
+                        <span style="display: flex; align-items: center; margin: 20px 0 20px 0; width: 600px; height: 50px; background-color: #e5e5e5; border-radius: 5px;
                             border: 1px solid #e5e5e4">
-                                <b style="border-right: 1px solid #000" class="px-2"><?php echo $value['icon'] ?></b>
-                                <strong class="px-2"><?php echo $value['name'] ?></strong>
-                            </span>
-                        </a>
+                            <b style="border-right: 1px solid #000" class="px-2"><?php echo $value['icon'] ?></b>
+                            <strong class="px-2"><?php echo $value['name'] ?></strong>
+                        </span>
+                    </div>
                     <?php endforeach ?>
                 </div>
             </div>
         </div>
     </section>
+    <style>
+    #my-information {
+        width: 600px;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        background-color: #f9f9f9;
+        margin-left: 770px;
+        margin-top: -60px;
+    }
+
+    select {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+    select option:hover {
+        background-color: #dc3435;
+    }
+
+    input[type="text"] {
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+    </style>
+
+    <!-- PHP Section -->
+    <?php
+    $address = new Address;
+    $province = $address->Province();
+
+    if (isset($_POST['province_id'])) {
+        $province_id = intval($_POST['province_id']);
+        $districts = $address->District($province_id);
+
+        $options = '';
+        foreach ($districts as $district) {
+            $options .= '<option value="' . $district['district_id'] . '">' . htmlspecialchars($district['name']) . '</option>';
+        }
+        echo $options;
+        exit;
+    }
+    ?>
+    <section id="my-information">
+        <form action="" method="POST">
+            <div style="margin-bottom: 15px;">
+                <select name="province_id" id="province">
+                    <option value="" disabled selected>Select province or city</option>
+                    <?php foreach ($province as $value): ?>
+                    <option value="<?php echo $value['province_id']; ?>">
+                        <?php echo htmlspecialchars($value['name']); ?>
+                    </option>
+                    <?php endforeach ?>
+                </select>
+            </div>
+
+            <div style="margin-bottom: 15px;">
+                <select name="district_id" id="district">
+                    <option value="" disabled selected>Select District</option>
+                </select>
+            </div>
+
+            <div>
+                <input type="text" name="address" placeholder="Address cụ thể" style="width: 100%;">
+            </div>
+        </form>
+    </section>
+
+    <!-- jQuery Link -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- handle Ajax -->
     <script>
-        const imageInput = document.getElementById('imageInput');
-        const preview = document.getElementById('preview');
-        const saveButton = document.getElementById('saveButton');
-        //in thông thông thoát
-        const exit = document.getElementById('exit');
-
-        exit.addEventListener("click", (event) => {
-            const userConfirmed = confirm("Are you sure you want to log out?");
-            if (userConfirmed) {
-                // Thực hiện hành động đăng xuất ở đây  
-                alert("You have logged out.");
-            } else {
-                event.preventDefault();
-                event.defaultPrevented();
-                // alert("Logout canceled.");
-            }
+    $(document).ready(function() {
+        $("#province").change(function() {
+            var selectedValue = $(this).val();
+            $.post("", {
+                province_id: selectedValue
+            }, function(data) {
+                $("#district").html(data); // Populate districts  
+            });
         });
+    });
+    </script>
 
-        imageInput.addEventListener('change', function() {
-            const file = this.files[0]; // Lấy file đầu tiên  
+    <!-- Link js -->
+    <script>
+    // 
+    const imageInput = document.getElementById('imageInput');
+    const preview = document.getElementById('preview');
+    const saveButton = document.getElementById('saveButton');
+    //in thông thông thoát
+    const exit = document.getElementById('exit');
 
-            if (file) {
-                const reader = new FileReader();
+    exit.addEventListener("click", (event) => {
+        const userConfirmed = confirm("Are you sure you want to log out?");
+        if (userConfirmed) {
+            // Thực hiện hành động đăng xuất ở đây  
+            alert("You have logged out.");
+        } else {
+            event.preventDefault();
+            event.defaultPrevented();
+            // alert("Logout canceled.");
+        }
+    });
 
-                reader.onload = function(event) {
-                    preview.src = event.target.result; // Gán địa chỉ vào thẻ img  
-                    preview.style.display = 'block'; // Hiển thị thẻ img  
-                }
+    imageInput.addEventListener('change', function() {
+        const file = this.files[0]; // Lấy file đầu tiên  
 
-                reader.readAsDataURL(file); // Đọc file và chuyển đổi thành URL dữ liệu  
+        if (file) {
+            const reader = new FileReader();
+
+            reader.onload = function(event) {
+                preview.src = event.target.result; // Gán địa chỉ vào thẻ img  
+                preview.style.display = 'block'; // Hiển thị thẻ img  
             }
-        });
 
-        imageInput.addEventListener("click", () => {
-            saveButton.style.display = 'block'; // Show the button  
+            reader.readAsDataURL(file); // Đọc file và chuyển đổi thành URL dữ liệu  
+        }
+    });
 
-            // saveButton.style.display = 'none'; // Hide the button if no file  
+    imageInput.addEventListener("click", () => {
+        saveButton.style.display = 'block'; // Show the button  
 
-        })
+        // saveButton.style.display = 'none'; // Hide the button if no file  
+
+    })
     </script>
 </body>
 
