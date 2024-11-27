@@ -18,6 +18,21 @@ class product extends Db
         return $item;
     }
 
+    // getName product
+    public function GetNameSP($id)
+    {
+        $sql = self::$connection->prepare("SELECT `name`, `image` FROM `product` WHERE id = ?");
+        $sql->bind_param("i", $id);
+
+        $sql->execute();
+
+        $result = $sql->get_result()->fetch_assoc();
+        return $result;
+    }
+
+
+
+
     // đếm số trang tìm được
     public function SearchCount($nameSP)
     {
