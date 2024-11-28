@@ -250,11 +250,8 @@ $product = new product;
                                                 class="gia "><?php echo number_format($value['price'], 0, ',', '.') . ' VNĐ'; ?></b>
                                         </div>
                                         <div class="col-lg-12 col-12 mx-5 rating ">
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="far fa-star"></i>
-                                            <i class="far fa-star"></i>
+                                            <i class=" <?php echo $value['star'] ?>"></i>
+
                                         </div>
                                     </div>
                                     <div class="d-flex mt-4 ">

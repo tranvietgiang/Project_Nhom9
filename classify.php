@@ -104,7 +104,7 @@ $product = new product;
 
                     <div class="menu-title">
                         <ul class="side-menu">
-                            <li class="presentation check"><a href="content.php">HOME</a></li>
+                            <li class="presentation check"><a href="index.php">HOME</a></li>
                             <?php
                             $cate = $categary->getallcategary();
                             foreach ($cate as $value) :

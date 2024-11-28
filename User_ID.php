@@ -79,7 +79,7 @@ $getNme = $thongtin->GetUserInfo($user);
                     </a>
                     <ul>
                         <?php foreach ($getVND_child as $value): ?>
-                            <li><a href="#"><?php echo $value['name_child'] ?></a></li>
+                        <li><a href="#"><?php echo $value['name_child'] ?></a></li>
                         <?php endforeach ?>
                     </ul>
                 </li>
@@ -101,20 +101,20 @@ $getNme = $thongtin->GetUserInfo($user);
                     <ul style="z-index: 999;" class="hover_item4">
 
                         <?php foreach ($GetLi_thu4_child as $value): ?>
-                            <li>
-                                <?php
+                        <li>
+                            <?php
                                 $name = htmlspecialchars($value['name']); // Bảo mật đầu vào
                                 if ($name === 'Log in'):
                                 ?>
-                                    <a href="Login_users.php"><?php echo $name; ?></a>
-                                <?php elseif ($name === 'my account'): ?>
-                                    <a href="User_ID.php"><?php echo $name; ?></a>
-                                <?php elseif ($name === 'Log out'): ?>
-                                    <a id="exit" href="LogOut.php"><?php echo $name; ?></a>
-                                <?php else: ?>
-                                    <a href="#"><?php echo $name; ?></a>
-                                <?php endif; ?>
-                            </li>
+                            <a href="Login_users.php"><?php echo $name; ?></a>
+                            <?php elseif ($name === 'my account'): ?>
+                            <a href="User_ID.php"><?php echo $name; ?></a>
+                            <?php elseif ($name === 'Log out'): ?>
+                            <a id="exit" href="LogOut.php"><?php echo $name; ?></a>
+                            <?php else: ?>
+                            <a href="#"><?php echo $name; ?></a>
+                            <?php endif; ?>
+                        </li>
                         <?php endforeach; ?>
                     </ul>
                 </li>
@@ -182,11 +182,11 @@ $getNme = $thongtin->GetUserInfo($user);
                 <li id="item_2_fl1"><a href="#">WOMEN</a>
                     <ul class="d-flex gap-4 ">
                         <?php foreach ($getAllWoman as $value): ?>
-                            <li class="col-3"><a class="item_as"
-                                    href="#"><?php echo htmlspecialchars($value['name']) ?></a><br>
-                                <div class="sub-menu">
-                                    <!-- Hiển thị các mục con nếu có -->
-                                    <?php
+                        <li class="col-3"><a class="item_as"
+                                href="#"><?php echo htmlspecialchars($value['name']) ?></a><br>
+                            <div class="sub-menu">
+                                <!-- Hiển thị các mục con nếu có -->
+                                <?php
                                     if ($value['name_child']) {
                                         $children  = explode(", ", $value['name_child']);
                                         foreach ($children  as $child) {
@@ -194,22 +194,22 @@ $getNme = $thongtin->GetUserInfo($user);
                                         }
                                     }
                                     ?>
-                                </div>
-                            </li>
-                            <li id="li_image1"><a href="#"><img src="<?php echo $value['image'] ?>" alt=""></a></li>
+                            </div>
+                        </li>
+                        <li id="li_image1"><a href="#"><img src="<?php echo $value['image'] ?>" alt=""></a></li>
                         <?php endforeach ?>
                     </ul>
 
                 </li>
                 <!--  -->
                 <?php foreach ($getAllNavbar2 as $value): ?>
-                    <li><a href="#"><?php echo $value['name'] ?></a></li>
+                <li><a href="#"><?php echo $value['name'] ?></a></li>
                 <?php endforeach ?>
                 <li id="last-child2"><a href="#">PAGES</a>
 
                     <ul class="sub-menu  pages">
                         <?php foreach ($getAllNavbar2Child as $value): ?>
-                            <li><a href="#"><?php echo $value['name'] ?></a></li>
+                        <li><a href="#"><?php echo $value['name'] ?></a></li>
                         <?php endforeach ?>
                     </ul>
 
@@ -221,10 +221,10 @@ $getNme = $thongtin->GetUserInfo($user);
 
     <!--  -->
     <style>
-        section#user_id>div.container>h2,
-        div>p {
-            color: #000;
-        }
+    section#user_id>div.container>h2,
+    div>p {
+        color: #000;
+    }
     </style>
     <section id="user_id">
         <div class="container">
@@ -252,9 +252,9 @@ $getNme = $thongtin->GetUserInfo($user);
                 <div class="col-6">
                     <div>
                         <form method="post" enctype="multipart/form-data">
-                            <img id="preview" src="uploads/<?php echo $getImg['name'] ?>"
-                                style="object-fit: contain; border-radius: 50%; margin: 50px 0 10px  0;" width="200px"
-                                height="100%" alt="img-fluid"><br>
+                            <img id="preview" src="<?php echo $getImg['name'] ?>"
+                                style="object-fit: cover; border-radius: 5%; border: 2px solid #dc3435; margin: 50px 0 10px  0;"
+                                width="300px" height="100%" alt="img-fluid"><br>
                             <input type="file" id="imageInput" name="ChooseImg" accept="image/*"><br>
                             <button id="saveButton" name="send" class="btn btn-danger"
                                 style="display: none;">Save</button>
@@ -307,10 +307,10 @@ $getNme = $thongtin->GetUserInfo($user);
 
     ?>
     <style>
-        section row>col-6 a {
-            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-            font-size: 15px;
-        }
+    section row>col-6 a {
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        font-size: 15px;
+    }
     </style>
     <section class="container">
         <div style="margin: 50px 0 0 0; text-transform: uppercase;" class="row ">
@@ -319,39 +319,39 @@ $getNme = $thongtin->GetUserInfo($user);
                 <div>
                     <h5>Category</h5>
                     <?php foreach ($myAccount as $value): ?>
-                        <div>
-                            <a href="#"><?php echo $value['category'] ?></a>
-                        </div>
+                    <div>
+                        <a href="#"><?php echo $value['category'] ?></a>
+                    </div>
                     <?php endforeach ?>
                     <h5 style="margin-top: 50px;">Color</h5>
                     <?php foreach ($myAccount as $value): ?>
-                        <div>
-                            <a href="#"><?php echo $value['color'] ?></a>
-                        </div>
+                    <div>
+                        <a href="#"><?php echo $value['color'] ?></a>
+                    </div>
                     <?php endforeach ?>
                 </div>
             </div>
             <div class="col-6">
                 <div class="">
                     <?php foreach ($myAccount as $value): ?>
-                        <div>
-                            <span style="display: flex; align-items: center; margin: 20px 0 20px 0; width: 600px; height: 50px; background-color: #e5e5e5; border-radius: 5px; cursor: pointer;
+                    <div>
+                        <span style="display: flex; align-items: center; margin: 20px 0 20px 0; width: 600px; height: 50px; background-color: #e5e5e5; border-radius: 5px; cursor: pointer;
                             border: 1px solid #e5e5e4">
-                                <?php
+                            <?php
                                 $name = htmlspecialchars($value['name']);
                                 if ($name === 'my person information'):
                                 ?>
 
-                                    <b style="border-right: 1px solid #000"
-                                        class="px-2 handleCss"><?php echo $value['icon'] ?></b>
-                                    <strong class="px-2 handleCss"><?php echo $value['name'] ?></strong>
+                            <b style="border-right: 1px solid #000"
+                                class="px-2 handleCss"><?php echo $value['icon'] ?></b>
+                            <strong class="px-2 handleCss"><?php echo $value['name'] ?></strong>
 
-                                <?php else: ?>
-                                    <b style="border-right: 1px solid #000" class="px-2"><?php echo $value['icon'] ?></b>
-                                    <strong class="px-2"><?php echo $value['name'] ?></strong>
-                                <?php endif ?>
-                            </span>
-                        </div>
+                            <?php else: ?>
+                            <b style="border-right: 1px solid #000" class="px-2"><?php echo $value['icon'] ?></b>
+                            <strong class="px-2"><?php echo $value['name'] ?></strong>
+                            <?php endif ?>
+                        </span>
+                    </div>
                     <?php endforeach ?>
                 </div>
             </div>
@@ -359,44 +359,44 @@ $getNme = $thongtin->GetUserInfo($user);
     </section>
     <!-- handle css -->
     <style>
-        #my-information {
-            width: 600px;
-            display: none;
-            padding: 20px;
-            border: 1px solid #ccc;
-            border-radius: 8px;
-            background-color: #f9f9f9;
-            margin-left: 770px;
-            margin-top: -60px;
-            opacity: 0;
-            transition: opacity 0.25s linear;
-        }
+    #my-information {
+        width: 600px;
+        display: none;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        background-color: #f9f9f9;
+        margin-left: 770px;
+        margin-top: -60px;
+        opacity: 0;
+        transition: opacity 0.25s linear;
+    }
 
-        .address {
-            margin-bottom: 15px;
-        }
+    .address {
+        margin-bottom: 15px;
+    }
 
-        select {
-            width: 100%;
-            padding: 8px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
+    select {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
 
-        select option:hover {
-            background-color: #dc3435;
-        }
+    select option:hover {
+        background-color: #dc3435;
+    }
 
-        input[type="text"] {
-            padding: 8px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
+    input[type="text"] {
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
 
-        /* handle css dropdown my-information */
-        #my-information {
-            height: 100%;
-        }
+    /* handle css dropdown my-information */
+    #my-information {
+        height: 100%;
+    }
     </style>
 
     <?php
@@ -435,9 +435,9 @@ $getNme = $thongtin->GetUserInfo($user);
                 <select name="province_id" id="province">
                     <option value="" disabled selected>Select province or city</option>
                     <?php foreach ($province as $value): ?>
-                        <option value="<?php echo $value['province_id']; ?>">
-                            <?php echo htmlspecialchars($value['name']); ?>
-                        </option>
+                    <option value="<?php echo $value['province_id']; ?>">
+                        <?php echo htmlspecialchars($value['name']); ?>
+                    </option>
                     <?php endforeach ?>
                 </select>
             </div>
@@ -465,86 +465,86 @@ $getNme = $thongtin->GetUserInfo($user);
 
     <!-- handle Ajax -->
     <script>
-        // handle my-information  
-        const handleCss = document.querySelectorAll(".handleCss");
-        const my_information = document.getElementById("my-information");
+    // handle my-information  
+    const handleCss = document.querySelectorAll(".handleCss");
+    const my_information = document.getElementById("my-information");
 
-        handleCss.forEach(item => {
-            item.addEventListener("click", () => {
-                if (my_information.style.display === "none") {
-                    my_information.style.display = "block";
-                    setTimeout(() => {
-                        my_information.style.opacity = 1;
-                    }, 10);
-                } else {
-                    my_information.style.opacity = 0;
-                    setTimeout(() => {
-                        my_information.style.display = "none";
-                    }, 250);
-                }
+    handleCss.forEach(item => {
+        item.addEventListener("click", () => {
+            if (my_information.style.display === "none") {
+                my_information.style.display = "block";
+                setTimeout(() => {
+                    my_information.style.opacity = 1;
+                }, 10);
+            } else {
+                my_information.style.opacity = 0;
+                setTimeout(() => {
+                    my_information.style.display = "none";
+                }, 250);
+            }
+        });
+    });
+    // quận or huyện
+    $(document).ready(function() {
+        $("#province").change(function() {
+            var selectedValue = $(this).val();
+            $.post("", {
+                province_id: selectedValue
+            }, function(data) {
+                $("#district").html(data);
             });
         });
-        // quận or huyện
-        $(document).ready(function() {
-            $("#province").change(function() {
-                var selectedValue = $(this).val();
-                $.post("", {
-                    province_id: selectedValue
-                }, function(data) {
-                    $("#district").html(data);
-                });
-            });
-        });
+    });
 
-        // xã or phường
-        $(document).ready(function() {
-            $("#district").change(function() {
-                var selectedValue = $(this).val();
-                $.post("", {
-                    district_id: selectedValue
-                }, function(data) {
-                    $("#wards").html(data);
-                });
+    // xã or phường
+    $(document).ready(function() {
+        $("#district").change(function() {
+            var selectedValue = $(this).val();
+            $.post("", {
+                district_id: selectedValue
+            }, function(data) {
+                $("#wards").html(data);
             });
         });
+    });
     </script>
 
     <!-- Link js -->
     <script>
-        // 
+    // 
 
-        //in thông thông thoát
-        const exit = document.getElementById('exit');
-        exit.addEventListener("click", (event) => {
-            const userConfirmed = confirm("Are you sure you want to log out?");
-            if (userConfirmed) {
-                // Thực hiện hành động đăng xuất ở đây  
-                alert("You have logged out.");
-            } else {
-                event.preventDefault();
-                event.defaultPrevented();
-                // alert("Logout canceled.");
+    //in thông thông thoát
+    const exit = document.getElementById('exit');
+    exit.addEventListener("click", (event) => {
+        const userConfirmed = confirm("Are you sure you want to log out?");
+        if (userConfirmed) {
+            // Thực hiện hành động đăng xuất ở đây  
+            alert("You have logged out.");
+        } else {
+            event.preventDefault();
+            event.defaultPrevented();
+            // alert("Logout canceled.");
+        }
+    });
+
+    const imageInput = document.getElementById('imageInput');
+    const preview = document.getElementById('preview');
+
+
+    imageInput.addEventListener('change', function() {
+        const file = this.files[0]; // Lấy file đầu tiên  
+
+        if (file) {
+            const reader = new FileReader();
+
+            reader.onload = function(event) {
+                preview.src = event.target.result; // Gán địa chỉ vào thẻ img  
+                preview.style.display = 'block'; // Hiển thị thẻ img  
             }
-        });
 
-        const imageInput = document.getElementById('imageInput');
-        const preview = document.getElementById('preview');
-
-
-        imageInput.addEventListener('change', function() {
-            const file = this.files[0]; // Lấy file đầu tiên  
-
-            if (file) {
-                const reader = new FileReader();
-
-                reader.onload = function(event) {
-                    preview.src = event.target.result; // Gán địa chỉ vào thẻ img  
-                    preview.style.display = 'block'; // Hiển thị thẻ img  
-                }
-
-                reader.readAsDataURL(file); // Đọc file và chuyển đổi thành URL dữ liệu  
-            }
-        });
+            reader.readAsDataURL(file); // Đọc file và chuyển đổi thành URL dữ liệu  
+        }
+    });
     </script>
 </body>
 
