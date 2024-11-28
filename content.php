@@ -18,16 +18,7 @@ $product = new product;
 </head>
 
 <body>
-    <style>
-    body p {
-        color: #000;
-        font-weight: bold;
-    }
 
-    body a:hover p {
-        color: #dc3545;
-    }
-    </style>
     <content>
         <div class="container">
             <div class="BESTSELLER ">
@@ -41,12 +32,14 @@ $product = new product;
 
                     <div class="menu-title">
                         <ul class="side-menu">
-                            <li class="presentation check"><a href>WOMEN</a></li>
+                            <li class="presentation check"><a href="content.php">HOME</a></li>
                             <?php
                             $cate = $categary->getallcategary();
                             foreach ($cate as $value) :
                             ?>
-                            <li class="presentation"><a href><?php echo $value['categary'] ?></a></li>
+                            <li class="presentation"><a
+                                    href="classify.php?id=<?php echo $value['id'] ?>"><?php echo $value['categary'] ?></a>
+                            </li>
                             <?php endforeach ?>
                             <li> <img src="https://htmldemo.net/james/james/img/banner/banner-5.jpg" width="100%"
                                     height="300"></li>
@@ -63,11 +56,12 @@ $product = new product;
                                 <?php
                                 $productsp = $product->getallproduct();
                                 foreach ($productsp as $key => $value):
+
                                 ?>
                                 <div class="owl-item ">
 
                                     <div>
-                                        <a href>
+                                        <a href="details.php?id=<?php echo $value['id'] ?>">
                                             <img src="public/img/<?php echo $value['image'] ?>" width="255"
                                                 height="255">
                                             <p><?php echo $value['name'] ?></p>
@@ -75,7 +69,8 @@ $product = new product;
                                         <div></div>
                                         <div class="price">
                                             <div class="odn col-lg-4">
-                                                <b class="gia "><?php echo $value['price'] ?></b>
+                                                <b
+                                                    class="gia "><?php echo number_format($value['price'], 0, ',', '.') . ' VNĐ'; ?></b>
                                             </div>
                                             <div class="col-lg-12 col-12 mx-5 rating ">
                                                 <i class="fas fa-star"></i>
@@ -102,7 +97,7 @@ $product = new product;
                                     <?php
                                         ?>
                                     <div class="mt-5">
-                                        <a href>
+                                        <a href="details.php?id=<?php echo $value['id'] ?>">
                                             <img src="public/img/<?php echo $value['image'] ?>" width="255"
                                                 height="255">
                                             <p><?php echo $value['name'] ?></p>
@@ -110,7 +105,8 @@ $product = new product;
                                         <div></div>
                                         <div class="price">
                                             <div class="odn col-lg-4">
-                                                <b class="gia "><?php echo $value['price'] ?></b>
+                                                <b
+                                                    class="gia "><?php echo number_format($value['price'], 0, ',', '.') . ' VNĐ'; ?></b>
                                             </div>
                                             <div class="col-lg-12 col-12 mx-5 rating ">
                                                 <i class="fas fa-star"></i>
@@ -167,14 +163,15 @@ $product = new product;
                             ?>
                             <div class="owl-item1 ">
                                 <div>
-                                    <a href>
+                                    <a href="details.php?id=<?php echo $value['id'] ?>">
                                         <img src="public/img/<?php echo $value['image'] ?>" width="255" height="255">
                                         <p><?php echo $value['name'] ?></p>
                                     </a>
                                     <div></div>
                                     <div class="price">
                                         <div class="odn ">
-                                            <b class="gia "><?php echo $value['price'] ?></b>
+                                            <b
+                                                class="gia "><?php echo number_format($value['price'], 0, ',', '.') . ' VNĐ'; ?></b>
                                         </div>
                                         <div class="col-lg-12 col-12 mx-5 rating ">
                                             <i class="fas fa-star"></i>
@@ -200,6 +197,9 @@ $product = new product;
                                 </div>
                             </div>
                             <?php endforeach ?>
+
+
+
                         </div>
                     </div>
                 </div>
@@ -239,14 +239,15 @@ $product = new product;
                             ?>
                             <div class="owl-item2 ">
                                 <div>
-                                    <a href>
+                                    <a href="details.php?id=<?php echo $value['id'] ?>">
                                         <img src="public/img/<?php echo $value['image'] ?>" width="255" height="255">
                                         <p><?php echo $value['name'] ?></p>
                                     </a>
                                     <div></div>
                                     <div class="price">
                                         <div class="odn ">
-                                            <b class="gia ">$<?php echo $value['price'] ?></b>
+                                            <b
+                                                class="gia "><?php echo number_format($value['price'], 0, ',', '.') . ' VNĐ'; ?></b>
                                         </div>
                                         <div class="col-lg-12 col-12 mx-5 rating ">
                                             <i class="fas fa-star"></i>
@@ -268,199 +269,13 @@ $product = new product;
                                                 <a href><i class="fas fa-sync mx-3"></i></a>
                                             </div>
                                         </div>
-                                        <div>
-                                            <a href="Review.php?id=<?php echo $value['id'] ?>">detail</a>
-                                        </div>
                                     </div>
+                                </div>
+                                <div>
+                                    <a href="Review.php?id=<?php echo $value['id'] ?>">detail</a>
                                 </div>
                             </div>
                             <?php endforeach ?>
-
-
-                            <div class="owl-item2 ">
-                                <div>
-                                    <a href>
-                                        <img src="	https://htmldemo.net/james/james/img/product/18.png" width="255"
-                                            height="255">
-                                        <p>FUSCE ALIQUAM</p>
-                                    </a>
-                                    <div></div>
-                                    <div class="price">
-                                        <div class="odn ">
-                                            <b class="gia ">$170.00</b>
-                                        </div>
-                                        <div class="col-lg-12 col-12 mx-5 rating ">
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="far fa-star"></i>
-                                            <i class="far fa-star"></i>
-                                        </div>
-                                    </div>
-                                    <div class="d-flex mt-4 ">
-                                        <div class=" ">
-                                            <a href class><b class>ADD TO
-                                                    CART</b> </a>
-                                        </div>
-                                        <div>
-                                            <div class="mx-3  col-12">
-                                                <a href><i class="fas fa-search mx-3"></i></a>
-                                                <a href> <i class="far fa-heart mx-2"></i></a>
-                                                <a href><i class="fas fa-sync mx-3"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-
-                            <div class="owl-item2 ">
-                                <div>
-                                    <a href>
-                                        <img src="	https://htmldemo.net/james/james/img/product/2.png" width="255"
-                                            height="255">
-                                        <p>FUSCE ALIQUAM</p>
-                                    </a>
-                                    <div></div>
-                                    <div class="price">
-                                        <div class="odn ">
-                                            <b class="gia ">$170.00</b>
-                                        </div>
-                                        <div class="col-lg-12 col-12 mx-5 rating ">
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="far fa-star"></i>
-                                            <i class="far fa-star"></i>
-                                        </div>
-                                    </div>
-                                    <div class="d-flex mt-4 ">
-                                        <div class=" ">
-                                            <a href class><b class>ADD TO
-                                                    CART</b> </a>
-                                        </div>
-                                        <div>
-                                            <div class="mx-3  col-12">
-                                                <a href><i class="fas fa-search mx-3"></i></a>
-                                                <a href> <i class="far fa-heart mx-2"></i></a>
-                                                <a href><i class="fas fa-sync mx-3"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-
-                            <div class="owl-item2 ">
-                                <div>
-                                    <a href>
-                                        <img src="	https://htmldemo.net/james/james/img/product/20.png" width="255"
-                                            height="255">
-                                        <p>FUSCE ALIQUAM</p>
-                                    </a>
-                                    <div></div>
-                                    <div class="price">
-                                        <div class="odn ">
-                                            <b class="gia ">$170.00</b>
-                                        </div>
-                                        <div class="col-lg-12 col-12 mx-5 rating ">
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="far fa-star"></i>
-                                            <i class="far fa-star"></i>
-                                        </div>
-                                    </div>
-                                    <div class="d-flex mt-4 ">
-                                        <div class=" ">
-                                            <a href class><b class>ADD TO
-                                                    CART</b> </a>
-                                        </div>
-                                        <div>
-                                            <div class="mx-3  col-12">
-                                                <a href><i class="fas fa-search mx-3"></i></a>
-                                                <a href> <i class="far fa-heart mx-2"></i></a>
-                                                <a href><i class="fas fa-sync mx-3"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-
-                            <div class="owl-item1">
-                                <div>
-                                    <a href>
-                                        <img src="	https://htmldemo.net/james/james/img/product/21.png" width="255"
-                                            height="255">
-                                        <p>FUSCE ALIQUAM</p>
-                                    </a>
-                                    <div></div>
-                                    <div class="price">
-                                        <div class="odn ">
-                                            <b class="gia ">$170.00</b>
-                                        </div>
-                                        <div class="col-lg-12 col-12 mx-5 rating ">
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="far fa-star"></i>
-                                            <i class="far fa-star"></i>
-                                        </div>
-                                    </div>
-                                    <div class="d-flex mt-4 ">
-                                        <div class=" ">
-                                            <a href class><b class>ADD TO
-                                                    CART</b> </a>
-                                        </div>
-                                        <div>
-                                            <div class="mx-3  col-12">
-                                                <a href><i class="fas fa-search mx-3"></i></a>
-                                                <a href> <i class="far fa-heart mx-2"></i></a>
-                                                <a href><i class="fas fa-sync mx-3"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-
-                            <div class="owl-item2 ">
-                                <div>
-                                    <a href>
-                                        <img src="	https://htmldemo.net/james/james/img/product/22.png" width="255"
-                                            height="255">
-                                        <p>FUSCE ALIQUAM</p>
-                                    </a>
-                                    <div></div>
-                                    <div class="price">
-                                        <div class="odn ">
-                                            <b class="gia ">$170.00</b>
-                                        </div>
-                                        <div class="col-lg-12 col-12 mx-5 rating ">
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="far fa-star"></i>
-                                            <i class="far fa-star"></i>
-                                        </div>
-                                    </div>
-                                    <div class="d-flex mt-4 ">
-                                        <div class=" ">
-                                            <a href class><b class>ADD TO
-                                                    CART</b> </a>
-                                        </div>
-                                        <div>
-                                            <div class="mx-3  col-12">
-                                                <a href><i class="fas fa-search mx-3"></i></a>
-                                                <a href> <i class="far fa-heart mx-2"></i></a>
-                                                <a href><i class="fas fa-sync mx-3"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
                         </div>
                     </div>
                 </div>

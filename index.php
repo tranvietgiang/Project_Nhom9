@@ -1,6 +1,6 @@
 <?php
 
 include "header.php";
-include "contentCa.php";
+include "content.php";
 include "DuoiMain.php";
 include "footer.php";
