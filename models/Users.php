@@ -19,7 +19,7 @@ class Users_shoes extends Db
     // lấy tên user dựa vào tên tài khoản
     public function GetUserInfo($username)
     {
-        $sql = self::$connection->prepare("SELECT nameUser, email_id FROM `tb_users` WHERE username = ?");
+        $sql = self::$connection->prepare("SELECT nameUser, email_id, id FROM `tb_users` WHERE username = ?");
         $sql->bind_param("s", $username);
         $sql->execute();
 

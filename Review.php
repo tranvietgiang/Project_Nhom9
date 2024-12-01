@@ -7,6 +7,7 @@ require "models/db.php";
 require "models/Users.php";
 require "models/headerDB.php";
 require "models/address.php";
+require "models/review.php";
 ?>
 <!--  -->
 <?php
@@ -51,8 +52,6 @@ $name = new product;
 if (isset($_GET['id'])) {
     $id_sp = $_GET['id'];
     $getNameSP = $name->GetNameSP($id_sp);
-} else {
-    echo "error!";
 }
 
 ?>
@@ -291,29 +290,136 @@ if (isset($_GET['id'])) {
     }
     </style>
 
+    <style>
+    /* Bình luận container */
+    .comments-container {
+        border: 1px solid #dc3435;
+        border-radius: 8px;
+        padding: 10px;
+        background-color: #f9f9f9;
+        max-height: 350px;
+        /* Giới hạn chiều cao, thêm scroll nếu cần */
+        overflow-y: auto;
+    }
+
+    /* Bình luận đơn lẻ */
+    .comment {
+        border-bottom: 1px solid #e0e0e0;
+        padding: 10px 0;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    /* Header của bình luận */
+    .comment-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    /* Tên người dùng */
+    .comment-user {
+        font-weight: bold;
+        color: #dc3435;
+        font-size: 1.1rem;
+        text-transform: capitalize;
+    }
+
+    /* Nội dung bình luận */
+    .comment-content {
+        color: #333;
+        font-size: 1rem;
+        line-height: 1.5;
+    }
+
+    .comment:hover {
+        background-color: #ffecec;
+        border-radius: 4px;
+    }
+
+    .comment:not(:last-child) {
+        margin-bottom: 15px;
+    }
+
+    .comment {
+        transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .comment:hover {
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    </style>
+
+    <?php
+
+    $nameUser = $_SESSION['username'];
+
+
+    $reviews = new review;
+    $getIDuserComment = new Users_shoes;
+    $getImg = $getIDuserComment->GetImg();
+
+
+    $print = array();
+
+
+    // lưu comment
+    if (isset($_GET['sendCommit'])) {
+        $comment = $_GET['review'];
+
+        if (!empty($_GET['review'])) {
+            $review_user = $reviews->Comment($nameUser, $comment, $id_sp);
+        }
+
+        $userComment = $reviews->PrintComment($id_sp);
+        $print = isset($userComment) ? $userComment : "";
+    }
+
+
+    if (isset($_GET['sendCommit2'])) {
+        $print = $reviews->PrintComment($nameUser);
+    }
+
+
+    ?>
+
+
     <body>
         <section id="review">
-            <h1 style="text-align: center;">Detail product</h1>
-            <form action="" class="container" method="get">
+            <h1 style="text-align: center;">Review product</h1>
+            <form action="Review.php" class="container" method="get">
+                <input type="hidden" name="id" value="<?php echo $_GET['id']; ?>">
                 <div class="row">
                     <div class="col-6">
                         <img id="image_review" src="public/img/<?php echo $getNameSP['image'] ?>" alt="">
                     </div>
                     <div id="review_sp" class="col-5">
-                        <h5><b style="text-transform: uppercase;" id="b_name"><?php echo $getNameSP['name'] ?></b></h5>
+                        <h5><b style="text-transform: uppercase;" id="b_name"><?php echo $getNameSP['name'] ?></b>
+                        </h5>
+                        <p>⭐⭐⭐⭐⭐</p>
                         <br>
                         <textarea name="review" placeholder="Comment" id="" cols="50" rows="11"></textarea>
-                        <button name="SendCommit" class="btn btn-danger">Send</button>
+                        <input name="sendCommit" type="submit" class="btn btn-danger" value="Send">
+                        <input name="sendCommit2" type="submit" class="btn btn-danger" value="Xem Comment...">
+                    </div>
+                    <div class="comments-container">
+                        <?php foreach ($print as $value): ?>
+                        <div class="comment">
+                            <div class="comment-header">
+                                <strong class="comment-user"><img
+                                        style="border-radius: 50%; object-fit: cover; height: 50px; width: 50px;"
+                                        src="<?php echo $getImg['name'] ?>" class="img-fluid">
+                                    <?php echo htmlspecialchars($value['nameUser']); ?></strong>
+                            </div><br>
+                            <p class="comment-content px-4"><?php echo htmlspecialchars($value['comment']); ?></p>
+                        </div>
+                        <?php endforeach; ?>
                     </div>
                 </div>
             </form>
-            <!-- Handle show Comment -->
-            <?php
 
-
-            ?>
         </section>
-
     </body>
 
     </html>

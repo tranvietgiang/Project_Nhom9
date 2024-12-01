@@ -18,7 +18,12 @@ $product = new product;
 </head>
 
 <body>
-
+    <style>
+    body p {
+        color: #000;
+        z-index: 999;
+    }
+    </style>
     <content>
         <div class="container">
             <div class="BESTSELLER ">
@@ -198,8 +203,6 @@ $product = new product;
                             </div>
                             <?php endforeach ?>
 
-
-
                         </div>
                     </div>
                 </div>
@@ -269,7 +272,7 @@ $product = new product;
                                     </div>
                                 </div>
                                 <div>
-                                    <a href="Review.php?id=<?php echo $value['id'] ?>">detail</a>
+                                    <a href="Review.php?id=<?php echo $value['id'] ?>">Review</a>
                                 </div>
                             </div>
                             <?php endforeach ?>
