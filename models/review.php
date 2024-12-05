@@ -2,11 +2,11 @@
 
 class review extends Db
 {
-    public function Comment($nameUser, $comment, $idShoe)
+    public function Comment($nameUser, $comment, $idShoe, $star)
     {
         // Chỉ định rõ các cột cần chèn dữ liệu (ngoại trừ id tự động tăng)
-        $sql = self::$connection->prepare("INSERT INTO `tb_comment` (`nameUser`, `comment`, `idShoes`) VALUES (?, ?, ?)");
-        $sql->bind_param("ssi", $nameUser, $comment, $idShoe);
+        $sql = self::$connection->prepare("INSERT INTO `tb_comment` (`nameUser`, `comment`, `idShoes`, `star`) VALUES (?, ?, ?, ?)");
+        $sql->bind_param("ssis", $nameUser, $comment, $idShoe, $star);
 
         // Thực thi truy vấn
         $sql->execute();
@@ -33,7 +33,7 @@ class review extends Db
 
     public function PrintComment($idShoe)
     {
-        $sql = self::$connection->prepare("SELECT `nameUser`, `comment` 
+        $sql = self::$connection->prepare("SELECT `nameUser`, `comment`, `star` 
         FROM `tb_comment` 
         WHERE `idShoes` = ?");
         $sql->bind_param("i", $idShoe);
@@ -42,5 +42,19 @@ class review extends Db
         $result = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
 
         return $result;
+    }
+
+    public function DeleteComment($nameUser, $comment)
+    {
+        $sql = self::$connection->prepare("DELETE FROM `tb_comment` where `nameUser` = ? AND comment = ?");
+        $sql->bind_param("ss", $nameUser, $comment);
+
+
+        if ($sql->execute()) {
+            return true;
+        } else {
+            // Handle the error, e.g., log it or display a message  
+            return false;
+        }
     }
 }

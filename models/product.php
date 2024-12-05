@@ -107,6 +107,16 @@ class product extends Db
     //--------------------------------------------------------------------------------------------------------------------
     // G i a n g
 
+    public function GetShowReview()
+    {
+        $sql = self::$connection->prepare("SELECT * FROM `product` ORDER BY `createdate` DESC LIMIT 0,4 ");
+
+        $sql->execute();
+
+        $result = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
+        return   $result;
+    }
+
     // getName product
     public function GetNameSP($id)
     {

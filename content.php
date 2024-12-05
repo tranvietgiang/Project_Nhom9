@@ -19,10 +19,10 @@ $product = new product;
 
 <body>
     <style>
-    body p {
-        color: #000;
-        z-index: 999;
-    }
+        body p {
+            color: #000;
+            z-index: 999;
+        }
     </style>
     <content>
         <div class="container">
@@ -42,9 +42,9 @@ $product = new product;
                             $cate = $categary->getallcategary();
                             foreach ($cate as $value) :
                             ?>
-                            <li class="presentation"><a
-                                    href="classify.php?id=<?php echo $value['id'] ?>"><?php echo $value['categary'] ?></a>
-                            </li>
+                                <li class="presentation"><a
+                                        href="classify.php?id=<?php echo $value['id'] ?>"><?php echo $value['categary'] ?></a>
+                                </li>
                             <?php endforeach ?>
                             <li> <img src="https://htmldemo.net/james/james/img/banner/banner-5.jpg" width="100%"
                                     height="300"></li>
@@ -63,80 +63,80 @@ $product = new product;
                                 foreach ($productsp as $key => $value):
 
                                 ?>
-                                <div class="owl-item ">
+                                    <div class="owl-item ">
 
-                                    <div>
-                                        <a href="details.php?id=<?php echo $value['id'] ?>">
-                                            <img src="public/img/<?php echo $value['image'] ?>" width="255"
-                                                height="255">
-                                            <p><?php echo $value['name'] ?></p>
-                                        </a>
-                                        <div></div>
-                                        <div class="price">
-                                            <div class="odn col-lg-4">
-                                                <b
-                                                    class="gia "><?php echo number_format($value['price'], 0, ',', '.') . ' VNĐ'; ?></b>
+                                        <div>
+                                            <a href="details.php?id=<?php echo $value['id'] ?>">
+                                                <img src="public/img/<?php echo $value['image'] ?>" width="255"
+                                                    height="255">
+                                                <p><?php echo $value['name'] ?></p>
+                                            </a>
+                                            <div></div>
+                                            <div class="price">
+                                                <div class="odn col-lg-4">
+                                                    <b
+                                                        class="gia "><?php echo number_format($value['price'], 0, ',', '.') . ' VNĐ'; ?></b>
+                                                </div>
+                                                <div class="col-lg-12 col-12 mx-5 rating ">
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="far fa-star"></i>
+                                                    <i class="far fa-star"></i>
+                                                </div>
                                             </div>
-                                            <div class="col-lg-12 col-12 mx-5 rating ">
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="far fa-star"></i>
-                                                <i class="far fa-star"></i>
-                                            </div>
-                                        </div>
-                                        <div class="d-flex mt-4 ">
-                                            <div class=" col-5">
-                                                <a href class><b class>ADD TO
-                                                        CART</b> </a>
-                                            </div>
-                                            <div>
-                                                <div class="mx-3 col-lg-12 col-12">
-                                                    <a href><i class="fas fa-search mx-3"></i></a>
-                                                    <a href> <i class="far fa-heart mx-2"></i></a>
-                                                    <a href><i class="fas fa-sync mx-3"></i></a>
+                                            <div class="d-flex mt-4 ">
+                                                <div class=" col-5">
+                                                    <a href class><b class>ADD TO
+                                                            CART</b> </a>
+                                                </div>
+                                                <div>
+                                                    <div class="mx-3 col-lg-12 col-12">
+                                                        <a href><i class="fas fa-search mx-3"></i></a>
+                                                        <a href> <i class="far fa-heart mx-2"></i></a>
+                                                        <a href><i class="fas fa-sync mx-3"></i></a>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <?php
+                                        <?php
                                         ?>
-                                    <div class="mt-5">
-                                        <a href="details.php?id=<?php echo $value['id'] ?>">
-                                            <img src="public/img/<?php echo $value['image'] ?>" width="255"
-                                                height="255">
-                                            <p><?php echo $value['name'] ?></p>
-                                        </a>
-                                        <div></div>
-                                        <div class="price">
-                                            <div class="odn col-lg-4">
-                                                <b
-                                                    class="gia "><?php echo number_format($value['price'], 0, ',', '.') . ' VNĐ'; ?></b>
+                                        <div class="mt-5">
+                                            <a href="details.php?id=<?php echo $value['id'] ?>">
+                                                <img src="public/img/<?php echo $value['image'] ?>" width="255"
+                                                    height="255">
+                                                <p><?php echo $value['name'] ?></p>
+                                            </a>
+                                            <div></div>
+                                            <div class="price">
+                                                <div class="odn col-lg-4">
+                                                    <b
+                                                        class="gia "><?php echo number_format($value['price'], 0, ',', '.') . ' VNĐ'; ?></b>
+                                                </div>
+                                                <div class="col-lg-12 col-12 mx-5 rating ">
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="far fa-star"></i>
+                                                    <i class="far fa-star"></i>
+                                                </div>
                                             </div>
-                                            <div class="col-lg-12 col-12 mx-5 rating ">
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="far fa-star"></i>
-                                                <i class="far fa-star"></i>
-                                            </div>
-                                        </div>
-                                        <div class="d-flex mt-4 ">
-                                            <div class=" col-5">
-                                                <a href class><b class>ADD TO
-                                                        CART</b> </a>
-                                            </div>
-                                            <div>
-                                                <div class="mx-3 col-lg-12 col-12">
-                                                    <a href><i class="fas fa-search mx-3"></i></a>
-                                                    <a href> <i class="far fa-heart mx-2"></i></a>
-                                                    <a href><i class="fas fa-sync mx-3"></i></a>
+                                            <div class="d-flex mt-4 ">
+                                                <div class=" col-5">
+                                                    <a href class><b class>ADD TO
+                                                            CART</b> </a>
+                                                </div>
+                                                <div>
+                                                    <div class="mx-3 col-lg-12 col-12">
+                                                        <a href><i class="fas fa-search mx-3"></i></a>
+                                                        <a href> <i class="far fa-heart mx-2"></i></a>
+                                                        <a href><i class="fas fa-sync mx-3"></i></a>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
 
-                                </div>
+                                    </div>
                                 <?php endforeach ?>
 
 
@@ -166,41 +166,41 @@ $product = new product;
                             <?php $productprice = $product->getpricebig();
                             foreach ($productprice as $key => $value):
                             ?>
-                            <div class="owl-item1 ">
-                                <div>
-                                    <a href="details.php?id=<?php echo $value['id'] ?>">
-                                        <img src="public/img/<?php echo $value['image'] ?>" width="255" height="255">
-                                        <p><?php echo $value['name'] ?></p>
-                                    </a>
-                                    <div></div>
-                                    <div class="price">
-                                        <div class="odn ">
-                                            <b
-                                                class="gia "><?php echo number_format($value['price'], 0, ',', '.') . ' VNĐ'; ?></b>
+                                <div class="owl-item1 ">
+                                    <div>
+                                        <a href="details.php?id=<?php echo $value['id'] ?>">
+                                            <img src="public/img/<?php echo $value['image'] ?>" width="255" height="255">
+                                            <p><?php echo $value['name'] ?></p>
+                                        </a>
+                                        <div></div>
+                                        <div class="price">
+                                            <div class="odn ">
+                                                <b
+                                                    class="gia "><?php echo number_format($value['price'], 0, ',', '.') . ' VNĐ'; ?></b>
+                                            </div>
+                                            <div class="col-lg-12 col-12 mx-5 rating ">
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="far fa-star"></i>
+                                                <i class="far fa-star"></i>
+                                            </div>
                                         </div>
-                                        <div class="col-lg-12 col-12 mx-5 rating ">
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="far fa-star"></i>
-                                            <i class="far fa-star"></i>
-                                        </div>
-                                    </div>
-                                    <div class="d-flex mt-4 ">
-                                        <div class=" ">
-                                            <a href class><b class>ADD TO
-                                                    CART</b> </a>
-                                        </div>
-                                        <div>
-                                            <div class="mx-3  col-12">
-                                                <a href><i class="fas fa-search mx-3"></i></a>
-                                                <a href> <i class="far fa-heart mx-2"></i></a>
-                                                <a href><i class="fas fa-sync mx-3"></i></a>
+                                        <div class="d-flex mt-4 ">
+                                            <div class=" ">
+                                                <a href class><b class>ADD TO
+                                                        CART</b> </a>
+                                            </div>
+                                            <div>
+                                                <div class="mx-3  col-12">
+                                                    <a href><i class="fas fa-search mx-3"></i></a>
+                                                    <a href> <i class="far fa-heart mx-2"></i></a>
+                                                    <a href><i class="fas fa-sync mx-3"></i></a>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
                             <?php endforeach ?>
 
                         </div>
@@ -240,41 +240,41 @@ $product = new product;
                             <?php $productnew = $product->getallproduct();
                             foreach ($productnew as $key => $value):
                             ?>
-                            <div class="owl-item2 ">
-                                <div>
-                                    <a href="details.php?id=<?php echo $value['id'] ?>">
-                                        <img src="public/img/<?php echo $value['image'] ?>" width="255" height="255">
-                                        <p><?php echo $value['name'] ?></p>
-                                    </a>
-                                    <div></div>
-                                    <div class="price">
-                                        <div class="odn ">
-                                            <b
-                                                class="gia "><?php echo number_format($value['price'], 0, ',', '.') . ' VNĐ'; ?></b>
-                                        </div>
-                                        <div class="col-lg-12 col-12 mx-5 rating ">
-                                            <i class=" <?php echo $value['star'] ?>"></i>
+                                <div class="owl-item2 ">
+                                    <div>
+                                        <a href="details.php?id=<?php echo $value['id'] ?>">
+                                            <img src="public/img/<?php echo $value['image'] ?>" width="255" height="255">
+                                            <p><?php echo $value['name'] ?></p>
+                                        </a>
+                                        <div></div>
+                                        <div class="price">
+                                            <div class="odn ">
+                                                <b
+                                                    class="gia "><?php echo number_format($value['price'], 0, ',', '.') . ' VNĐ'; ?></b>
+                                            </div>
+                                            <div class="col-lg-12 col-12 mx-5 rating ">
+                                                <i class=" <?php echo $value['star'] ?>"></i>
 
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="d-flex mt-4 ">
-                                        <div class=" ">
-                                            <a href class><b class>ADD TO
-                                                    CART</b> </a>
-                                        </div>
-                                        <div>
-                                            <div class="mx-3  col-12">
-                                                <a href><i class="fas fa-search mx-3"></i></a>
-                                                <a href> <i class="far fa-heart mx-2"></i></a>
-                                                <a href><i class="fas fa-sync mx-3"></i></a>
+                                        <div class="d-flex mt-4 ">
+                                            <div class=" ">
+                                                <a href class><b class>ADD TO
+                                                        CART</b> </a>
+                                            </div>
+                                            <div>
+                                                <div class="mx-3  col-12">
+                                                    <a href><i class="fas fa-search mx-3"></i></a>
+                                                    <a href> <i class="far fa-heart mx-2"></i></a>
+                                                    <a href><i class="fas fa-sync mx-3"></i></a>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
+                                    <div>
+                                        <a href="Review.php?id=<?php echo $value['id'] ?>">Review</a>
+                                    </div>
                                 </div>
-                                <div>
-                                    <a href="Review.php?id=<?php echo $value['id'] ?>">Review</a>
-                                </div>
-                            </div>
                             <?php endforeach ?>
                         </div>
                     </div>

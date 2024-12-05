@@ -46,6 +46,10 @@ $getAllWoman  = $item_navbar->GetAllWoman();
 <script src="https://kit.fontawesome.com/f6dce9b617.js" crossorigin="anonymous"></script>
 <!-- link font sale product -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Norican&display=swap" />
+<!-- Link icon  -->
+<link rel="stylesheet" href="https://unpkg.com/ionicons@latest/dist/css/ionicons.min.css">
+
+
 
 <body>
     <header>
@@ -59,7 +63,7 @@ $getAllWoman  = $item_navbar->GetAllWoman();
                     </a>
                     <ul>
                         <?php foreach ($getVND_child as $value): ?>
-                        <li><a href="#"><?php echo $value['name_child'] ?></a></li>
+                            <li><a href="#"><?php echo $value['name_child'] ?></a></li>
                         <?php endforeach ?>
                     </ul>
                 </li>
@@ -81,20 +85,20 @@ $getAllWoman  = $item_navbar->GetAllWoman();
                     <ul style="z-index: 999;" class="hover_item4">
 
                         <?php foreach ($GetLi_thu4_child as $value): ?>
-                        <li>
-                            <?php
+                            <li>
+                                <?php
                                 $name = htmlspecialchars($value['name']); // Bảo mật đầu vào
                                 if ($name === 'Log in'):
                                 ?>
-                            <a href="Login_users.php"><?php echo $name; ?></a>
-                            <?php elseif ($name === 'my account'): ?>
-                            <a href="User_ID.php"><?php echo $name; ?></a>
-                            <?php elseif ($name === 'Log out'): ?>
-                            <a id="exit" href="LogOut.php"><?php echo $name; ?></a>
-                            <?php else: ?>
-                            <a href="#"><?php echo $name; ?></a>
-                            <?php endif; ?>
-                        </li>
+                                    <a href="Login_users.php"><?php echo $name; ?></a>
+                                <?php elseif ($name === 'my account'): ?>
+                                    <a href="User_ID.php"><?php echo $name; ?></a>
+                                <?php elseif ($name === 'Log out'): ?>
+                                    <a id="exit" href="LogOut.php"><?php echo $name; ?></a>
+                                <?php else: ?>
+                                    <a href="#"><?php echo $name; ?></a>
+                                <?php endif; ?>
+                            </li>
                         <?php endforeach; ?>
                     </ul>
                 </li>
@@ -162,11 +166,11 @@ $getAllWoman  = $item_navbar->GetAllWoman();
                 <li id="item_2_fl1"><a href="#">WOMEN</a>
                     <ul class="d-flex gap-4 ">
                         <?php foreach ($getAllWoman as $value): ?>
-                        <li class="col-3"><a class="item_as"
-                                href="#"><?php echo htmlspecialchars($value['name']) ?></a><br>
-                            <div class="sub-menu">
-                                <!-- Hiển thị các mục con nếu có -->
-                                <?php
+                            <li class="col-3"><a class="item_as"
+                                    href="#"><?php echo htmlspecialchars($value['name']) ?></a><br>
+                                <div class="sub-menu">
+                                    <!-- Hiển thị các mục con nếu có -->
+                                    <?php
                                     if ($value['name_child']) {
                                         $children  = explode(", ", $value['name_child']);
                                         foreach ($children  as $child) {
@@ -174,22 +178,22 @@ $getAllWoman  = $item_navbar->GetAllWoman();
                                         }
                                     }
                                     ?>
-                            </div>
-                        </li>
-                        <li id="li_image1"><a href="#"><img src="<?php echo $value['image'] ?>" alt=""></a></li>
+                                </div>
+                            </li>
+                            <li id="li_image1"><a href="#"><img src="<?php echo $value['image'] ?>" alt=""></a></li>
                         <?php endforeach ?>
                     </ul>
 
                 </li>
                 <!--  -->
                 <?php foreach ($getAllNavbar2 as $value): ?>
-                <li><a href="#"><?php echo $value['name'] ?></a></li>
+                    <li><a href="#"><?php echo $value['name'] ?></a></li>
                 <?php endforeach ?>
                 <li id="last-child2"><a href="#">PAGES</a>
 
                     <ul class="sub-menu  pages">
                         <?php foreach ($getAllNavbar2Child as $value): ?>
-                        <li><a href="#"><?php echo $value['name'] ?></a></li>
+                            <li><a href="#"><?php echo $value['name'] ?></a></li>
                         <?php endforeach ?>
                     </ul>
 
@@ -342,28 +346,28 @@ $getAllWoman  = $item_navbar->GetAllWoman();
     <footer></footer>
     <!-- js -->
     <script>
-    setInterval(function() {
-        const content = document.querySelector('.content');
-        content.classList.add('showContentjs'); // Thêm hiệu ứng di chuyển
+        setInterval(function() {
+            const content = document.querySelector('.content');
+            content.classList.add('showContentjs'); // Thêm hiệu ứng di chuyển
 
-        // Loại bỏ class move-up sau khi hiệu ứng hoàn tất
-        setTimeout(() => content.classList.remove('showContentjs'), 4000);
-    }, 4000); // Mỗi 4 giây
-
-
-    //in thông thông thoát
-    const exit = document.getElementById('exit');
+            // Loại bỏ class move-up sau khi hiệu ứng hoàn tất
+            setTimeout(() => content.classList.remove('showContentjs'), 4000);
+        }, 4000); // Mỗi 4 giây
 
 
-    exit.addEventListener("click", () => {
-        const userConfirmed = confirm("Are you sure you want to log out?");
-        if (userConfirmed) {
-            alert("You have logged out.");
-        } else {
-            event.preventDefault();
-            event.defaultPrevented();
-        }
-    });
+        //in thông thông thoát
+        const exit = document.getElementById('exit');
+
+
+        exit.addEventListener("click", () => {
+            const userConfirmed = confirm("Are you sure you want to log out?");
+            if (userConfirmed) {
+                alert("You have logged out.");
+            } else {
+                event.preventDefault();
+                event.defaultPrevented();
+            }
+        });
     </script>
     <!-- link js bootstrap -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
