@@ -104,4 +104,36 @@ class Admin extends Db
 
         return $result;
     }
+
+    // code phần cate
+    public function AddCate($name)
+    {
+        $sql = self::$connection->prepare("INSERT INTO `categary`(`categary`) VALUES (?)");
+        $sql->bind_param("s", $name);
+        return $sql->execute();
+    }
+    // code phần cate
+    public function DeleteCate($id)
+    {
+        $sql = self::$connection->prepare("DELETE FROM `categary` WHERE `id` = ?");
+        $sql->bind_param("i", $id);
+        return $sql->execute();
+    }
+    // code phần cate
+    public function UpdateCate($name)
+    {
+        $sql = self::$connection->prepare("UPDATE `categary` SET `categary` = ? WHERE `id` = ?");
+        $sql->bind_param("s", $name);
+        return $sql->execute();
+    }
+
+    public function GetCateByID($id)
+    {
+        $sql = self::$connection->prepare("SELECT * FROM `categary` WHERE `id` = ?");
+        $sql->bind_param("i", $id);
+        $sql->execute();
+
+        $result = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
+        return $result;
+    }
 }

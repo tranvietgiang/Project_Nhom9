@@ -10,7 +10,7 @@ if (!isset($_SESSION['admin']) && ($_SESSION['admin']) == 0) {
     return;
 }
 
-$product = new Admin;
+$cate = new Admin;
 ?>
 <!DOCTYPE html>
 <html lang="vi">
@@ -18,7 +18,7 @@ $product = new Admin;
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quản Lý Sản Phẩm</title>
+    <title>Quản Lý Loại</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <style>
@@ -123,6 +123,15 @@ table tr:hover {
     background-color: #ddd;
 }
 
+tr {
+    text-align: center;
+}
+
+td a {
+    display: inline-block;
+    margin: 5px;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
     .container {
@@ -147,57 +156,44 @@ a {
         <nav class="sidebar">
             <h2>Trang Admin</h2>
             <ul>
-                <li><a href="#">Quản lý sản phẩm</a></li>
-                <li><a href="categories.php">Quản lý Loại</a></li>
-                <li><a href="home.php">Thống kê</a></li>
+                <li><a href="quanlisanpham.php">Quản lý sản phẩm</a></li>
+                <li><a href="#">Quản lý Loại</a></li>
+                <li><a href="#">Thống kê</a></li>
                 <li><a href="logOutAdmin.php">Đăng xuất</a></li>
             </ul>
         </nav>
         <main class=" content" style="max-width: 1200px;">
             <div>
                 <p>Xin Chào Admin:
-                    <?php $adminIfo = $product->GetInfoAdmin();
+                    <?php $adminIfo = $cate->GetInfoAdmin();
                     echo $adminIfo[0]['nameUser'];
                     ?>
                 </p>
             </div>
             <h1>Quản Lý Sản Phẩm</h1>
-            <a href="addProduct.php"> <button style="margin: 0 0 20px 0" class="btn add-product">Thêm Sản
+            <a href="addCate.php"> <button style="margin: 0 0 20px 0" class="btn add-product">Thêm Sản
                     Phẩm</button></a>
             <div class="product-list">
                 <?php
-                $count = 6;
-                $page = isset($_GET['page']) ? $_GET['page'] : 1;
-                $total = count($product->hienthisanpham());
-
-                $url  = $_SERVER['PHP_SELF'];
-                $sanpham = $product->hienthiphantrang($page, $count);
+                $displayCate = $cate->GetAllCate();
                 ?>
                 <div class="widget-content nopadding">
                     <table class="table table-bordered table-striped">
                         <thead>
                             <tr>
-                                <th>Hình ảnh</th>
-                                <th>Tên sản phẩm</th>
-                                <th>Giá</th>
-                                <th>Loại</th>
+                                <th>Tên Loại</th>
                                 <th>Hành động</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <?php foreach ($sanpham as $value): ?>
+                            <?php foreach ($displayCate as $value): ?>
                             <tr>
-                                <td width="250">
-                                    <img src="../public/img/<?php echo $value['image']; ?>" width="200px" height="200px"
-                                        alt="<?php echo htmlspecialchars($value['name']); ?>">
-                                </td>
-                                <td><?php echo htmlspecialchars($value['name']); ?></td>
-                                <td><?php echo number_format($value['price'], 0, ',', '.'); ?> VNĐ</td>
-                                <td><?php echo htmlspecialchars($value['catalogue']); ?></td>
-                                <td>
-                                    <a href="updateSP.php?id=<?php echo $value['id']; ?>"
+
+                                <td><?php echo htmlspecialchars($value['categary']); ?></td>
+                                <td id="td">
+                                    <a href="updateCate.php?idCate=<?php echo $value['id'] ?>"
                                         class="btn btn-success btn-mini">Sửa</a>
-                                    <a href="delete.php?id=<?php echo $value['id']; ?>"
+                                    <a href="deleteCate.php?idCate=<?php echo $value['id'] ?>"
                                         class="btn btn-danger btn-mini">Xóa</a>
                                 </td>
                             </tr>
@@ -205,14 +201,8 @@ a {
                         </tbody>
                     </table>
                 </div>
-                <div style="margin: 20px 0 0 550px;" class="phantrang">Trang:
-                    <?php echo $product->paginate($url, $total, $count, $page) ?>
-                </div>
-            </div>
         </main>
     </div>
-
-    <script src="script.js"></script>
 </body>
 
 </html>

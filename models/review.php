@@ -57,4 +57,22 @@ class review extends Db
             return false;
         }
     }
+
+
+    // Rating star
+    public function GetStarByid($idShoe)
+    {
+        $sql = self::$connection->prepare(
+            "SELECT  SUM(star) AS `totalRatings` , COUNT(*) AS `countReviews`
+        FROM `tb_comment` 
+        WHERE `idShoes` = ?"
+        );
+
+        $sql->bind_param("i", $idShoe);
+        $sql->execute();
+
+        $result = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
+
+        return $result;
+    }
 }

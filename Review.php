@@ -93,7 +93,7 @@ if (isset($_GET['id'])) {
                     </a>
                     <ul>
                         <?php foreach ($getVND_child as $value): ?>
-                            <li><a href="#"><?php echo $value['name_child'] ?></a></li>
+                        <li><a href="#"><?php echo $value['name_child'] ?></a></li>
                         <?php endforeach ?>
                     </ul>
                 </li>
@@ -115,20 +115,20 @@ if (isset($_GET['id'])) {
                     <ul style="z-index: 999;" class="hover_item4">
 
                         <?php foreach ($GetLi_thu4_child as $value): ?>
-                            <li>
-                                <?php
+                        <li>
+                            <?php
                                 $name = htmlspecialchars($value['name']); // Bảo mật đầu vào
                                 if ($name === 'Log in'):
                                 ?>
-                                    <a href="Login_users.php"><?php echo $name; ?></a>
-                                <?php elseif ($name === 'my account'): ?>
-                                    <a href="User_ID.php"><?php echo $name; ?></a>
-                                <?php elseif ($name === 'Log out'): ?>
-                                    <a id="exit" href="LogOut.php"><?php echo $name; ?></a>
-                                <?php else: ?>
-                                    <a href="#"><?php echo $name; ?></a>
-                                <?php endif; ?>
-                            </li>
+                            <a href="Login_users.php"><?php echo $name; ?></a>
+                            <?php elseif ($name === 'my account'): ?>
+                            <a href="User_ID.php"><?php echo $name; ?></a>
+                            <?php elseif ($name === 'Log out'): ?>
+                            <a id="exit" href="LogOut.php"><?php echo $name; ?></a>
+                            <?php else: ?>
+                            <a href="#"><?php echo $name; ?></a>
+                            <?php endif; ?>
+                        </li>
                         <?php endforeach; ?>
                     </ul>
                 </li>
@@ -196,11 +196,11 @@ if (isset($_GET['id'])) {
                 <li id="item_2_fl1"><a href="#">WOMEN</a>
                     <ul class="d-flex gap-4 ">
                         <?php foreach ($getAllWoman as $value): ?>
-                            <li class="col-3"><a class="item_as"
-                                    href="#"><?php echo htmlspecialchars($value['name']) ?></a><br>
-                                <div class="sub-menu">
-                                    <!-- Hiển thị các mục con nếu có -->
-                                    <?php
+                        <li class="col-3"><a class="item_as"
+                                href="#"><?php echo htmlspecialchars($value['name']) ?></a><br>
+                            <div class="sub-menu">
+                                <!-- Hiển thị các mục con nếu có -->
+                                <?php
                                     if ($value['name_child']) {
                                         $children  = explode(", ", $value['name_child']);
                                         foreach ($children  as $child) {
@@ -208,22 +208,22 @@ if (isset($_GET['id'])) {
                                         }
                                     }
                                     ?>
-                                </div>
-                            </li>
-                            <li id="li_image1"><a href="#"><img src="<?php echo $value['image'] ?>" alt=""></a></li>
+                            </div>
+                        </li>
+                        <li id="li_image1"><a href="#"><img src="<?php echo $value['image'] ?>" alt=""></a></li>
                         <?php endforeach ?>
                     </ul>
 
                 </li>
                 <!--  -->
                 <?php foreach ($getAllNavbar2 as $value): ?>
-                    <li><a href="#"><?php echo $value['name'] ?></a></li>
+                <li><a href="#"><?php echo $value['name'] ?></a></li>
                 <?php endforeach ?>
                 <li id="last-child2"><a href="#">PAGES</a>
 
                     <ul class="sub-menu  pages">
                         <?php foreach ($getAllNavbar2Child as $value): ?>
-                            <li><a href="#"><?php echo $value['name'] ?></a></li>
+                        <li><a href="#"><?php echo $value['name'] ?></a></li>
                         <?php endforeach ?>
                     </ul>
 
@@ -245,114 +245,114 @@ if (isset($_GET['id'])) {
     </head>
     <!-- css -->
     <style>
-        #review form input,
-        textarea {
-            margin: 10px;
-            padding: 10px;
-            border-radius: 5px;
-            border: 2px solid #dc3435;
-            transition: border-color 0.3s ease;
-        }
+    #review form input,
+    textarea {
+        margin: 10px;
+        padding: 10px;
+        border-radius: 5px;
+        border: 2px solid #dc3435;
+        transition: border-color 0.3s ease;
+    }
 
-        #review form input:focus,
-        textarea:focus {
-            outline: none;
-            border-color: green;
-        }
+    #review form input:focus,
+    textarea:focus {
+        outline: none;
+        border-color: green;
+    }
 
-        div#image_review {
-            background-color: #fff;
-        }
+    div#image_review {
+        background-color: #fff;
+    }
 
-        #image_review {
-            object-fit: cover;
-            width: 400px;
-            height: 400px;
-            border-radius: 5px;
-            border: 2px solid #dc3435;
-        }
+    #image_review {
+        object-fit: cover;
+        width: 400px;
+        height: 400px;
+        border-radius: 5px;
+        border: 2px solid #dc3435;
+    }
 
-        section#review h1 {
-            margin: 20px 0 100px 0;
-        }
+    section#review h1 {
+        margin: 20px 0 100px 0;
+    }
 
-        #b_name {
-            font-family: 'Courier New', Courier, monospace;
-        }
+    #b_name {
+        font-family: 'Courier New', Courier, monospace;
+    }
 
-        #review_sp {
-            margin-top: 190px;
-            margin-left: -150px;
-        }
+    #review_sp {
+        margin-top: 190px;
+        margin-left: -150px;
+    }
 
-        textarea {
-            width: 500px;
-            height: 50px;
-            resize: none;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
+    textarea {
+        width: 500px;
+        height: 50px;
+        resize: none;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
     </style>
 
     <style>
-        .comments-container {
-            border: 1px solid #dc3435;
-            border-radius: 8px;
-            background-color: #f9f9f9;
-            max-height: 200px;
-            overflow-y: auto;
-        }
+    .comments-container {
+        border: 1px solid #dc3435;
+        border-radius: 8px;
+        background-color: #f9f9f9;
+        max-height: 200px;
+        overflow-y: auto;
+    }
 
-        /* Bình luận đơn lẻ */
-        .comment {
-            border-bottom: 1px solid #e0e0e0;
-            padding: 10px 0;
-            display: flex;
-            flex-direction: column;
-            gap: 5px;
-        }
+    /* Bình luận đơn lẻ */
+    .comment {
+        border-bottom: 1px solid #e0e0e0;
+        padding: 10px 0;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+    }
 
-        /* Header của bình luận */
-        .comment-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+    /* Header của bình luận */
+    .comment-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
 
-        /* Tên người dùng */
-        .comment-user {
-            font-weight: bold;
-            color: #dc3435;
-            font-size: 1.1rem;
-            text-transform: capitalize;
-        }
+    /* Tên người dùng */
+    .comment-user {
+        font-weight: bold;
+        color: #dc3435;
+        font-size: 1.1rem;
+        text-transform: capitalize;
+    }
 
-        /* Nội dung bình luận */
-        .comment-content {
-            color: #333;
-            font-size: 1rem;
-            line-height: 1.5;
-        }
+    /* Nội dung bình luận */
+    .comment-content {
+        color: #333;
+        font-size: 1rem;
+        line-height: 1.5;
+    }
 
-        .comment:hover {
-            background-color: #ffecec;
-            border-radius: 4px;
-        }
+    .comment:hover {
+        background-color: #ffecec;
+        border-radius: 4px;
+    }
 
-        .comment:not(:last-child) {
-            margin-bottom: 15px;
-        }
+    .comment:not(:last-child) {
+        margin-bottom: 15px;
+    }
 
-        .comment {
-            transition: background-color 0.3s ease, box-shadow 0.3s ease;
-        }
+    .comment {
+        transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    }
 
-        .comment:hover {
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
+    .comment:hover {
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
 
-        #star-only {
-            cursor: pointer;
-        }
+    #star-only {
+        cursor: pointer;
+    }
     </style>
 
     <?php
@@ -413,6 +413,16 @@ if (isset($_GET['id'])) {
         }
     }
 
+    $tempRaTing = $reviews->GetStarByid($id_sp);
+
+    if (!empty($tempRaTing)) {
+        $raTing =  $tempRaTing[0]['totalRatings'];
+        $countReview =  $tempRaTing[0]['countReviews'];
+
+        if ($countReview > 0) {
+            $totalStar = round($raTing / $countReview, 2);
+        }
+    }
     ?>
 
     <body>
@@ -426,8 +436,12 @@ if (isset($_GET['id'])) {
                     </div>
                     <div id="review_sp" class="col-5">
                         <h5><b style="text-transform: uppercase;" id="b_name"><?php echo $getNameSP['name'] ?></b>
+                            <p style="color: #333;" id="average-rating">Rating:
+                                <?php echo  isset($totalStar) ? $totalStar : "?"  ?> ⭐
+                                <b style="color: #333; font-size: 15px;">Lượt review: <?php echo $countReview ?></b>
+                            </p>
                         </h5>
-                        <div style="">
+                        <div id="rating-container">
                             <input id="star-only" name="select" type="radio" value="1">
                             <label for="star-only">1 ⭐</label>
 
@@ -446,7 +460,7 @@ if (isset($_GET['id'])) {
 
                         <br>
                         <textarea name="review" placeholder="Comment" cols="50" rows="10">  </textarea>
-                        <button class="btn btn-danger" style="margin-left: 450px;
+                        <button id="submit-rating" class="btn btn-danger" style="margin-left: 450px;
                             margin-top: -90px" name="sendCommit" type="submit">
                             <i class="fa-solid fa-comment"></i>
                         </button>
@@ -454,59 +468,70 @@ if (isset($_GET['id'])) {
                     <section style="max-width: 700px; margin-left: 515px">
                         <div class="comments-container">
                             <?php foreach ($print as $value): ?>
-                                <div class="comment">
-                                    <div class="comment-header">
-                                        <strong class="comment-user d-flex align-items: center  gap-3"><img
-                                                style="border-radius: 50%; object-fit: cover; height: 50px; width: 50px;"
-                                                src="uploads/<?php echo $getImg['name'] ?> " class="img-fluid">
-                                            <?php echo htmlspecialchars($value['nameUser']); ?></strong>
-                                    </div><br>
-                                    <p class="comment-content px-4"><?php echo htmlspecialchars($value['comment']); ?>
-                                    </p>
-                                    <span><?php echo $value['star'] ?> ⭐</span>
-                                </div>
+                            <div class="comment">
+                                <div class="comment-header">
+                                    <strong class="comment-user d-flex align-items: center  gap-3"><img
+                                            style="border-radius: 50%; object-fit: cover; height: 50px; width: 50px;"
+                                            src="uploads/<?php echo $getImg['name'] ?> " class="img-fluid">
+                                        <?php echo htmlspecialchars($value['nameUser']); ?></strong>
+                                </div><br>
+                                <p class="comment-content px-4"><?php echo htmlspecialchars($value['comment']); ?>
+                                </p>
+                                <span><?php echo $value['star'] ?> ⭐</span>
+                            </div>
                             <?php endforeach; ?>
                         </div>
                     </section>
                 </div>
             </form>
             <style>
-                #hoverReview {
-                    transform: scale(1);
-                    cursor: pointer;
-                    transition: all 0.75s ease-in-out;
-                }
+            #hoverReview {
+                transform: scale(1);
+                cursor: pointer;
+                transition: all 0.75s ease-in-out;
+            }
 
-                #hoverReview:hover {
-                    transform: scale(1.2);
-                }
+            #hoverReview:hover {
+                transform: scale(1.2);
+            }
             </style>
             <div id="click-review" class="px-5" style="display: flex; gap: 10px; margin-top: 20px; margin-left: 40px;">
                 <?php foreach ($showSP as $value):  ?>
-                    <a href="Review.php?id=<?php echo $value['id'] ?>">
-                        <img id="hoverReview" style="border: 1px solid #dc3435; border-radius: 5px;  object-fit: contain;"
-                            src=" public/img/<?php echo $value['image'] ?>" class="img-fluid" alt="" width="100px"
-                            height="100px">
+                <a href="Review.php?id=<?php echo $value['id'] ?>">
+                    <img id="hoverReview" style="border: 1px solid #dc3435; border-radius: 5px;  object-fit: contain;"
+                        src=" public/img/<?php echo $value['image'] ?>" class="img-fluid" alt="" width="100px"
+                        height="100px">
                     <?php endforeach ?>
-                    </a>
+                </a>
             </div>
             <p class="pt-5"></p>
         </section>
 
         <script>
-            //in thông thông thoát
-            const exit = document.getElementById('exit');
+        // tính toán số star
+        let totalRating = 0;
+        let totalUsers = 0;
+
+        // Lấy các phần tử cần sử dụng
+        const ratingContainer = document.getElementById("rating-container");
+        const submitButton = document.getElementById("submit-rating");
+        const averageRatingText = document.getElementById("average-rating");
+
+        let selectedValue = 0;
+
+        //in thông thông thoát
+        const exit = document.getElementById('exit');
 
 
-            exit.addEventListener("click", () => {
-                const userConfirmed = confirm("Are you sure you want to log out?");
-                if (userConfirmed) {
-                    alert("You have logged out.");
-                } else {
-                    event.preventDefault();
-                    event.defaultPrevented();
-                }
-            });
+        exit.addEventListener("click", () => {
+            const userConfirmed = confirm("Are you sure you want to log out?");
+            if (userConfirmed) {
+                alert("You have logged out.");
+            } else {
+                event.preventDefault();
+                event.defaultPrevented();
+            }
+        });
         </script>
     </body>
 
