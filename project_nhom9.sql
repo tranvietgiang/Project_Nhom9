@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 28, 2024 lúc 05:33 PM
+-- Thời gian đã tạo: Th12 13, 2024 lúc 03:30 PM
 -- Phiên bản máy phục vụ: 10.4.32-MariaDB
 -- Phiên bản PHP: 8.2.12
 
@@ -50,9 +50,26 @@ DELIMITER ;
 CREATE TABLE `cart` (
   `id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
-  `product_id` int(11) NOT NULL,
-  `quantiy` int(11) NOT NULL
+  `quantiy` int(11) NOT NULL,
+  `name` text NOT NULL,
+  `price` int(11) NOT NULL,
+  `image` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `cart`
+--
+
+INSERT INTO `cart` (`id`, `user_id`, `quantiy`, `name`, `price`, `image`) VALUES
+(141576, 7, 1, 'Puma Caven', 1400000, 'puma.png'),
+(141579, 7, 1, 'Fusce aliquam', 2000000, 'fusce.png'),
+(141580, 7, 1, 'Fusce aliquam', 2000000, 'fusce.png'),
+(141581, 7, 1, 'Puma Caven', 1400000, 'puma.png'),
+(141583, 9, 1, 'Puma Rebound', 2000000, 'pumare.png'),
+(141584, 9, 1, 'Puma Caven', 1400000, 'puma.png'),
+(141586, 2, 1, 'siêu phẩm nike2', 500000, 'store9.jpg'),
+(141587, 2, 1, 'siêu phẩm nike', 500000, 'store5.png'),
+(141588, 2, 1, 'siêu phẩm nike2', 500000, 'store9.jpg');
 
 -- --------------------------------------------------------
 
@@ -100,7 +117,7 @@ CREATE TABLE `product` (
 --
 
 INSERT INTO `product` (`id`, `name`, `price`, `image`, `catalogue`, `detail`, `createdate`, `star`) VALUES
-(1, 'NIKE BLAZER', 17000000, 'nikeblazer.png', 2, 'The Dunk returns with classic construction, throwback hoops flair and seasonal colours. Channelling \'80s style back onto the streets, its padded, low-cut collar lets you take your game anywhere—in comfort. Plus, this special edition includes metallic charms so you can personalise your kicks.', '2024-10-19 17:00:00', ' <i class=\"fas fa-star\"></i>\r\n                                            <i class=\"fas fa-star\"></i>\r\n                                            <i class=\"fas fa-star\"></i>\r\n                                            <i cl'),
+(1, 'cr7-khoc-to', 100000, 'store7.png', 1, '1', '2024-10-19 17:00:00', ' <i class=\"fas fa-star\"></i>\r\n                                            <i class=\"fas fa-star\"></i>\r\n                                            <i class=\"fas fa-star\"></i>\r\n                                            <i cl'),
 (2, 'NIKE COURT ROYALE NAM', 2000000, 'NIKEROY.png', 2, 'The Nike Dunk Low is an easy score for your wardrobe. This mid-\'80s hoops icon returns with super-durable construction and a built-in gift tag ready for that someone special.\r\n\r\n', '2024-01-19 17:00:00', ' <i class=\"fas fa-star\"></i>\r\n                                            <i class=\"fas fa-star\"></i>\r\n                                            <i class=\"fas fa-star\"></i>\r\n                                            <i cl'),
 (3, 'Nike Dunk Low', 2300000, 'nikedunk.png', 7, 'Created for the hardwood but taken to the streets, the \'80s b-ball icon returns with perfectly shined overlays and classic team colours. With its iconic hoops design, the Nike Dunk Low channels \'80s vintage back onto the streets while its padded, low-cut collar lets you take your game anywhere—in comfort.', '2024-11-19 17:00:00', ' <i class=\"fas fa-star\"></i>\r\n                                            <i class=\"fas fa-star\"></i>\r\n                                            <i class=\"fas fa-star\"></i>\r\n                                            <i cl'),
 (4, 'Nike Dunk Low Retro', 2300000, 'NIKERETO.png', 4, 'Created for the hardwood but taken to the streets, the basketball icon returns with classic details and throwback hoops flair. Channelling \'80s vibes, its padded, low-cut collar lets you take your game anywhere—in comfort.', '2024-11-19 17:00:00', ' <i class=\"fas fa-star\"></i>\r\n                                            <i class=\"fas fa-star\"></i>\r\n                                            <i class=\"fas fa-star\"></i>\r\n                                            <i cl'),
@@ -110,7 +127,63 @@ INSERT INTO `product` (`id`, `name`, `price`, `image`, `catalogue`, `detail`, `c
 (8, 'adidas NY 90', 1890000, 'adidas1.png', 6, 'The adidas NY 90 shoes are sneakers inspired by the style of the 90s. A shoe that never goes out of fashion has a classic basic design but with high-end modern material technology.\r\n\r\nAdidas NY 90 with a high-quality leather upper combined with delicate suede, a toe with small holes to make the shoe ventilated and comfortable to use. The high-quality rubber sole has very good traction and abrasion resistance.', '2024-11-24 04:23:26', ' <i class=\"fas fa-star\"></i>\r\n                                            <i class=\"fas fa-star\"></i>\r\n                                            <i class=\"fas fa-star\"></i>\r\n                                            <i cl'),
 (9, 'Nike Juniper Trail 3', 2300000, 'nike1.png', 6, 'The Nike Juniper Trail 3 is the perfect shoe for those who love to explore rough terrain. With the Nike Trail ATC outsole design, the shoes provide superior grip on any surface, even in wet weather, ensuring stability and safety on every ride.', '2024-11-24 04:25:10', ' <i class=\"fas fa-star\"></i>\r\n                                            <i class=\"fas fa-star\"></i>\r\n                                            <i class=\"fas fa-star\"></i>\r\n                                            <i cl'),
 (10, 'Puma Caven', 1400000, 'puma.png', 2, 'Puma Caven Shoes is a classic shoe model developed in the 1980s by Puma. The high-quality leather and durable rubber sole are sure to satisfy the most demanding customers. You will always be assured that it never goes out of fashion.', '2024-11-24 07:20:26', ' <i class=\"fas fa-star\"></i>\r\n                                            <i class=\"fas fa-star\"></i>\r\n                                            <i class=\"fas fa-star\"></i>\r\n                                            <i cl'),
-(11, 'Puma Rebound', 2000000, 'pumare.png', 6, 'The Puma Rebound v6 Low shoe is a shoe with a beautiful classic design that is very sophisticated. Premium materials and durable rubber soles are sure to satisfy the most demanding customers. You will always be assured that it never goes out of fashion.', '2024-11-24 07:23:15', ' <i class=\"fas fa-star\"></i>\r\n                                            <i class=\"fas fa-star\"></i>\r\n                                            <i class=\"fas fa-star\"></i>\r\n                                            <i cl');
+(11, 'Puma Rebound', 2000000, 'pumare.png', 6, 'The Puma Rebound v6 Low shoe is a shoe with a beautiful classic design that is very sophisticated. Premium materials and durable rubber soles are sure to satisfy the most demanding customers. You will always be assured that it never goes out of fashion.', '2024-11-24 07:23:15', ' <i class=\"fas fa-star\"></i>\r\n                                            <i class=\"fas fa-star\"></i>\r\n                                            <i class=\"fas fa-star\"></i>\r\n                                            <i cl'),
+(12, 'Adidas messi ', 400000, 'messi.png', 1, 'Messi world cup', '2024-12-08 03:53:58', ''),
+(19, 'siêu phẩm nike', 500000, 'store5.png', 2, '2', '2024-12-08 11:23:38', '');
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `tb_comment`
+--
+
+CREATE TABLE `tb_comment` (
+  `id` int(11) NOT NULL,
+  `nameUser` varchar(100) NOT NULL,
+  `comment` varchar(255) NOT NULL,
+  `idShoes` int(11) NOT NULL,
+  `star` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf32 COLLATE=utf32_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `tb_comment`
+--
+
+INSERT INTO `tb_comment` (`id`, `nameUser`, `comment`, `idShoes`, `star`) VALUES
+(245, 'tranvietgiang', 'Giay này đẹp quá ạ', 10, '5'),
+(246, 'admin', '  Giay này mà đẹp gì ?', 10, '5'),
+(247, 'admin', 'Mẫu này có màu trắng không ạ?', 9, '5'),
+(248, 'admin', 'Mẫu này có màu trắng không ạ?', 9, '5'),
+(260, 'tranvietgiang', 'Đẹp quá ạ', 9, '5'),
+(261, 'tranvietgiang', 'Đẹp quá ạ', 9, '5'),
+(262, 'tranvietgiang', 'Đẹp quá ạ', 9, '5'),
+(263, 'tranvietgiang', 'Đẹp quá ạ', 9, '5'),
+(264, 'tranvietgiang', 'Đẹp quá ạ', 9, '5'),
+(265, 'tranvietgiang', 'Đẹp quá ạ', 9, '5'),
+(266, 'tranvietgiang', 'hi dep qua', 5, '5'),
+(267, 'tranvietgiang', 'hi dep qua', 5, '5'),
+(268, 'tranvietgiang', 'hi dep qua', 5, '5'),
+(269, 'tranvietgiang', 'hi dep qua', 5, '5'),
+(270, 'tranvietgiang', 'hi dep qua', 5, '5'),
+(271, 'tranvietgiang', 'hi dep qua', 5, '5'),
+(272, 'tranvietgiang', '213', 5, ''),
+(273, 'tranvietgiang', '123', 5, '1'),
+(274, 'tranvietgiang', '123', 5, '1'),
+(275, 'tranvietgiang', '123', 5, '1'),
+(276, 'tranvietgiang', '123', 5, '1'),
+(277, 'tranvietgiang', '2', 9, ''),
+(278, 'tranvietgiang', '2', 9, ''),
+(279, 'tranvietgiang', '2', 9, ''),
+(280, 'tranvietgiang', '', 8, '1'),
+(281, 'tranvietgiang', '2654', 10, '2'),
+(282, 'tranvietgiang', 'qưeqwewq', 8, '2'),
+(283, 'tranvietgiang', 'ăn rồi khóc', 13, '1'),
+(284, 'tranvietgiang', 'đẹp', 12, '5'),
+(285, 'admin', 'hi', 13, '1'),
+(286, 'admin', '123', 13, '1'),
+(287, 'admin', 'lk', 20, '5'),
+(288, 'tranvietgiang', 'shoe dep qua', 12, '5'),
+(289, 'tranvietgiang', 'cv', 12, '2');
 
 -- --------------------------------------------------------
 
@@ -843,15 +916,19 @@ INSERT INTO `tb_district` (`district_id`, `province_id`, `name`) VALUES
 
 CREATE TABLE `tb_fileimg` (
   `id` int(11) NOT NULL,
-  `name` varchar(255) NOT NULL
+  `name` varchar(255) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `username` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf32 COLLATE=utf32_unicode_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `tb_fileimg`
 --
 
-INSERT INTO `tb_fileimg` (`id`, `name`) VALUES
-(1, 'https://htmldemo.net/james/james/img/slider/slider-2.jpg');
+INSERT INTO `tb_fileimg` (`id`, `name`, `created_at`, `username`) VALUES
+(1, 'messi.png', '2024-12-08 04:25:16', 'tranvietgiang25@gmail.com'),
+(2, 'ronaldokhoc.png', '2024-12-08 06:49:09', 'capham123456@gmail.com'),
+(3, 'ronaldokhoc.png', '2024-12-08 06:49:25', 'capham123456@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -1153,7 +1230,10 @@ CREATE TABLE `tb_users` (
 INSERT INTO `tb_users` (`id`, `nameUser`, `username`, `password`, `email_id`, `role`) VALUES
 (1, 'Ca', 'capham123', '$2y$10$6afss6HLFp3QSSJRKHnRNO3Y/kr5sMxNZZfV2hFB4taU03GxTfGpe', 'capham@gmail.com', 'Customer'),
 (2, 'Trần Viết Giang', 'tranvietgiang', '$2y$10$H7MMsxIIkjejhvWmLxdmEumSGK1irKRswDEEcGcthVsdsTft2Grfm', 'tranvietgiang25@gmail.com', 'Customer'),
-(3, 'PhuongThao', 'pthao123', '$2y$10$I15GkJnqcHG3B8c6FMwdTO/PGiKGpvkLe3jmVW5lpATr/Oh.7L29u', 'pthao123@gmail.com', 'Customer');
+(3, 'PhuongThao', 'pthao123', '$2y$10$I15GkJnqcHG3B8c6FMwdTO/PGiKGpvkLe3jmVW5lpATr/Oh.7L29u', 'pthao123@gmail.com', 'Customer'),
+(7, 'ca123', '2', '$2y$10$820eBwLbTWI.xC0/I15cyu7hxxtUrGByfLuiKPHDcQoVK0SEz5xbu', '1232222213@gmail.com', 'Customer'),
+(8, 'Ca', 'admin', '$2y$10$UjOlV5NB/hvmqrzBfkU23O2aYPr1NIPGrtKzu0zRRPAEImqJS7zV2', 'capham123@gmail.com', 'Customer'),
+(9, 'Ca', 'capham111', '$2y$10$3DcNNYvi5pL4HQJ5puFeNO49XDAy4saPip5KctSgOtb/425jOMoxW', 'capham123456@gmail.com', 'Customer');
 
 -- --------------------------------------------------------
 
@@ -11785,6 +11865,12 @@ ALTER TABLE `product`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Chỉ mục cho bảng `tb_comment`
+--
+ALTER TABLE `tb_comment`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Chỉ mục cho bảng `tb_district`
 --
 ALTER TABLE `tb_district`
@@ -11865,7 +11951,7 @@ ALTER TABLE `tb_wards`
 -- AUTO_INCREMENT cho bảng `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=141589;
 
 --
 -- AUTO_INCREMENT cho bảng `categary`
@@ -11877,7 +11963,13 @@ ALTER TABLE `categary`
 -- AUTO_INCREMENT cho bảng `product`
 --
 ALTER TABLE `product`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+
+--
+-- AUTO_INCREMENT cho bảng `tb_comment`
+--
+ALTER TABLE `tb_comment`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=290;
 
 --
 -- AUTO_INCREMENT cho bảng `tb_district`
@@ -11889,7 +11981,7 @@ ALTER TABLE `tb_district`
 -- AUTO_INCREMENT cho bảng `tb_fileimg`
 --
 ALTER TABLE `tb_fileimg`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT cho bảng `tb_myaccount`
@@ -11943,7 +12035,7 @@ ALTER TABLE `tb_shoes`
 -- AUTO_INCREMENT cho bảng `tb_users`
 --
 ALTER TABLE `tb_users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT cho bảng `tb_wards`

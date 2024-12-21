@@ -1,7 +1,4 @@
 <?php
-
-use function PHPSTORM_META\type;
-
 session_start();
 ?>
 <!--  -->
@@ -363,9 +360,17 @@ if (isset($_GET['id'])) {
     $nameUser = $_SESSION['username'];
 
 
+
     $reviews = new review;
     $getIDuserComment = new Users_shoes;
-    $getImg = $getIDuserComment->GetImg();
+
+
+    // Get Avatar
+
+    $email_id = isset($_SESSION['email_id']) ? $_SESSION['email_id'] : "";
+    $getImg = $getIDuserComment->GetAvatar($email_id);
+
+
 
     $print = array();
 
@@ -388,6 +393,8 @@ if (isset($_GET['id'])) {
         if (!$flag) {
             $review_user = $reviews->Comment($nameUser, $review, $id_sp, $star);
         }
+
+
 
         $userComment = $reviews->PrintComment($id_sp);
         $print = $userComment;
@@ -451,7 +458,7 @@ if (isset($_GET['id'])) {
                                     <div class="comment-header">
                                         <strong class="comment-user d-flex align-items: center  gap-3"><img
                                                 style="border-radius: 50%; object-fit: cover; height: 50px; width: 50px;"
-                                                src="<?php echo $getImg['name'] ?>" class="img-fluid">
+                                                src="uploads/<?php echo $getImg['name'] ?> " class="img-fluid">
                                             <?php echo htmlspecialchars($value['nameUser']); ?></strong>
                                     </div><br>
                                     <p class="comment-content px-4"><?php echo htmlspecialchars($value['comment']); ?>

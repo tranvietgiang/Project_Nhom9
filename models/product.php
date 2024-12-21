@@ -104,6 +104,26 @@ class product extends Db
         return $prev . $link . $next;
     }
 
+    // getIDuser
+    public function GetIDuser($id)
+    {
+        $sql = self::$connection->prepare("SELECT id FROM `tb_users` WHERE `username` = ?");
+        $sql->bind_param("s", $id);
+
+        $sql->execute();
+
+        // Lấy kết quả trả về và kiểm tra
+        $result = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
+
+        if (count($result) > 0) {
+            // Trả về mảng chứa nameUser và email
+            return $result[0];  // Mảng chứa nameUser và email
+        } else {
+            // Nếu không tìm thấy người dùng, trả về null
+            return null;
+        }
+    }
+
     //--------------------------------------------------------------------------------------------------------------------
     // G i a n g
 

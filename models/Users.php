@@ -110,21 +110,23 @@ class Users_shoes extends Db
 
 
     // save img
-    public function UploadImg($file)
+    public function GetAvatar()
     {
-        $sql = self::$connection->prepare("INSERT INTO `tb_fileimg` (`filename`) VALUES(?)");
-        $sql->bind_param("s", $file);
-        return $sql->execute(); // Trả về true nếu thành công
-    }
-
-    // save img
-    public function GetImg()
-    {
-        $sql = self::$connection->prepare("SELECT * FROM `tb_fileimg`");
+        $sql = self::$connection->prepare("SELECT `file`.`name` FROM `tb_fileimg` `file`  JOIN  `tb_users` `user` ON `user`.`email_id` = `file`.`username`
+        ORDER by `created_at` DESC LIMIT 0,1");
         $sql->execute();
 
         $result = $sql->get_result()->fetch_assoc();
 
         return $result;
+    }
+
+
+    // save img
+    public function AddAvatar($name, $email_id)
+    {
+        $sql = self::$connection->prepare("INSERT INTO `tb_fileimg`(`name`,`username`) VALUES(?,?)");
+        $sql->bind_param("ss", $name, $email_id);
+        return  $sql->execute();
     }
 }

@@ -104,7 +104,7 @@ $thongtin = new Users_shoes;
         $email = $_POST['email'];
         $password = $_POST['password'];
         $comfirm = $_POST['confirm_password'];
-
+        $_SESSION['email_id'] = $_POST['email'];
 
         if ($password !== $comfirm) {
             echo "<p style='color:red; text-align:center;'> mật khẩu mới không trùng nhau</p";

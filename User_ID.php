@@ -246,49 +246,38 @@ $getNme = $thongtin->GetUserInfo($user);
                 $check_hours = "Late Night: ";
             }
 
-            $getImg = $thongtin->GetImg();
+
+            $email_id =  isset($_SESSION['email_id']) ? $_SESSION['email_id'] : "";
+            $getImg = $thongtin->GetAvatar($email_id);
+
             ?>
             <div style="text-align: center; background-color: #e5e5e5; max-width: 1000px; margin: 0 auto;" class="row">
                 <div class="col-6">
                     <div>
-                        <form method="post" enctype="multipart/form-data">
-                            <img id="preview" src="<?php echo $getImg['name'] ?>"
+                        <form action="" method="post" enctype="multipart/form-data">
+                            <img id="preview" src="uploads/<?php echo $getImg['name'] ?>"
                                 style="object-fit: cover; border-radius: 5%; border: 2px solid #dc3435; margin: 50px 0 10px  0;"
                                 width="300px" height="100%" alt="img-fluid"><br>
-                            <input type="file" id="imageInput" name="ChooseImg" accept="image/*"><br>
-                            <button id="saveButton" name="send" class="btn btn-danger"
-                                style="display: none;">Save</button>
+                            <!-- handle images  -->
+                            <input type="file" id="imageInput" name="avatarUser"><br>
+                            <input class="btn btn-danger btn-mini" type="submit" value="save" name="AvatarSave">
                         </form>
                     </div>
                 </div>
+                <!-- Handle user choose image  -->
+
                 <?php
+                if (isset($_POST['AvatarSave'])) {
 
-                // if (isset($_POST['send'])) {
-                //     if (isset($_FILES['ChooseImg']) && $_FILES['ChooseImg']['error'] === UPLOAD_ERR_OK) {
-                //         $file = $_FILES['ChooseImg'];
-                //         $uploadDir = 'uploads/';
-                //         $fileName = basename($file['name']);
-                //         $targetFilePath = $uploadDir . $fileName;
-
-                // Di chuyển tệp đã tải lên
-                //         if (move_uploaded_file($file['tmp_name'], $targetFilePath)) {
-                // Gọi UploadImg để lưu vào DB
-                //             if ($thongtin->UploadImg($fileName)) {
-                //                 echo "Tệp đã được tải lên thành công!";
-                //             } else {
-                //                 echo "Lỗi khi lưu thông tin tệp vào cơ sở dữ liệu.";
-                //             }
-                //         } else {
-                //             echo "Lỗi khi di chuyển tệp.";
-                //         }
-                //     } else {
-                //         echo "Không có tệp nào được tải lên hoặc có lỗi xảy ra.";
-                //     }
-                // }
+                    $email_id = $_SESSION['email_id'];
+                    $addImage = $_FILES["avatarUser"]["name"];
+                    $thongtin->AddAvatar($addImage, $email_id);
 
 
-
-
+                    $target_dir = "uploads/";
+                    $target_file = $target_dir . basename($_FILES["avatarUser"]["name"]);
+                    move_uploaded_file($_FILES["avatarUser"]["tmp_name"], $target_file);
+                }
                 ?>
                 <!--  -->
                 <div id="user" style="margin-top: 100px; margin-left: -100px;" class="col-6">
@@ -299,6 +288,7 @@ $getNme = $thongtin->GetUserInfo($user);
                 </div>
             </div>
         </div>
+
     </section>
     <!--  -->
     <?php
@@ -430,7 +420,7 @@ $getNme = $thongtin->GetUserInfo($user);
 
     ?>
     <section id="my-information">
-        <form action="" method="POST">
+        <form action="" method="post">
             <div class="address">
                 <select name="province_id" id="province">
                     <option value="" disabled selected>Select province or city</option>
@@ -511,8 +501,6 @@ $getNme = $thongtin->GetUserInfo($user);
 
     <!-- Link js -->
     <script>
-        // 
-
         //in thông thông thoát
         const exit = document.getElementById('exit');
         exit.addEventListener("click", (event) => {
@@ -524,25 +512,6 @@ $getNme = $thongtin->GetUserInfo($user);
                 event.preventDefault();
                 event.defaultPrevented();
                 // alert("Logout canceled.");
-            }
-        });
-
-        const imageInput = document.getElementById('imageInput');
-        const preview = document.getElementById('preview');
-
-
-        imageInput.addEventListener('change', function() {
-            const file = this.files[0]; // Lấy file đầu tiên  
-
-            if (file) {
-                const reader = new FileReader();
-
-                reader.onload = function(event) {
-                    preview.src = event.target.result; // Gán địa chỉ vào thẻ img  
-                    preview.style.display = 'block'; // Hiển thị thẻ img  
-                }
-
-                reader.readAsDataURL(file); // Đọc file và chuyển đổi thành URL dữ liệu  
             }
         });
     </script>
