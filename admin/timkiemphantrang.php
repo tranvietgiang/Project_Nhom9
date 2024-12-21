@@ -22,6 +22,40 @@ $product = new Admin;
     <link rel="stylesheet" href="style.css">
 </head>
 <style>
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.page-link {
+    display: inline-block;
+    padding: 10px 15px;
+    margin: 0 5px;
+    border: 1px solid #3498db;
+    border-radius: 4px;
+    color: #3498db;
+    text-decoration: none;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.page-link.active {
+    background-color: #3498db;
+    color: white;
+}
+
+.page-link:hover {
+    background-color: #2980b9;
+    color: white;
+}
+
+.page-link:disabled {
+    color: #ccc;
+    border-color: #ccc;
+    pointer-events: none;
+}
+
 body {
     font-family: 'Arial', sans-serif;
     margin: 0;
@@ -174,7 +208,7 @@ a {
             <ul>
                 <li><a href="#">Quản lý sản phẩm</a></li>
                 <li><a href="categories.php">Quản lý Loại</a></li>
-                <li><a href="thongKe.php">Thống kê</a></li>
+                <li><a href="home.php">Thống kê</a></li>
                 <li><a href="logOutAdmin.php">Đăng xuất</a></li>
             </ul>
         </nav>
@@ -198,12 +232,14 @@ a {
                     Phẩm</button></a>
             <div class="product-list">
                 <?php
-                $count = 6;
+                $count = 4;
                 $page = isset($_GET['page']) ? $_GET['page'] : 1;
-                $total = count($product->hienthisanpham());
+                $total = count($product->SearchCount($_GET['key']));
 
-                $url  = $_SERVER['PHP_SELF'];
-                $sanpham = $product->hienthiphantrang($page, $count);
+
+                $key = $_GET['key'];
+                $url  = $_SERVER['PHP_SELF'] . "?key=" . $key;
+                $sanpham = $product->SearchPaginate($key, $page, $count);
                 ?>
                 <div class="widget-content nopadding">
                     <table class="table table-bordered table-striped">
@@ -238,7 +274,7 @@ a {
                     </table>
                 </div>
                 <div style="margin: 20px 0 0 550px;" class="phantrang">Trang:
-                    <?php echo $product->paginate($url, $total, $count, $page) ?>
+                    <?php echo $product->paginate1($url, $total,  $page, $count, 2) ?>
                 </div>
             </div>
         </main>

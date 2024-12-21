@@ -136,4 +136,126 @@ class Admin extends Db
         $result = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
         return $result;
     }
+    // đếm số trang tìm được
+    public function SearchCount($nameSP)
+    {
+        $sql = self::$connection->prepare("SELECT * FROM `product` WHERE `name` LIKE ?");
+
+        $findGanDung = "%$nameSP%";
+        $sql->bind_param("s", $findGanDung);
+        $sql->execute();
+
+        $item = array();
+        $item = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
+        return $item;
+    }
+
+    // in ra phân trang
+    public function SearchPaginate($keyword, $page, $count)
+    {
+        // Tính số thứ tự trang bắt đầu
+        $start = ($page - 1) * $count;
+        $sql = self::$connection->prepare("SELECT * FROM `product` WHERE `name` LIKE ? LIMIT ?,?");
+        $keyword = "%$keyword%";
+        $sql->bind_param("sii", $keyword, $start, $count);
+        $sql->execute();
+        $items = array();
+        $items = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
+        return $items;
+    }
+
+    // phân trang
+    function paginate1($url, $total, $page, $count, $offset)
+    {
+        if ($total <= 0) {
+            return "";
+        }
+        $totalLinks = ceil($total / $count);
+        if ($totalLinks <= 1) {
+            return "";
+        }
+        $from = $page - $offset;
+        $to = $page + $offset;
+
+        if ($from <= 0) {
+            $from = 1;
+            $to = $offset * 2;
+        }
+        if ($to > $totalLinks) {
+            $to = $totalLinks;
+        }
+
+        $link = "<div class='pagination'>"; // Bắt đầu phần phân trang
+        $prev = "";
+        $next = "";
+
+        for ($j = $from; $j <= $to; $j++) {
+            if ($page == $j) {
+                $link .= "<a class='page-link active' href='$url&page=$j'>$j</a>"; // Trang hiện tại
+            } else {
+                $link .= "<a class='page-link' href='$url&page=$j'>$j</a>"; // Các trang khác
+            }
+        }
+
+        if ($page > 1) {
+            $prevPage = $page - 1;
+            $prev = "<a class='page-link' href='$url&page=$prevPage'>Prev</a>"; // Liên kết trang trước
+        }
+
+        if ($page < $totalLinks) {
+            $nextPage = $page + 1;
+            $next = "<a class='page-link' href='$url&page=$nextPage'>Next</a>"; // Liên kết trang tiếp theo
+        }
+
+        $link .= $prev . $next . "</div>"; // Kết thúc phần phân trang
+        return $link;
+    }
+
+    // code thống kê
+
+    public function GetRaTingLike()
+    {
+        $sql = self::$connection->prepare(" SELECT  `sp`.`name`,   `sp`.`image`,SUM(`cmt`.star) / COUNT(*)  AS 'RaTingLike'
+        FROM 
+            `tb_comment` `cmt` JOIN `product` `sp` ON `cmt`.`idShoes` = `sp`.`id`
+        GROUP BY 
+            `sp`.`id`, `sp`.`name`, `sp`.`image`
+        ORDER BY 
+            SUM(`cmt`.star) DESC
+        LIMIT 1;");
+        $sql->execute();
+
+        $result = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
+        return $result;
+    }
+
+    public function GetRaTingDislike()
+    {
+        $sql = self::$connection->prepare("SELECT  `sp`.`name`,   `sp`.`image`,SUM(`cmt`.star) / COUNT(*)  AS 'RaTingDislike'
+        FROM 
+            `tb_comment` `cmt` JOIN `product` `sp` ON `cmt`.`idShoes` = `sp`.`id`
+        GROUP BY 
+            `sp`.`id`, `sp`.`name`, `sp`.`image`
+        ORDER BY 
+            SUM(`cmt`.star)
+        LIMIT 1;");
+        $sql->execute();
+
+        $result = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
+        return $result;
+    }
+
+    public function GetCMT()
+    {
+        $sql = self::$connection->prepare("SELECT `user`.`nameUser`, `user`.`username`, COUNT(`cmt`.`comment`) AS 'SoLanCMT'
+        FROM `tb_comment` `cmt` JOIN `tb_users` `user` 
+        ON `cmt`.`nameUser` = `user`.`username`
+        GROUP BY 
+        `user`.`nameUser`, `user`.`username`
+        ORDER BY  COUNT(`cmt`.`comment`) DESC LIMIT 1");
+        $sql->execute();
+
+        $result = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
+        return $result;
+    }
 }
