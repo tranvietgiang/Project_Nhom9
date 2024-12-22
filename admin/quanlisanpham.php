@@ -20,6 +20,7 @@ $product = new Admin;
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quản Lý Sản Phẩm</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="Website icon" type="jpg" href="../public/img/logoShoes.jpg">
 </head>
 <style>
     body {
@@ -230,7 +231,7 @@ $product = new Admin;
                                         <a href="updateSP.php?id=<?php echo $value['id']; ?>"
                                             class="btn btn-success btn-mini">Sửa</a>
                                         <a href="delete.php?id=<?php echo $value['id']; ?>"
-                                            class="btn btn-danger btn-mini">Xóa</a>
+                                            class="btn btn-danger btn-mini exit">Xóa</a>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>
@@ -244,6 +245,20 @@ $product = new Admin;
         </main>
     </div>
 
+    <script>
+        //in thông thông thoát
+        const exitButtons = document.querySelectorAll('.exit');
+
+        exitButtons.forEach(exit => {
+            exit.addEventListener("click", (event) => {
+                const userConfirmed = confirm("Are you sure you want to delete item?");
+                if (!userConfirmed) {
+                    event
+                        .preventDefault(); // Ngừng hành động mặc định của thẻ a nếu người dùng không xác nhận
+                }
+            });
+        });
+    </script>
     <script src="script.js"></script>
 </body>
 

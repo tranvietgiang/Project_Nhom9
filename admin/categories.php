@@ -20,6 +20,7 @@ $cate = new Admin;
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quản Lý Loại</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="Website icon" type="jpg" href="../public/img/logoShoes.jpg">
 </head>
 <style>
     body {
@@ -194,7 +195,7 @@ $cate = new Admin;
                                         <a href="updateCate.php?idCate=<?php echo $value['id'] ?>"
                                             class="btn btn-success btn-mini">Sửa</a>
                                         <a href="deleteCate.php?idCate=<?php echo $value['id'] ?>"
-                                            class="btn btn-danger btn-mini">Xóa</a>
+                                            class="btn btn-danger btn-mini exit">Xóa</a>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>
@@ -203,6 +204,21 @@ $cate = new Admin;
                 </div>
         </main>
     </div>
+
+    <script>
+        //in thông thông thoát
+        const exitButtons = document.querySelectorAll('.exit');
+
+        exitButtons.forEach(exit => {
+            exit.addEventListener("click", (event) => {
+                const userConfirmed = confirm("Are you sure you want to delete item?");
+                if (!userConfirmed) {
+                    event
+                        .preventDefault(); // Ngừng hành động mặc định của thẻ a nếu người dùng không xác nhận
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>

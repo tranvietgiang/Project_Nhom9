@@ -34,6 +34,7 @@ if (isset($_GET['search']) && !empty($_GET['search'])):
 
     else:
 ?>
+<link rel="Website icon" type="jpg" href="public/img/logoShoes.jpg">
 <!-- Link bootstrap 5 -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 

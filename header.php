@@ -48,7 +48,7 @@ $getAllWoman  = $item_navbar->GetAllWoman();
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Norican&display=swap" />
 <!-- Link icon  -->
 <link rel="stylesheet" href="https://unpkg.com/ionicons@latest/dist/css/ionicons.min.css">
-
+<link rel="Website icon" type="jpg" href="public/img/logoShoes.jpg">
 
 
 <body>

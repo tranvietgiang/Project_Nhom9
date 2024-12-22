@@ -20,185 +20,186 @@ $product = new Admin;
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quản Lý Sản Phẩm</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="Website icon" type="jpg" href="../public/img/logoShoes.jpg">
 </head>
 <style>
-.pagination {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 20px 0;
-}
+    .pagination {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 20px 0;
+    }
 
-.page-link {
-    display: inline-block;
-    padding: 10px 15px;
-    margin: 0 5px;
-    border: 1px solid #3498db;
-    border-radius: 4px;
-    color: #3498db;
-    text-decoration: none;
-    transition: background-color 0.3s, color 0.3s;
-}
+    .page-link {
+        display: inline-block;
+        padding: 10px 15px;
+        margin: 0 5px;
+        border: 1px solid #3498db;
+        border-radius: 4px;
+        color: #3498db;
+        text-decoration: none;
+        transition: background-color 0.3s, color 0.3s;
+    }
 
-.page-link.active {
-    background-color: #3498db;
-    color: white;
-}
+    .page-link.active {
+        background-color: #3498db;
+        color: white;
+    }
 
-.page-link:hover {
-    background-color: #2980b9;
-    color: white;
-}
+    .page-link:hover {
+        background-color: #2980b9;
+        color: white;
+    }
 
-.page-link:disabled {
-    color: #ccc;
-    border-color: #ccc;
-    pointer-events: none;
-}
+    .page-link:disabled {
+        color: #ccc;
+        border-color: #ccc;
+        pointer-events: none;
+    }
 
-body {
-    font-family: 'Arial', sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f4;
-}
+    body {
+        font-family: 'Arial', sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+    }
 
-.container {
-    display: flex;
-}
-
-.sidebar {
-    width: 280px;
-    background-color: #34495e;
-    color: white;
-    padding: 20px;
-    height: 100vh;
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
-}
-
-.sidebar h2 {
-    text-align: center;
-    font-size: 26px;
-    margin-bottom: 30px;
-}
-
-.sidebar ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-.sidebar ul li {
-    margin: 15px 0;
-}
-
-.sidebar ul li a {
-    color: white;
-    text-decoration: none;
-    display: block;
-    padding: 12px 15px;
-    border-radius: 5px;
-    transition: background-color 0.3s;
-    font-size: 16px;
-}
-
-.sidebar ul li a:hover {
-    background-color: #2c3e50;
-}
-
-.content {
-    flex-grow: 1;
-    padding: 20px;
-    background-color: #ecf0f1;
-}
-
-h1 {
-    color: #2c3e50;
-    border-bottom: 2px solid #3498db;
-    padding-bottom: 10px;
-}
-
-.btn {
-    background-color: #3498db;
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    font-size: 16px;
-}
-
-.btn:hover {
-    background-color: #2980b9;
-}
-
-table {
-    border-collapse: collapse;
-    width: 100%;
-    text-align: left;
-}
-
-table th,
-table td {
-    border: 1px solid #ddd;
-    padding: 8px;
-}
-
-table th {
-    background-color: #f2f2f2;
-    text-align: center;
-}
-
-table tr:nth-child(even) {
-    background-color: #f9f9f9;
-}
-
-table tr:hover {
-    background-color: #ddd;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
     .container {
-        flex-direction: column;
+        display: flex;
     }
 
     .sidebar {
-        width: 100%;
-        height: auto;
+        width: 280px;
+        background-color: #34495e;
+        color: white;
+        padding: 20px;
+        height: 100vh;
+        box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
     }
-}
+
+    .sidebar h2 {
+        text-align: center;
+        font-size: 26px;
+        margin-bottom: 30px;
+    }
+
+    .sidebar ul {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    .sidebar ul li {
+        margin: 15px 0;
+    }
+
+    .sidebar ul li a {
+        color: white;
+        text-decoration: none;
+        display: block;
+        padding: 12px 15px;
+        border-radius: 5px;
+        transition: background-color 0.3s;
+        font-size: 16px;
+    }
+
+    .sidebar ul li a:hover {
+        background-color: #2c3e50;
+    }
+
+    .content {
+        flex-grow: 1;
+        padding: 20px;
+        background-color: #ecf0f1;
+    }
+
+    h1 {
+        color: #2c3e50;
+        border-bottom: 2px solid #3498db;
+        padding-bottom: 10px;
+    }
+
+    .btn {
+        background-color: #3498db;
+        color: white;
+        border: none;
+        padding: 10px 15px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        font-size: 16px;
+    }
+
+    .btn:hover {
+        background-color: #2980b9;
+    }
+
+    table {
+        border-collapse: collapse;
+        width: 100%;
+        text-align: left;
+    }
+
+    table th,
+    table td {
+        border: 1px solid #ddd;
+        padding: 8px;
+    }
+
+    table th {
+        background-color: #f2f2f2;
+        text-align: center;
+    }
+
+    table tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+
+    table tr:hover {
+        background-color: #ddd;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+        .container {
+            flex-direction: column;
+        }
+
+        .sidebar {
+            width: 100%;
+            height: auto;
+        }
+    }
 
 
-a {
-    text-decoration: none;
-    color: #f4f4f4;
-}
+    a {
+        text-decoration: none;
+        color: #f4f4f4;
+    }
 
-.seach {
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px;
-}
+    .seach {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+    }
 
-.seach input {
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    margin-right: 10px;
-    font-size: 16px;
-}
+    .seach input {
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        margin-right: 10px;
+        font-size: 16px;
+    }
 
-.seach button {
-    background-color: #28a745;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
+    .seach button {
+        background-color: #28a745;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
 
-.seach button:hover {
-    background-color: #218838;
-}
+    .seach button:hover {
+        background-color: #218838;
+    }
 </style>
 
 <body>
@@ -254,21 +255,21 @@ a {
                         </thead>
                         <tbody>
                             <?php foreach ($sanpham as $value): ?>
-                            <tr>
-                                <td width="250">
-                                    <img src="../public/img/<?php echo $value['image']; ?>" width="200px" height="200px"
-                                        alt="<?php echo htmlspecialchars($value['name']); ?>">
-                                </td>
-                                <td><?php echo htmlspecialchars($value['name']); ?></td>
-                                <td><?php echo number_format($value['price'], 0, ',', '.'); ?> VNĐ</td>
-                                <td><?php echo htmlspecialchars($value['catalogue']); ?></td>
-                                <td>
-                                    <a href="updateSP.php?id=<?php echo $value['id']; ?>"
-                                        class="btn btn-success btn-mini">Sửa</a>
-                                    <a href="delete.php?id=<?php echo $value['id']; ?>"
-                                        class="btn btn-danger btn-mini">Xóa</a>
-                                </td>
-                            </tr>
+                                <tr>
+                                    <td width="250">
+                                        <img src="../public/img/<?php echo $value['image']; ?>" width="200px" height="200px"
+                                            alt="<?php echo htmlspecialchars($value['name']); ?>">
+                                    </td>
+                                    <td><?php echo htmlspecialchars($value['name']); ?></td>
+                                    <td><?php echo number_format($value['price'], 0, ',', '.'); ?> VNĐ</td>
+                                    <td><?php echo htmlspecialchars($value['catalogue']); ?></td>
+                                    <td>
+                                        <a href="updateSP.php?id=<?php echo $value['id']; ?>"
+                                            class="btn btn-success btn-mini">Sửa</a>
+                                        <a href="delete.php?id=<?php echo $value['id']; ?>"
+                                            class="btn btn-danger btn-mini exit">Xóa</a>
+                                    </td>
+                                </tr>
                             <?php endforeach; ?>
                         </tbody>
                     </table>
@@ -279,7 +280,20 @@ a {
             </div>
         </main>
     </div>
+    <script>
+        //in thông thông thoát
+        const exitButtons = document.querySelectorAll('.exit');
 
+        exitButtons.forEach(exit => {
+            exit.addEventListener("click", (event) => {
+                const userConfirmed = confirm("Are you sure you want to delete item?");
+                if (!userConfirmed) {
+                    event
+                        .preventDefault(); // Ngừng hành động mặc định của thẻ a nếu người dùng không xác nhận
+                }
+            });
+        });
+    </script>
     <script src="script.js"></script>
 </body>
 

@@ -10,6 +10,7 @@ require 'models/Db.php';
 require 'models/Users.php';
 
 
+
 $login = new Users_shoes;
 
 ?>
@@ -49,6 +50,7 @@ if (isset($_POST['Login'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
+    <link rel="Website icon" type="jpg" href="public/img/logoShoes.jpg">
     <style>
         * {
             margin: 0;

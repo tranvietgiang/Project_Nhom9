@@ -274,4 +274,18 @@ class Admin extends Db
         $result = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
         return $result;
     }
+
+    // check condition
+    public function CheckCate($id)
+    {
+        $sql = self::$connection->prepare("SELECT COUNT(*) AS count
+            FROM `categary` `cate` 
+            JOIN `product` `sp` ON `cate`.`id` = `sp`.`catalogue`
+            WHERE `cate`.`id` = ?");
+        $sql->bind_param("i", $id);
+        $sql->execute();
+
+        $result = $sql->get_result()->fetch_assoc();
+        return $result['count'] > 0 ? true : false;
+    }
 }

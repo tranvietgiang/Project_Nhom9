@@ -13,68 +13,69 @@ $thongtin = new Users_shoes;
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register</title>
+    <link rel="Website icon" type="jpg" href="public/img/logoShoes.jpg">
     <style>
-    body {
-        font-family: Arial, sans-serif;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        background-color: #f4f4f4;
-    }
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
 
-    .registration-container {
-        background-color: white;
-        padding: 20px;
-        border-radius: 8px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    }
+        .registration-container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
 
-    .registration-container h1 {
-        text-align: center;
-    }
+        .registration-container h1 {
+            text-align: center;
+        }
 
-    .input-field {
-        outline: none;
-        width: 250px;
-        padding: 10px;
-        margin: 10px 0;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-    }
+        .input-field {
+            outline: none;
+            width: 250px;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
 
-    .input-field:focus {
-        border: 1px solid #4CAF50;
-    }
+        .input-field:focus {
+            border: 1px solid #4CAF50;
+        }
 
-    .btn {
-        width: 275px;
-        padding: 10px;
-        background-color: #4CAF50;
-        color: white;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-        margin-top: 10px;
-    }
+        .btn {
+            width: 275px;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
 
-    .btn:hover {
-        background-color: #45a049;
-    }
+        .btn:hover {
+            background-color: #45a049;
+        }
 
-    .link-buttons {
-        display: flex;
-        justify-content: space-between;
-        margin-top: 15px;
-    }
+        .link-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 15px;
+        }
 
-    .link-button {
-        background-color: transparent;
-        color: #4CAF50;
-        border: none;
-        cursor: pointer;
-        text-decoration: underline;
-    }
+        .link-button {
+            background-color: transparent;
+            color: #4CAF50;
+            border: none;
+            cursor: pointer;
+            text-decoration: underline;
+        }
     </style>
 </head>
 
