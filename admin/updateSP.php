@@ -16,6 +16,8 @@ $updateSP = new Admin;
 if ((isset($_GET['id'])))
     $id_get = $_GET['id'];
 $getItemByID = $updateSP->GetItemByID($id_get);
+$getAllCateByID = $updateSP->GetAllCateByID($id_get);
+$getAllCate = $updateSP->GetAllCate();
 ?>
 
 <?php
@@ -192,9 +194,14 @@ if (isset($_POST['updateSP'])) {
             <div class="form-group">
                 <label for="cate">Choose a Category <span class="required">*</span></label>
                 <select id="cate" name="sp-cate">
-                    <option value="">Select a category</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
+                    <option value="<?php echo $getAllCateByID[0]['id'] ?>"><?php echo $getAllCateByID[0]['categary'] ?>
+                    </option>
+                    <?php
+                    foreach ($getAllCate as $value):
+                    ?>
+                        <option value="<?php echo  $value['id'] ?>"> <?php echo $value['categary'] ?>
+                        </option>
+                    <?php endforeach ?>
                 </select>
             </div>
 

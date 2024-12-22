@@ -19,92 +19,92 @@ $thongKe = new Admin;
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Thống Kê Sản Phẩm</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: Arial, sans-serif;
-        }
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+    }
 
-        body {
-            background-color: #f5f5f5;
-            padding: 20px;
-        }
+    body {
+        background-color: #f5f5f5;
+        padding: 20px;
+    }
 
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            background: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
+    .container {
+        max-width: 800px;
+        margin: 0 auto;
+        background: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
 
-        h1 {
-            text-align: center;
-            margin-bottom: 20px;
-            color: #333;
-        }
+    h1 {
+        text-align: center;
+        margin-bottom: 20px;
+        color: #333;
+    }
 
-        .stat-section {
-            margin-bottom: 20px;
-            padding: 15px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            background: #fafafa;
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
+    .stat-section {
+        margin-bottom: 20px;
+        padding: 15px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        background: #fafafa;
+        transition: transform 0.2s, box-shadow 0.2s;
+    }
 
-        .stat-section:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-        }
+    .stat-section:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    }
 
-        .stat-section label {
-            font-weight: bold;
-            color: #555;
-            margin-bottom: 10px;
-            display: block;
-        }
+    .stat-section label {
+        font-weight: bold;
+        color: #555;
+        margin-bottom: 10px;
+        display: block;
+    }
 
-        .stat-section div {
-            padding: 10px;
-            background: #fff;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-        }
+    .stat-section div {
+        padding: 10px;
+        background: #fff;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+    }
 
-        .user-statistics {
-            background-color: #f9f9f9;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            margin: 20px auto;
-            font-family: Arial, sans-serif;
-        }
+    .user-statistics {
+        background-color: #f9f9f9;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        margin: 20px auto;
+        font-family: Arial, sans-serif;
+    }
 
-        .user-statistics label {
-            font-weight: bold;
-            color: #333;
-            font-size: 18px;
-            display: block;
-            margin-bottom: 10px;
-        }
+    .user-statistics label {
+        font-weight: bold;
+        color: #333;
+        font-size: 18px;
+        display: block;
+        margin-bottom: 10px;
+    }
 
-        .user-statistics div,
-        .user-statistics p {
-            font-size: 16px;
-            margin: 8px 0;
-            color: #555;
-        }
+    .user-statistics div,
+    .user-statistics p {
+        font-size: 16px;
+        margin: 8px 0;
+        color: #555;
+    }
 
-        .user-statistics p {
-            font-style: italic;
-        }
+    .user-statistics p {
+        font-style: italic;
+    }
 
-        .user-statistics span {
-            font-weight: bold;
-        }
+    .user-statistics span {
+        font-weight: bold;
+    }
     </style>
 </head>
 

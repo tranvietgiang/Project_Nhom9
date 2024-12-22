@@ -45,32 +45,32 @@ $jsonValues = json_encode($dataValues);
     </div>
 
     <script>
-        // Lấy dữ liệu từ PHP (được chuyển sang JSON)
-        var labels = <?php echo $jsonLabels; ?>;
-        var data = <?php echo $jsonValues; ?>;
+    // Lấy dữ liệu từ PHP (được chuyển sang JSON)
+    var labels = <?php echo $jsonLabels; ?>;
+    var data = <?php echo $jsonValues; ?>;
 
-        // Tạo biểu đồ
-        var ctx = document.getElementById('myChart').getContext('2d');
-        var myChart = new Chart(ctx, {
-            type: 'bar', // Hoặc 'pie', 'line', tùy thuộc vào loại biểu đồ bạn muốn
-            data: {
-                labels: labels,
-                datasets: [{
-                    label: 'Thống Kê Sản Phẩm và Người Dùng',
-                    data: data,
-                    backgroundColor: ['#4caf50', '#f44336', '#2196f3'], // Màu sắc cho từng cột
-                    borderColor: ['#388e3c', '#d32f2f', '#1976d2'],
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
+    // Tạo biểu đồ
+    var ctx = document.getElementById('myChart').getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'bar', // Hoặc 'pie', 'line', tùy thuộc vào loại biểu đồ bạn muốn
+        data: {
+            labels: labels,
+            datasets: [{
+                label: 'Thống Kê Sản Phẩm và Người Dùng',
+                data: data,
+                backgroundColor: ['#4caf50', '#f44336', '#2196f3'], // Màu sắc cho từng cột
+                borderColor: ['#388e3c', '#d32f2f', '#1976d2'],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
                 }
             }
-        });
+        }
+    });
     </script>
 </body>
 

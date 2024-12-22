@@ -47,7 +47,9 @@ class Admin extends Db
     public function hienthiphantrang($page, $count)
     {
         $start = ($page - 1) * $count;
-        $sql = self::$connection->prepare("SELECT * FROM `product` ORDER BY `createdate` DESC LIMIT ?,?");
+        $sql = self::$connection->prepare("SELECT `sp`.*, `cate`.`categary`
+        FROM `product` `sp` JOIN `categary` `cate` ON `sp`.`catalogue` = `cate`.`id`
+        ORDER BY `sp`.`createdate` DESC LIMIT ?,?");
         $sql->bind_param("ii", $start, $count);
         $sql->execute();
         $item = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
@@ -83,6 +85,20 @@ class Admin extends Db
 
         return $result;
     }
+
+    public function GetAllCateByID($id)
+    {
+        $sql = self::$connection->prepare("SELECT `cate`.`id`, `cate`.`categary`
+        FROM `categary` `cate` JOIN `product` `sp` ON `cate`.`id` = `sp`.`catalogue`
+        WHERE `sp`.`id` = ?");
+        $sql->bind_param("i", $id);
+        $sql->execute();
+
+        $result = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
+
+        return $result;
+    }
+
 
     public function CheckLoginAdmin($email_id)
     {

@@ -206,9 +206,9 @@ a {
         <nav class="sidebar">
             <h2>Trang Admin</h2>
             <ul>
-                <li><a href="#">Quản lý sản phẩm</a></li>
+                <li><a href="quanlisanpham.php">Quản lý sản phẩm</a></li>
                 <li><a href="categories.php">Quản lý Loại</a></li>
-                <li><a href="home.php">Thống kê</a></li>
+                <li><a href="thongKe.php">Thống kê</a></li>
                 <li><a href="logOutAdmin.php">Đăng xuất</a></li>
             </ul>
         </nav>
