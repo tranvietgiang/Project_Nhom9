@@ -38,11 +38,11 @@ if (isset($_GET['idCate'])) {
     <div style="color: #dc3435;" id="alert">
     </div>
     <script>
-        function confirmDelete() {
-            alert("Mục này không thể xóa vì đã có ràng buộc với sản phẩm!");
-            window.location.href = "categories.php";
-        }
-        window.onload = confirmDelete;
+    function confirmDelete() {
+        alert("Mục này không thể xóa vì đã có ràng buộc với sản phẩm!");
+        window.location.href = "categories.php";
+    }
+    window.onload = confirmDelete;
     </script>
 </body>
 

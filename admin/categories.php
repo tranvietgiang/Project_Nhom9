@@ -176,7 +176,7 @@ $cate = new Admin;
                     Phẩm</button></a>
             <div class="product-list">
                 <?php
-                $displayCate = $cate->GetAllCate();
+                $displayCate = $cate->GetAllCateNew();
                 ?>
                 <div class="widget-content nopadding">
                     <table class="table table-bordered table-striped">

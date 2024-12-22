@@ -86,6 +86,16 @@ class Admin extends Db
         return $result;
     }
 
+    public function GetAllCateNew()
+    {
+        $sql = self::$connection->prepare("SELECT * FROM `categary` ORDER BY `id` DESC");
+        $sql->execute();
+
+        $result = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
+
+        return $result;
+    }
+
     public function GetAllCateByID($id)
     {
         $sql = self::$connection->prepare("SELECT `cate`.`id`, `cate`.`categary`
