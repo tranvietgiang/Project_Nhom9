@@ -220,4 +220,15 @@ class product extends Db
         }
         return $prev . $link . $next;
     }
+
+    // check id tồn tại
+    public function checkProductInCart($productId)
+    {
+        $sql = self::$connection->prepare("SELECT * FROM `cart` `cart` JOIN `product` `sp` ON `cart`.`user_id` = `sp`.`id`
+        WHERE `sp`.`id` = ?");
+        $sql->bind_param("i", $productId);
+        $sql->execute();
+        $result = $sql->get_result()->fetch_assoc();
+        return $result;
+    }
 }

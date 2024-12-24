@@ -184,7 +184,7 @@ $product = new product;
 
     </content>
 
-    <script src="public/js/javascrip.js"></script>
+    <script src="public/js/javascript.js"></script>
 </body>
 
 </html>

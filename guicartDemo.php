@@ -20,10 +20,17 @@ if (isset($_GET['id'])) {
     $id = $_GET['id'];
     $sp = $product->getproductbyid($id);
 
+    $count = 1;
     foreach ($sp as $value) {
-        $addgiohang = $cart->addcart($_SESSION['iduser'], 1, $value['name'], $value['price'], $value['image']);
+        $checkExited = $cart->checkProductInCart($_SESSION['iduser'], $id);
+        if ($checkExited) {
+            $cart->updateCart($value['price'], $_SESSION['iduser'], $id);
+        } else {
+            $addgiohang = $cart->addcartDemo($_SESSION['iduser'], $count, $value['name'], $value['price'], $value['image'], $id);
+        }
     }
 }
+
 $tongtien = 0;
 
 ?>
