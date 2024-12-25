@@ -67,4 +67,60 @@ class cart extends Db
         $sql->bind_param("iii", $price, $userId, $productId);
         return $sql->execute();
     }
+
+
+    // cart my user
+    public function PrintCart($user_id)
+    {
+        $sql = self::$connection->prepare("SELECT *
+        FROM `cart`
+        WHERE `user_id` = ?");
+        $sql->bind_param("i", $user_id);
+        $sql->execute();
+        $item = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
+        return $item;
+    }
+
+    // cart my user
+    public function MyCartUser($user_id)
+    {
+        $sql = self::$connection->prepare("SELECT *
+        FROM `cartuser`
+        WHERE `user_id` = ?");
+        $sql->bind_param("i", $user_id);
+        $sql->execute();
+        $item = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
+        return $item;
+    }
+    // cart my user
+    public function MyCartUserTotal($user_id)
+    {
+        $sql = self::$connection->prepare("SELECT SUM(`totalSL`) AS 'soluong', SUM(`totalPrice` * totalSL) AS 'totalPrice'
+        FROM `cartuser`
+        WHERE `user_id` = ? ");
+        $sql->bind_param("i", $user_id);
+        $sql->execute();
+        $item = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
+        return $item;
+    }
+
+    // cart my user
+    public function MyCartAddPay($name, $image, $user_id, $sl, $totalPrice)
+    {
+        $sql = self::$connection->prepare("INSERT INTO `cartuser`(`name`, `image`, `user_id`, `totalSL`, `totalPrice`) 
+        VALUES (?,?,?,?,?)");
+
+        // Sử dụng "ssfff" nếu cả $sl và $totalPrice đều là float
+        $sql->bind_param("ssiii", $name, $image, $user_id, $sl, $totalPrice);
+
+        return  $sql->execute();
+    }
+
+
+    public function MyCartDeletePay($user_id)
+    {
+        $sql = self::$connection->prepare("DELETE FROM  `cart` WHERE `user_id` = ?");
+        $sql->bind_param("i", $user_id);
+        return  $sql->execute();
+    }
 }

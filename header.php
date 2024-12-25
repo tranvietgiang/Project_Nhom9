@@ -95,6 +95,8 @@ $getAllWoman  = $item_navbar->GetAllWoman();
                                     <a href="User_ID.php"><?php echo $name; ?></a>
                                 <?php elseif ($name === 'Log out'): ?>
                                     <a id="exit" href="LogOut.php"><?php echo $name; ?></a>
+                                <?php elseif ($name === 'my cart'): ?>
+                                    <a href="donDatHang.php"><?php echo $name; ?></a>
                                 <?php else: ?>
                                     <a href="#"><?php echo $name; ?></a>
                                 <?php endif; ?>

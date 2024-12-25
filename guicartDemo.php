@@ -115,9 +115,25 @@ $tongtien = 0;
                 <span>TOTAL</span>
                 <span class="total"><?php echo number_format($tongtien) ?> </span>
             </div>
-            <button class="btn btn-dark btn-checkout mt-3">PROCEED TO CHECK OUT</button>
+            <a class="exit" href="donDatHang.php?user_id=<?php echo $_SESSION['iduser'] ?>"> <button
+                    class="btn btn-dark btn-checkout mt-3">PROCEED TO CHECK
+                    OUT</button></a>
         </div>
     </div>
+    <script>
+        //in thông thông thoát
+        const exitButtons = document.querySelectorAll('.exit');
+
+        exitButtons.forEach(exit => {
+            exit.addEventListener("click", (event) => {
+                const userConfirmed = confirm("Are you sure you want to payment item?");
+                if (!userConfirmed) {
+                    event
+                        .preventDefault(); // Ngừng hành động mặc định của thẻ a nếu người dùng không xác nhận
+                }
+            });
+        });
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-OERcA2zB5jYFz7F5J2h+4+Mk1iD2f/csHk6K2x5a0eK0eN4q2gC1gM5k4Y8qI/1" crossorigin="anonymous">
     </script>
