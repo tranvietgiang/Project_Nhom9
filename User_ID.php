@@ -202,20 +202,17 @@ $getNme = $thongtin->GetUserInfo($user);
                             <li id="li_image1"><a href="#"><img src="<?php echo $value['image'] ?>" alt=""></a></li>
                         <?php endforeach ?>
                     </ul>
-
                 </li>
                 <!--  -->
                 <?php foreach ($getAllNavbar2 as $value): ?>
                     <li><a href="#"><?php echo $value['name'] ?></a></li>
                 <?php endforeach ?>
                 <li id="last-child2"><a href="#">PAGES</a>
-
                     <ul class="sub-menu  pages">
                         <?php foreach ($getAllNavbar2Child as $value): ?>
                             <li><a href="#"><?php echo $value['name'] ?></a></li>
                         <?php endforeach ?>
                     </ul>
-
                 </li>
             </ul>
         </section>
@@ -249,32 +246,63 @@ $getNme = $thongtin->GetUserInfo($user);
                 $check_hours = "Late Night: ";
             }
 
-
-            $email_id =  isset($_SESSION['email_id']) ? $_SESSION['email_id'] : "";
-            $getImg = $thongtin->GetAvatar($email_id);
+            $email_id = isset($_SESSION['userEmail']) ? $_SESSION['userEmail'] : "";
+            $getImg =  $thongtin->GetAvatar($email_id);
 
             ?>
             <div style="text-align: center; background-color: #e5e5e5; max-width: 1000px; margin: 0 auto;" class="row">
                 <div class="col-6">
                     <div>
                         <form action="" method="post" enctype="multipart/form-data">
-                            <img id="preview" src="uploads/<?php echo $getImg['name'] ?>"
+                            <img id="preview"
+                                src="uploads/<?php echo isset($getImg[0]['name']) ? $getImg[0]['name'] : 'user.png'  ?>"
                                 style="object-fit: cover; border-radius: 5%; border: 2px solid #dc3435; margin: 50px 0 10px  0;"
                                 width="300px" height="100%" alt="img-fluid"><br>
                             <!-- handle images  -->
-                            <input type="file" id="imageInput" name="avatarUser"><br>
-                            <input class="btn btn-danger btn-mini" type="submit" value="save" name="AvatarSave">
+                            <input type="file" id="imageInput" style="margin-left: 100px;" value="choose"
+                                name="avatarUser"><br>
+                            <input style="display: none;" id="AvatarSave" class="btn btn-danger btn-mini" type="submit"
+                                value="save" name="AvatarSave">
                         </form>
                     </div>
                 </div>
+
+                <!-- process gửi ajax not load page -->
+                <script>
+                    document.getElementById('AvatarSave').addEventListener('click', async () => {
+                        try {
+                            const response = await fetch('User_ID.php', {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/json'
+                                },
+                                body: JSON.stringify({
+                                    action: 'saveAvatar'
+                                })
+                            });
+
+                            if (response.ok) {
+                                window.location.reload();
+                            }
+
+                        } catch {
+
+                        }
+                    })
+                </script>
                 <!-- Handle user choose image  -->
 
                 <?php
                 if (isset($_POST['AvatarSave'])) {
 
-                    $email_id = $_SESSION['email_id'];
                     $addImage = $_FILES["avatarUser"]["name"];
-                    $thongtin->AddAvatar($addImage, $email_id);
+
+                    if (!$thongtin->CheckEmailExits($email_id)) {
+                        $thongtin->AddAvatar($addImage, $email_id);
+                    } else {
+                        $thongtin->UpdateFile($addImage, $email_id);
+                    }
+                    $thongtin->DeleteImgOld($email_id);
 
 
                     $target_dir = "uploads/";
@@ -420,7 +448,6 @@ $getNme = $thongtin->GetUserInfo($user);
         exit();
     }
 
-
     ?>
     <section id="my-information">
         <form action="" method="post">
@@ -461,6 +488,30 @@ $getNme = $thongtin->GetUserInfo($user);
         // handle my-information  
         const handleCss = document.querySelectorAll(".handleCss");
         const my_information = document.getElementById("my-information");
+
+        // handle button AvatarSave
+        const avatarSave = document.getElementById("AvatarSave");
+
+        const imageInput = document.getElementById("imageInput");
+
+        // Sự kiện focus khi hộp thoại tệp được mở
+        imageInput.addEventListener("focus", () => {
+            avatarSave.style.display = "block";
+        });
+
+        // Sự kiện blur khi hộp thoại tệp bị đóng (nếu không chọn gì)
+        imageInput.addEventListener("blur", () => {
+            if (imageInput.files.length === 0) {
+                avatarSave.style.display = "none";
+            }
+        });
+
+        imageInput.addEventListener("change", () => {
+            if (imageInput.files.length > 0) {
+                avatarSave.style.display = "block"; // Hiển thị khi có tệp được chọn
+            }
+        });
+
 
         handleCss.forEach(item => {
             item.addEventListener("click", () => {

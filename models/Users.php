@@ -110,22 +110,91 @@ class Users_shoes extends Db
 
 
     // save img
-    public function GetAvatar()
+    public function GetAvatar($email_id)
     {
-        $sql = self::$connection->prepare("SELECT `file`.`name` FROM `tb_fileimg` `file`  JOIN  `tb_users` `user` ON `user`.`email_id` = `file`.`username`
+        $sql = self::$connection->prepare("SELECT `file`.`name` 
+        FROM `tb_fileimg` `file`  JOIN  `tb_users` `user` ON `user`.`email_id` = `file`.`username`
+        WHERE `file`.username = ?
         ORDER by `created_at` DESC LIMIT 0,1");
+        $sql->bind_param("s", $email_id);
         $sql->execute();
 
+        $result = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
+
+        return $result;
+    }
+
+    public function GetAvatarReviews($email_id)
+    {
+        $sql = self::$connection->prepare("SELECT `file`.`name` 
+        FROM `tb_fileimg` `file`  JOIN  `tb_users` `user` ON `user`.`email_id` = `file`.`username`
+        WHERE `file`.username = ?
+        ORDER by `created_at` DESC LIMIT 0,1");
+        $sql->bind_param("s", $email_id);
+        $sql->execute();
+
+        $result = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
+
+        return $result;
+    }
+
+    public function GetAvatarDefault()
+    {
+        $sql = self::$connection->prepare("SELECT `name`
+        FROM `tb_fileimg`");
+        $sql->execute();
         $result = $sql->get_result()->fetch_assoc();
 
         return $result;
     }
 
+    public function GetEmailUser($email)
+    {
+        $sql = self::$connection->prepare("SELECT * FROM tb_users WHERE `username` = ? ");
+        $sql->bind_param("s", $email);
+        $sql->execute();
+
+        $result = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
+
+        return $result;
+    }
+
+    public function DeleteImgOld($name)
+    {
+        $sql = self::$connection->prepare("DELETE tb1 
+        FROM tb_fileimg AS tb1
+        INNER JOIN tb_fileimg AS tb2
+        ON tb1.username = ?
+        AND tb1.id < tb2.id");
+        $sql->bind_param("s", $name);
+
+        return  $sql->execute();
+    }
+
+    public function CheckEmailExits($name)
+    {
+        $sql = self::$connection->prepare("SELECT * FROM `tb_fileimg` WHERE username = ? ");
+        $sql->bind_param("s", $name);
+
+        if ($sql->execute()) {
+            return $sql->get_result()->fetch_assoc();
+        }
+
+        return false;
+    }
+
 
     // save img
+    public function UpdateFile($name, $email_id)
+    {
+        $sql = self::$connection->prepare("UPDATE `tb_fileimg` SET `name` = ? WHERE `username` = ?");
+        $sql->bind_param("ss", $name, $email_id);
+        return  $sql->execute();
+    }
+
     public function AddAvatar($name, $email_id)
     {
-        $sql = self::$connection->prepare("INSERT INTO `tb_fileimg`(`name`,`username`) VALUES(?,?)");
+        $sql = self::$connection->prepare("INSERT INTO `tb_fileimg`(`name`,`username`) VALUES (?,?)");
         $sql->bind_param("ss", $name, $email_id);
         return  $sql->execute();
     }
