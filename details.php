@@ -1,8 +1,15 @@
 <?php
+
+session_start();
+
 require "models/config.php";
 require "models/db.php";
 require "models/product.php";
 $product = new product;
+
+
+//handle check 
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -75,6 +82,20 @@ $product = new product;
         height: 200px;
         object-fit: cover;
     }
+
+    #a,
+    #b,
+    #c,
+    #d {
+        cursor: pointer;
+    }
+
+    .chooseSize {
+        background-color: #28a745;
+        color: #000;
+        padding: 10px;
+        cursor: pointer;
+    }
     </style>
 </head>
 
@@ -102,126 +123,76 @@ $product = new product;
                     <p><?php echo $value['detail'] ?></p>
                     <div>
                         <a href="#"><i class="far fa-heart mx-2 icon"></i></a>
-                        <a href="#"><i class="fas fa-sync mx-2 icon"></i></a>
                     </div>
                     <p>Size</p>
-                    <?php
-                        for ($i = 1; $i <= 10; $i++) {
-                            $size = $i + 35;
-                            echo "<i class='mx-2 icon'>$size</i>";
-                        }
-                        ?>
-                    <div class="Qty-details mt-4">
-                        Qty:
-                        <button class="minus">-</button>
-                        <input type="text" value="0" id="soluong">
-                        <button class="plus">+</button>
-                    </div>
-                    Tổng giá: <input type="text" class="total mt-4" value="0" id="total-price" readonly>
-                    <div class="addcart mt-4">
-                        <!-- demo -->
-                        <a href="guicartDemo.php?id=<?php echo $value['id'] ?>">
-                            <p>ADD TO CART</p>
-                        </a>
-                        <!--  -->
-                    </div>
-                    <div class="rating mt-4">
-                        <h5>Rate this product:</h5>
-                        <span class="star" data-value="1"><i class="fas fa-star"></i></span>
-                        <span class="star" data-value="2"><i class="fas fa-star"></i></span>
-                        <span class="star" data-value="3"><i class="fas fa-star"></i></span>
-                        <span class="star" data-value="4"><i class="fas fa-star"></i></span>
-                        <span class="star" data-value="5"><i class="fas fa-star"></i></span>
-                    </div>
+                    <form action="guicartDemo.php" method="get">
+                        <label class="chooseSize" for="a">39
+                            <input id="a" value="39" type="radio" name="sizeShoe">
+                        </label>
+                        <label class="chooseSize" for="b">40
+                            <input id="b" value="40" type="radio" name="sizeShoe">
+                        </label>
+                        <label class="chooseSize" for="c">41
+                            <input id="c" value="41" type="radio" name="sizeShoe">
+                        </label>
+                        <label class="chooseSize" for="d">42
+                            <input id="d" value="42" type="radio" name="sizeShoe">
+                        </label><br>
+
+                        <div>
+                            <label for="sl">Số Lượng:
+                                <input id="sl" name="soLuongShoe" type="number" min="1" value="1">
+                            </label><br>
+                            <b id="tongGia"> Tong gia:
+                                <?php echo $value['price'] ?> </b>
+                        </div>
+                        <input type="hidden" name="id" value="<?php echo $value['id']; ?>">
+                        <button id="checkAdd" type="submit">ADD TO CART</button>
+                    </form>
                 </div>
                 <?php endforeach; ?>
-            </div>
-        </div>
-
-        <div class="outstanding-product mt-5">
-            <h3><i class="fas fa-bars"></i> OUTSTANDING PRODUCTS</h3>
-            <div class="product d-flex flex-wrap mt-4">
                 <?php
-                $sanphamtuongtu = $product->getsanphamtuongtu($value['catalogue']);
-                foreach ($sanphamtuongtu as $value):
+
+                $_SESSION['tongGia'] = number_format($value['price'], 0, ',', '.');
+
+                if (isset($_GET['sizeShoe'])) {
+                    $_SESSION['size'] = $_GET['sizeShoe'];
+                }
+
+                if (isset($_GET['soLuongShoe'])) {
+                    $_SESSION['sl'] = $_GET['soLuongShoe'];
+                }
+
+
                 ?>
-                <div class="owl-item1 col-12 col-md-3 mb-4 mt-4">
-                    <div class="noibat">
-                        <a href="details.php?id=<?php echo $value['id'] ?>">
-                            <img src="public/img/<?php echo $value['image'] ?>" class="img-fluid">
-                            <p><?php echo $value['name'] ?></p>
-                        </a>
-                        <div class="price">
-                            <b class="gia"><?php echo number_format($value['price'], 0, ',', '.') . ' VNĐ'; ?></b>
-                            <div class="rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="far fa-star"></i>
-                                <i class="far fa-star"></i>
-                            </div>
-                        </div>
-                        <div class="d-flex mt-2">
-                            <a href="guicartDemo.php?id=<?php echo $value['id'] ?>"
-                                class="btn btn-success btn-sm mr-2">ADD TO CART</a>
-                            <div class="mx-2">
-                                <a href="#"><i class="fas fa-search mx-1"></i></a>
-                                <a href="#"><i class="far fa-heart mx-1"></i></a>
-                                <a href="#"><i class="fas fa-sync mx-1"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <?php endforeach; ?>
             </div>
         </div>
-    </div>
 
-    <script>
-    const tru = document.querySelector(".minus");
-    const soluong = document.querySelector("#soluong");
-    const cong = document.querySelector(".plus");
-    const total_price = document.querySelector('#total-price');
-    const price_product = document.querySelector('.price');
 
-    cong.addEventListener("click", () => {
-        let curen = parseInt(soluong.value);
-        soluong.value = curen + 1;
-        updatetotalprice();
-    });
+        <script>
+        const checkAdd = document.querySelector("#checkAdd");
 
-    tru.addEventListener("click", () => {
-        let curen = parseInt(soluong.value);
-        if (curen > 0) {
-            soluong.value = curen - 1;
-        }
-        updatetotalprice();
-    });
+        checkAdd.addEventListener("click", (event) => {
+            const selectedSize = document.querySelector('input[name="sizeShoe"]:checked');
 
-    function updatetotalprice() {
-        let soluong1 = parseInt(soluong.value);
-        let gia = parseFloat(price_product.innerText.replace(' VNĐ', '').replace('.', '').replace(',',
-            '.')); // Convert price
-        let total = soluong1 * gia * 1000;
-        total_price.value = total.toLocaleString('vi-VN') + ' VNĐ'; // Format total price
-    }
+            if (!selectedSize) {
+                alert("Vui lòng chọn size shoe!");
+                event.preventDefault();
 
-    // Star rating script
-    const stars = document.querySelectorAll('.star');
-    stars.forEach(star => {
-        star.addEventListener('click', () => {
-            const ratingValue = star.getAttribute('data-value');
-            stars.forEach(s => {
-                s.classList.remove('fas');
-                s.classList.add('far'); // Reset star to empty
-            });
-            for (let i = 0; i < ratingValue; i++) {
-                stars[i].classList.remove('far');
-                stars[i].classList.add('fas'); // Fill selected stars
             }
         });
-    });
-    </script>
+
+        // handle total price
+        const sl = document.getElementById("sl");
+        const tongGia = document.getElementById("tongGia");
+        const giaGoc = <?php echo $value['price']; ?>; // Giá gốc từ PHP
+
+        sl.addEventListener("input", () => { // Sự kiện input để cập nhật ngay lập tức
+            let soLuong = parseInt(sl.value) || 1; // Đảm bảo số lượng hợp lệ
+            let tongTien = soLuong * giaGoc;
+            tongGia.innerHTML = `Tổng giá: ${tongTien}`; // Hiển thị giá đã format
+        });
+        </script>
 </body>
 
 </html>

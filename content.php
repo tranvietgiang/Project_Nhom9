@@ -87,7 +87,7 @@ $product = new product;
                                         </div>
                                         <div class="d-flex mt-4 ">
                                             <div class=" col-5">
-                                                <a href="guicart.php?id=<?php echo $value['id'] ?>"><b class>ADD TO
+                                                <a href="details.php?id=<?php echo $value['id'] ?>"><b class>ADD TO
                                                         CART</b> </a>
                                             </div>
                                             <div>
@@ -123,7 +123,8 @@ $product = new product;
                                         </div>
                                         <div class="d-flex mt-4 ">
                                             <div class=" col-5">
-                                                <a href class><b class>ADD TO
+                                                <a href='details.php?id=<?php echo $value['id'] ?>' class><b class>ADD
+                                                        TO
                                                         CART</b> </a>
                                             </div>
                                             <div>
@@ -188,7 +189,7 @@ $product = new product;
                                     </div>
                                     <div class="d-flex mt-4 ">
                                         <div class=" ">
-                                            <a href class><b class>ADD TO
+                                            <a href='details.php?id=<?php echo $value['id'] ?>' class><b class>ADD TO
                                                     CART</b> </a>
                                         </div>
                                         <div>
@@ -259,7 +260,7 @@ $product = new product;
                                     </div>
                                     <div class="d-flex mt-4 ">
                                         <div class=" ">
-                                            <a href class><b class>ADD TO
+                                            <a href='details.php?id=<?php echo $value['id'] ?>' class><b class>ADD TO
                                                     CART</b> </a>
                                         </div>
                                         <div>

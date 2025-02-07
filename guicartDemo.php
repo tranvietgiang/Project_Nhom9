@@ -4,6 +4,8 @@ require "models/config.php";
 require "models/Db.php";
 require "models/product.php";
 require "models/cart.php";
+
+
 $cart = new cart;
 $product = new product;
 
@@ -15,18 +17,20 @@ $iduser = $_SESSION['username'];
 $getiduser = $product->GetIDuser($iduser);
 $_SESSION['iduser'] = $getiduser['id'];
 
+$getSL = isset($_GET['soLuongShoe']) ? $_GET['soLuongShoe'] : 0;
+
 
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
     $sp = $product->getproductbyid($id);
 
-    $count = 1;
+
     foreach ($sp as $value) {
         $checkExited = $cart->checkProductInCart($_SESSION['iduser'], $id);
         if ($checkExited) {
             $cart->updateCart($value['price'], $_SESSION['iduser'], $id);
         } else {
-            $addgiohang = $cart->addcartDemo($_SESSION['iduser'], $count, $value['name'], $value['price'], $value['image'], $id);
+            $addgiohang = $cart->addcartDemo($_SESSION['iduser'], $getSL, $value['name'], $value['price'], $value['image'], $id);
         }
     }
 }
@@ -90,7 +94,6 @@ $tongtien = 0;
             </thead>
             <tbody>
                 <?php
-
                 $cartall = $cart->getallcart($_SESSION['iduser']);
                 foreach ($cartall as $value):
                     $tongtien +=  $value['price'] * $value['quantiy'];
@@ -100,7 +103,7 @@ $tongtien = 0;
                         <td><?php echo $value['name'] ?></td>
                         <td><?php echo number_format($value['price']) ?></td>
                         <td><?php echo $value['quantiy'] ?></td>
-                        <td><?php echo number_format($value['price'] * $value['quantiy']) ?> </td>
+                        <td><?php echo $value['price'] *  $value['quantiy'] ?> </td>
                         <td>
                             <a href="deletecart.php?id=<?php echo $value['id'] ?>" class="btn btn-dark text-white"
                                 style="text-decoration: none;">XÓA</a>
@@ -115,11 +118,15 @@ $tongtien = 0;
                 <span>TOTAL</span>
                 <span class="total"><?php echo number_format($tongtien) ?> </span>
             </div>
-            <a class="exit" href="donDatHang.php?user_id=<?php echo $_SESSION['iduser'] ?>"> <button
-                    class="btn btn-dark btn-checkout mt-3">PROCEED TO CHECK
-                    OUT</button></a>
+            <form action="billConfirm.php" method="POST" id="checkoutForm">
+                <input type="hidden" name="user_id" value="<?php echo $_SESSION['iduser']; ?>">
+                <button type="submit" name="checkOut" class="btn btn-dark btn-checkout mt-3 exit">
+                    PROCEED TO CHECK OUT
+                </button>
+            </form>
         </div>
     </div>
+
     <script>
         //in thông thông thoát
         const exitButtons = document.querySelectorAll('.exit');

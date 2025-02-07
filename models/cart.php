@@ -18,8 +18,8 @@ class cart extends Db
 
     public  function addcart($id_user, $soluong, $name, $price, $image)
     {
-        $sql = self::$connection->prepare("INSERT INTO `cart`(`id`, `user_id`, `quantiy`, `name`, `price`, `image`)
-                                         VALUES ('',?,?,?,?,?,?)");
+        $sql = self::$connection->prepare("INSERT INTO `cart`(`user_id`, `quantiy`, `name`, `price`, `image`)
+        VALUES (?,?,?,?,?)");
         $sql->bind_param("iisis", $id_user, $soluong, $name, $price, $image);
         $sql->execute();
         return true;
@@ -122,5 +122,16 @@ class cart extends Db
         $sql = self::$connection->prepare("DELETE FROM  `cart` WHERE `user_id` = ?");
         $sql->bind_param("i", $user_id);
         return  $sql->execute();
+    }
+
+
+    public function checkSl($nameShoe)
+    {
+        $sql = self::$connection->prepare("SELECT `quantiy` FROM `cart` WHERE `name` = ?");
+        $sql->bind_param("i", $nameShoe);
+        $sql->execute();
+
+        $result = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
+        return  $result;
     }
 }

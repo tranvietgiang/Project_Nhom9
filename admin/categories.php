@@ -210,6 +210,7 @@ $cate = new Admin;
         const exitButtons = document.querySelectorAll('.exit');
 
         exitButtons.forEach(exit => {
+
             exit.addEventListener("click", (event) => {
                 const userConfirmed = confirm("Are you sure you want to delete item?");
                 if (!userConfirmed) {

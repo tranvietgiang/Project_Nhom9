@@ -369,7 +369,7 @@ if (isset($_GET['id'])) {
 
     // Get Avatar
 
-    // $email_id = isset($_SESSION['userEmail']) ? $_SESSION['userEmail'] : "";
+    $email_id = isset($_SESSION['userEmail']) ? $_SESSION['userEmail'] : "";
     $getImg = $getIDuserComment->GetAvatar($email_id);
 
 

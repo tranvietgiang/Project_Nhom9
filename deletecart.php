@@ -6,5 +6,5 @@ $cart = new cart;
 if (isset($_GET['id'])) {
   $id = $_GET['id'];
   $xoa = $cart->remove($id);
-  header("location:guicart.php");
+  header("location: guicartDemo.php");
 }

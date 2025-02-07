@@ -4,6 +4,9 @@ require "models/config.php";
 require "models/Db.php";
 require "models/product.php";
 require "models/cart.php";
+require "models/address.php";
+$address = new Address;
+
 $cart = new cart;
 $product = new product;
 
@@ -24,9 +27,20 @@ $id =  $_SESSION['myCart'];
 $sp = $cart->PrintCart($id);
 
 
+// add product when user had click payment!
+if (isset($_POST['checkOut'])) {
 
-foreach ($sp as $value) {
-    $cart->MyCartAddPay($value['name'], $value['image'], $id, $value['quantiy'], $value['price']);
+    //check user đã có địa chỉ nhận hàng chưa
+    $checkAddress = $address->CheckAddress();
+    if ($checkAddress) {
+        header("location: donDatHang.php");
+    } else {
+        header("location: phuongthucpay.php");
+    }
+
+    foreach ($sp as $value) {
+        $cart->MyCartAddPay($value['name'], $value['image'], $id, $value['quantiy'], $value['price']);
+    }
 }
 
 // xóa item after payment
