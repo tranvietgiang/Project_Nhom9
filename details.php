@@ -159,10 +159,6 @@ $product = new product;
                     $_SESSION['size'] = $_GET['sizeShoe'];
                 }
 
-                if (isset($_GET['soLuongShoe'])) {
-                    $_SESSION['sl'] = $_GET['soLuongShoe'];
-                }
-
 
                 ?>
             </div>

@@ -54,7 +54,7 @@ if (isset($_GET['confirm_Order'])) {
 
     // add địa chỉ nếu chưa có
     $address->addressDetail($nameOrder, $sdt, $name, $province, $district, $wards, $addressCuThe);
-    header("location: donDatHang.php");
+    // header("location: billConfirm.php");
 }
 ?>
 <!DOCTYPE html>
@@ -65,64 +65,64 @@ if (isset($_GET['confirm_Order'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Payment Form</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
 
-        form {
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            width: 300px;
-        }
+    form {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        width: 300px;
+    }
 
-        h1 {
-            text-align: center;
-            margin-bottom: 20px;
-            font-size: 24px;
-            color: #333;
-        }
+    h1 {
+        text-align: center;
+        margin-bottom: 20px;
+        font-size: 24px;
+        color: #333;
+    }
 
-        input[type="text"],
-        select {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 15px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            font-size: 16px;
-        }
+    input[type="text"],
+    select {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 16px;
+    }
 
-        .address {
-            margin-bottom: 15px;
-        }
+    .address {
+        margin-bottom: 15px;
+    }
 
-        button {
-            width: 100%;
-            padding: 10px;
-            background-color: #28a745;
-            color: #fff;
-            border: none;
-            border-radius: 4px;
-            font-size: 16px;
-            cursor: pointer;
-        }
+    button {
+        width: 100%;
+        padding: 10px;
+        background-color: #28a745;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        font-size: 16px;
+        cursor: pointer;
+    }
 
-        button:hover {
-            background-color: #218838;
-        }
+    button:hover {
+        background-color: #218838;
+    }
 
-        option[disabled] {
-            color: #999;
-        }
+    option[disabled] {
+        color: #999;
+    }
     </style>
 </head>
 
@@ -137,11 +137,11 @@ if (isset($_GET['confirm_Order'])) {
             <select name="province_id" id="province">
                 <option value="" disabled selected>Select province or city</option>
                 <?php foreach ($province as $value): ?>
-                    <option value="<?php echo $value['province_id']; ?>">
-                        <?php echo htmlspecialchars($value['name']);
+                <option value="<?php echo $value['province_id']; ?>">
+                    <?php echo htmlspecialchars($value['name']);
                         $province = $value['name'];
                         ?>
-                    </option>
+                </option>
                 <?php endforeach ?>
             </select>
         </div>
@@ -166,36 +166,6 @@ if (isset($_GET['confirm_Order'])) {
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
-        // quận or huyện
-        $(document).ready(function() {
-            $("#province").change(function() {
-                var selectedValue = $(this).val();
-                $.post("", {
-                    province_id: selectedValue
-                }, function(data) {
-                    $("#district").html(data);
-                });
-            });
-        });
-
-        // xã or phường
-        $(document).ready(function() {
-            $("#district").change(function() {
-                var selectedValue = $(this).val();
-                $.post("", {
-                    district_id: selectedValue
-                }, function(data) {
-                    $("#wards").html(data);
-                });
-            });
-        });
-    </script>
-</body>
-
-</html>
-
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
     // quận or huyện
     $(document).ready(function() {
         $("#province").change(function() {
@@ -219,7 +189,10 @@ if (isset($_GET['confirm_Order'])) {
             });
         });
     });
-</script>
+    </script>
+</body>
+
+</html>
 </body>
 
 </html>
