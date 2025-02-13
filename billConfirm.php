@@ -45,101 +45,101 @@ if (!$checkAddress) {
 <body>
 
     <style>
-    body {
-        font-family: Arial, sans-serif;
-        background: #f8f9fa;
-        padding: 20px;
-    }
+        body {
+            font-family: Arial, sans-serif;
+            background: #f8f9fa;
+            padding: 20px;
+        }
 
-    h1 {
-        text-align: center;
-        color: #333;
-        font-weight: bold;
-    }
+        h1 {
+            text-align: center;
+            color: #333;
+            font-weight: bold;
+        }
 
-    #a {
-        display: block;
-        border-bottom: 2px solid #28a745;
-        margin: 20px 0;
-        color: #28a745;
-        font-weight: bold;
-        padding-bottom: 5px;
-    }
+        #a {
+            display: block;
+            border-bottom: 2px solid #28a745;
+            margin: 20px 0;
+            color: #28a745;
+            font-weight: bold;
+            padding-bottom: 5px;
+        }
 
-    .card-box,
-    .delivery-box {
-        background: white;
-        padding: 20px;
-        border-radius: 10px;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-        margin-bottom: 15px;
-    }
+        .card-box,
+        .delivery-box {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 15px;
+        }
 
-    .delivery-box {
-        background: #fff3cd;
-    }
+        .delivery-box {
+            background: #fff3cd;
+        }
 
-    .nameUser b {
-        color: #ff4500;
-    }
+        .nameUser b {
+            color: #ff4500;
+        }
 
-    .payment-method img {
-        width: 50px;
-        height: 50px;
-        margin-right: 10px;
-    }
+        .payment-method img {
+            width: 50px;
+            height: 50px;
+            margin-right: 10px;
+        }
 
-    .btn-checkout {
-        width: 100%;
-        padding: 12px;
-        font-size: 18px;
-        font-weight: bold;
-        background: #28a745;
-        border: none;
-        color: white;
-        border-radius: 5px;
-        transition: 0.3s;
-    }
+        .btn-checkout {
+            width: 100%;
+            padding: 12px;
+            font-size: 18px;
+            font-weight: bold;
+            background: #28a745;
+            border: none;
+            color: white;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
 
-    .btn-checkout:hover {
-        background: #218838;
-        transform: scale(1.02);
-    }
+        .btn-checkout:hover {
+            background: #218838;
+            transform: scale(1.02);
+        }
 
-    .row {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        margin: 10px 0;
-    }
+        .row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 10px 0;
+        }
 
-    .row img {
-        object-fit: contain;
-        border: 1px solid #000;
-        border-radius: 5px;
-    }
+        .row img {
+            object-fit: contain;
+            border: 1px solid #000;
+            border-radius: 5px;
+        }
 
-    .payment-method {
-        margin-top: 15px;
-    }
+        .payment-method {
+            margin-top: 15px;
+        }
 
-    #pttt {
-        width: 80px;
-        height: auto;
-        margin-right: 10px;
-        cursor: pointer;
-    }
+        #pttt {
+            width: 80px;
+            height: auto;
+            margin-right: 10px;
+            cursor: pointer;
+        }
 
-    .payment-method input {
-        margin-right: 10px;
-    }
+        .payment-method input {
+            margin-right: 10px;
+        }
 
-    img#pttt {
-        object-fit: cover;
-        width: 50px;
-        height: 50px;
-        margin: 10px 0 10px 0;
-    }
+        img#pttt {
+            object-fit: cover;
+            width: 50px;
+            height: 50px;
+            margin: 10px 0 10px 0;
+        }
     </style>
     <h1>Tổng Quan Đơn Hàng</h1>
     <span id="a">Thông tin đơn của bạn sẽ được bảo mật và mã hóa</span>
@@ -159,22 +159,22 @@ if (!$checkAddress) {
     <!-- Danh sách sản phẩm trong giỏ hàng -->
     <div>
         <?php foreach ($cartall as $value): ?>
-        <div class="row">
-            <div class="col-2">
-                <img src="public/img/<?php echo $value['image']; ?>" alt="" width="200" height="200">
-            </div>
-            <div class="col-6">
-                <b><?php echo $value['name']; ?></b><br>
-                <span>Size: <?php // echo $_SESSION['size'];  
+            <div class="row">
+                <div class="col-2">
+                    <img src="public/img/<?php echo $value['image']; ?>" alt="" width="200" height="200">
+                </div>
+                <div class="col-6">
+                    <b><?php echo $value['name']; ?></b><br>
+                    <span>Size: <?php // echo $_SESSION['size'];  
                                 ?></span><br>
-                <span>Số lượng: <?php echo $value['quantiy'] ?></span><br>
-                <b>Tổng Giá: <?php
+                    <span>Số lượng: <?php echo $value['quantiy'] ?></span><br>
+                    <b>Tổng Giá: <?php
                                     $tongPhu +=  $value['price'] * $value['quantiy'];
                                     echo number_format($value['price'] * $value['quantiy']) ?></b>
 
-                <b></b>
+                    <b></b>
+                </div>
             </div>
-        </div>
         <?php endforeach; ?>
     </div>
 
@@ -227,14 +227,14 @@ if (!$checkAddress) {
     </form>
 
     <script>
-    const checkPTTT = document.getElementById("checkOutID");
-    checkPTTT.addEventListener("click", (event) => {
-        const emptyInput = document.querySelector('input[name="payment"]:checked');
-        if (!emptyInput) {
-            alert("Vui lòng chọn phương thức thanh toán!");
-            event.preventDefault();
-        }
-    })
+        const checkPTTT = document.getElementById("checkOutID");
+        checkPTTT.addEventListener("click", (event) => {
+            const emptyInput = document.querySelector('input[name="payment"]:checked');
+            if (!emptyInput) {
+                alert("Vui lòng chọn phương thức thanh toán!");
+                event.preventDefault();
+            }
+        })
     </script>
 
 </body>

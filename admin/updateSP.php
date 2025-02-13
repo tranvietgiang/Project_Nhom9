@@ -77,82 +77,82 @@ if (isset($_POST['updateSP'])) {
     <link rel="Website icon" type="jpg" href="../public/img/logoShoes.jpg">
     <title>Document</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-        }
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+    }
 
-        .container {
-            max-width: 600px;
-            margin: 50px auto;
-            background: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
+    .container {
+        max-width: 600px;
+        margin: 50px auto;
+        background: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
 
-        h1 {
-            text-align: center;
-            margin-bottom: 20px;
-            color: #333;
-        }
+    h1 {
+        text-align: center;
+        margin-bottom: 20px;
+        color: #333;
+    }
 
-        .form-group {
-            margin-bottom: 20px;
-        }
+    .form-group {
+        margin-bottom: 20px;
+    }
 
-        label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
-            color: #555;
-        }
+    label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+        color: #555;
+    }
 
-        input[type="text"],
-        input[type="file"],
-        select,
-        textarea {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
-        }
+    input[type="text"],
+    input[type="file"],
+    select,
+    textarea {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
 
-        textarea {
-            resize: vertical;
-        }
+    textarea {
+        resize: vertical;
+    }
 
-        .form-actions {
-            text-align: center;
-            margin-top: 20px;
-        }
+    .form-actions {
+        text-align: center;
+        margin-top: 20px;
+    }
 
-        button {
-            padding: 10px 20px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 16px;
-        }
+    button {
+        padding: 10px 20px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+    }
 
-        button:hover {
-            background-color: #45a049;
-        }
+    button:hover {
+        background-color: #45a049;
+    }
 
-        .required {
-            color: red;
-        }
+    .required {
+        color: red;
+    }
 
-        /* Chắc chắn các phần tử form sẽ đổ xuống theo dạng cột */
-        .form-group {
-            display: block;
-            width: 100%;
-        }
+    /* Chắc chắn các phần tử form sẽ đổ xuống theo dạng cột */
+    .form-group {
+        display: block;
+        width: 100%;
+    }
     </style>
 </head>
 
@@ -188,7 +188,11 @@ if (isset($_POST['updateSP'])) {
             <!-- Image Upload -->
             <div class="form-group">
                 <label for="fileUpload">Choose an Image</label>
-                <input type="file" id="fileUpload" name="fileUpload">
+                <span><img src="../public/img/<?php echo  $getItemByID[0]['image'] ?>" width="300" height="300"
+                        alt=""></span>
+                <input onchange="DisPlayImage()" type="file" id="fileUpload" name="fileUpload">
+                <p>Image Change</p>
+                <span id="displayImage"></span>
             </div>
 
             <!-- Category -->
@@ -200,8 +204,8 @@ if (isset($_POST['updateSP'])) {
                     <?php
                     foreach ($getAllCate as $value):
                     ?>
-                        <option value="<?php echo  $value['id'] ?>"> <?php echo $value['categary'] ?>
-                        </option>
+                    <option value="<?php echo  $value['id'] ?>"> <?php echo $value['categary'] ?>
+                    </option>
                     <?php endforeach ?>
                 </select>
             </div>
@@ -224,6 +228,24 @@ if (isset($_POST['updateSP'])) {
             <a href="quanlisanpham.php" class="btn btn-danger">Quay lại</a>
         </form>
     </div>
+    <script>
+    // handle display image lên before user upload image lên server!
+    function DisPlayImage() {
+        let selectImage = document.getElementById("fileUpload").files;
+        if (selectImage.length > 0) {
+            var fileToImage = selectImage[0];
+            var fileReader = new FileReader();
+            fileReader.onload = function(fileEvent) {
+                var srcFile = fileEvent.target.result;
+                var imageNew = document.createElement('img')
+                imageNew.src = srcFile;
+
+                document.getElementById('displayImage').innerHTML = imageNew.outerHTML;
+            }
+            fileReader.readAsDataURL(fileToImage);
+        }
+    }
+    </script>
 </body>
 
 </html>

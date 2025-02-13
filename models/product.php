@@ -137,6 +137,7 @@ class product extends Db
         return   $result;
     }
 
+
     // getName product
     public function GetNameSP($id)
     {
@@ -230,5 +231,22 @@ class product extends Db
         $sql->execute();
         $result = $sql->get_result()->fetch_assoc();
         return $result;
+    }
+
+    public function AddListHeart($image, $email,  $name, $size, $amount)
+    {
+        $sql = self::$connection->prepare("INSERT INTO `listheart`(`image`, `email`, `name`, `size`, `amount`) VALUES (?, ?, ?, ?, ?)");
+        $sql->bind_param("sssii", $image, $email, $name, $size, $amount);
+        return $sql->execute();
+    }
+
+    public function ShowListHeart()
+    {
+        $sql = self::$connection->prepare("SELECT * FROM `listheart` ORDER BY `created_at` DESC");
+
+        $sql->execute();
+
+        $result = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
+        return   $result;
     }
 }
