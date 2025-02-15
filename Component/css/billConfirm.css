@@ -1,0 +1,95 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #f8f9fa;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+  color: #333;
+  font-weight: bold;
+}
+
+#a {
+  display: block;
+  border-bottom: 2px solid #28a745;
+  margin: 20px 0;
+  color: #28a745;
+  font-weight: bold;
+  padding-bottom: 5px;
+}
+
+.card-box,
+.delivery-box {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 15px;
+}
+
+.delivery-box {
+  background: #fff3cd;
+}
+
+.nameUser b {
+  color: #ff4500;
+}
+
+.payment-method img {
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
+}
+
+.btn-checkout {
+  width: 100%;
+  padding: 12px;
+  font-size: 18px;
+  font-weight: bold;
+  background: #28a745;
+  border: none;
+  color: white;
+  border-radius: 5px;
+  transition: 0.3s;
+}
+
+.btn-checkout:hover {
+  background: #218838;
+  transform: scale(1.02);
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 10px 0;
+}
+
+.row img {
+  object-fit: contain;
+  border: 1px solid #000;
+  border-radius: 5px;
+}
+
+.payment-method {
+  margin-top: 15px;
+}
+
+#pttt {
+  width: 80px;
+  height: auto;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.payment-method input {
+  margin-right: 10px;
+}
+
+img#pttt {
+  object-fit: cover;
+  width: 50px;
+  height: 50px;
+  margin: 10px 0 10px 0;
+}

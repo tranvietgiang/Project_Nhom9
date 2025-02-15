@@ -41,3 +41,24 @@ const resetInterval = () => {
 
 // Tự động di chuyển sau mỗi 5 giây
 moveImage = setInterval(nextImage, 4000);
+
+setInterval(function () {
+  const content = document.querySelector(".content");
+  content.classList.add("showContentjs"); // Thêm hiệu ứng di chuyển
+
+  // Loại bỏ class move-up sau khi hiệu ứng hoàn tất
+  setTimeout(() => content.classList.remove("showContentjs"), 4000);
+}, 4000); // Mỗi 4 giây
+
+//in thông thông thoát
+const exit = document.getElementById("exit");
+
+exit.addEventListener("click", () => {
+  const userConfirmed = confirm("Are you sure you want to log out?");
+  if (userConfirmed) {
+    alert("You have logged out.");
+  } else {
+    event.preventDefault();
+    event.defaultPrevented();
+  }
+});

@@ -1,0 +1,100 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f4f4f4;
+}
+
+header > div > img {
+  border: 1px solid #45a049;
+  object-fit: contain;
+  width: 100%;
+  margin-left: -3px;
+  height: 561.5px;
+  border-radius: 5px;
+}
+
+header > div > h1 {
+  position: absolute;
+  text-transform: uppercase;
+  margin-left: 100px;
+  margin-top: 30px;
+}
+
+section {
+  background-color: #ffffff;
+  width: 400px;
+  padding: 20px;
+  height: 562px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333333;
+}
+
+form input[type="text"],
+form input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  margin: 15px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+  outline: none;
+}
+
+form input:focus {
+  border: 1px solid #4caf50;
+}
+
+form input[type="submit"] {
+  width: 100%;
+  padding: 10px;
+  background-color: #4caf50;
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 30px;
+}
+
+form input[type="submit"]:hover {
+  background-color: #45a049;
+}
+
+.options {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.options a {
+  text-decoration: none;
+  color: #4caf50;
+  font-size: 14px;
+}
+
+.options a:hover {
+  text-decoration: underline;
+}
+
+#showPass {
+  position: absolute;
+  cursor: pointer;
+  margin-left: -30px;
+  margin-top: 25px;
+  width: 20px;
+  height: 20px;
+}

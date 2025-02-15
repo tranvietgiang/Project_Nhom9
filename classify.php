@@ -19,76 +19,8 @@ $product = new product;
         integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="Website icon" type="jpg" href="public/img/logoShoes.jpg">
+    <link rel="stylesheet" href="./Component/css/classify.css">
 </head>
-<style>
-    .product-actions {
-        margin-top: 10px;
-    }
-
-    .product-actions a {
-        margin: 0 10px;
-        display: flex;
-        align-items: center;
-    }
-
-    .product-actions i {
-        font-size: 16px;
-    }
-
-    .product-card {
-        border: 1px solid #e0e0e0;
-        border-radius: 5px;
-        padding: 15px;
-        text-align: center;
-        transition: box-shadow 0.3s;
-    }
-
-    .product-card:hover {
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    }
-
-    .product-image {
-        width: 100%;
-        /* Đặt kích thước ảnh bằng 100% chiều rộng của thẻ cha */
-        height: 200px;
-        /* Đặt chiều cao cố định */
-        object-fit: cover;
-        /* Đảm bảo ảnh không bị biến dạng, giữ tỷ lệ */
-    }
-
-    .price {
-        margin-top: 10px;
-    }
-
-    .rating {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-top: 5px;
-    }
-
-    .rating i {
-        margin: 0 2px;
-        font-size: 16px;
-    }
-
-    .owl-item1 {
-        width: 243px;
-    }
-
-    .phantrang a {
-        background-color: #FFD700;
-        color: black;
-        margin: 0 5px;
-    }
-
-    .badge-dark {
-        background-color: #343a40;
-        /* Màu nền tối */
-        color: white;
-        /* Màu chữ trắng */
-    }
-</style>
 
 <body>
 

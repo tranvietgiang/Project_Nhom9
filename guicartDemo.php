@@ -50,32 +50,7 @@ $tongtien = 0;
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <title>Giao Diện Giỏ Hàng</title>
     <link rel="Website icon" type="jpg" href="public/img/logoShoes.jpg">
-    <style>
-    th,
-    td {
-        padding: 15px;
-    }
-
-    .table {
-        text-align: center;
-    }
-
-    .checkout {
-        border: 1px solid #000;
-        padding: 20px;
-        width: 20%;
-        margin-left: 80%;
-    }
-
-    a {
-        text-decoration: none;
-        color: #000;
-    }
-
-    .btn:hover {
-        background: red;
-    }
-    </style>
+    <link rel="stylesheet" href="./Component/css/guiCartDemo.css">
 </head>
 
 <body>
@@ -98,17 +73,17 @@ $tongtien = 0;
                 foreach ($cartall as $value):
                     $tongtien +=  $value['price'] * $value['quantiy'];
                 ?>
-                <tr>
-                    <td><img src="public/img/<?php echo $value['image'] ?>" width="180px" class="img-fluid"></td>
-                    <td><?php echo $value['name'] ?></td>
-                    <td><?php echo number_format($value['price']) ?></td>
-                    <td><?php echo $value['quantiy'] ?></td>
-                    <td><?php echo number_format($value['price'] *  $value['quantiy']) ?> </td>
-                    <td>
-                        <a href="deletecart.php?id=<?php echo $value['id'] ?>" class="btn btn-dark text-white"
-                            style="text-decoration: none;">XÓA</a>
-                    </td>
-                </tr>
+                    <tr>
+                        <td><img src="public/img/<?php echo $value['image'] ?>" width="180px" class="img-fluid"></td>
+                        <td><?php echo $value['name'] ?></td>
+                        <td><?php echo number_format($value['price']) ?></td>
+                        <td><?php echo $value['quantiy'] ?></td>
+                        <td><?php echo number_format($value['price'] *  $value['quantiy']) ?> </td>
+                        <td>
+                            <a href="deletecart.php?id=<?php echo $value['id'] ?>" class="btn btn-dark text-white"
+                                style="text-decoration: none;">XÓA</a>
+                        </td>
+                    </tr>
                 <?php endforeach; ?>
 
             </tbody>
@@ -128,18 +103,18 @@ $tongtien = 0;
     </div>
 
     <script>
-    //in thông thông thoát
-    const exitButtons = document.querySelectorAll('.exit');
+        //in thông thông thoát
+        const exitButtons = document.querySelectorAll('.exit');
 
-    exitButtons.forEach(exit => {
-        exit.addEventListener("click", (event) => {
-            const userConfirmed = confirm("Are you sure you want to payment item?");
-            if (!userConfirmed) {
-                event
-                    .preventDefault(); // Ngừng hành động mặc định của thẻ a nếu người dùng không xác nhận
-            }
+        exitButtons.forEach(exit => {
+            exit.addEventListener("click", (event) => {
+                const userConfirmed = confirm("Are you sure you want to payment item?");
+                if (!userConfirmed) {
+                    event
+                        .preventDefault(); // Ngừng hành động mặc định của thẻ a nếu người dùng không xác nhận
+                }
+            });
         });
-    });
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-OERcA2zB5jYFz7F5J2h+4+Mk1iD2f/csHk6K2x5a0eK0eN4q2gC1gM5k4Y8qI/1" crossorigin="anonymous">

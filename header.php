@@ -348,32 +348,11 @@ $getAllWoman  = $item_navbar->GetAllWoman();
     <footer></footer>
     <!-- js -->
     <script>
-        setInterval(function() {
-            const content = document.querySelector('.content');
-            content.classList.add('showContentjs'); // Thêm hiệu ứng di chuyển
 
-            // Loại bỏ class move-up sau khi hiệu ứng hoàn tất
-            setTimeout(() => content.classList.remove('showContentjs'), 4000);
-        }, 4000); // Mỗi 4 giây
-
-
-        //in thông thông thoát
-        const exit = document.getElementById('exit');
-
-
-        exit.addEventListener("click", () => {
-            const userConfirmed = confirm("Are you sure you want to log out?");
-            if (userConfirmed) {
-                alert("You have logged out.");
-            } else {
-                event.preventDefault();
-                event.defaultPrevented();
-            }
-        });
     </script>
     <!-- link js bootstrap -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
-    <script src="public/js/js_Da9.js"></script>
+    <script src="./Component/js/header.js"></script>
 </body>
 
 </html>

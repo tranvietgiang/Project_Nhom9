@@ -70,75 +70,75 @@ if (isset($_POST['addSP'])) {
     <link rel="Website icon" type="jpg" href="../public/img/logoShoes.jpg">
     <title>Document</title>
     <style>
-    body {
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 0;
-        background-color: #f4f4f4;
-    }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
 
-    .container {
-        max-width: 600px;
-        margin: 50px auto;
-        background: #fff;
-        padding: 20px;
-        border-radius: 8px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
 
-    h1 {
-        text-align: center;
-        margin-bottom: 20px;
-        color: #333;
-    }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
 
-    .form-group {
-        margin-bottom: 15px;
-    }
+        .form-group {
+            margin-bottom: 15px;
+        }
 
-    label {
-        display: block;
-        margin-bottom: 5px;
-        font-weight: bold;
-        color: #555;
-    }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #555;
+        }
 
-    input[type="text"],
-    input[type="file"],
-    textarea,
-    select {
-        width: 100%;
-        padding: 10px;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        box-sizing: border-box;
-    }
+        input[type="text"],
+        input[type="file"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
 
-    textarea {
-        resize: vertical;
-    }
+        textarea {
+            resize: vertical;
+        }
 
-    .form-actions {
-        text-align: center;
-    }
+        .form-actions {
+            text-align: center;
+        }
 
-    button {
-        padding: 10px 20px;
-        background-color: #4CAF50;
-        color: white;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-        font-size: 16px;
-    }
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
 
-    button:hover {
-        background-color: #45a049;
-    }
+        button:hover {
+            background-color: #45a049;
+        }
 
-    .required {
-        color: red;
-    }
+        .required {
+            color: red;
+        }
     </style>
 </head>
 
@@ -169,8 +169,8 @@ if (isset($_POST['addSP'])) {
             <!-- Image Upload -->
             <div class="form-group">
                 <label for="fileUpload">Choose an Image</label>
-                <input onchange="DisLayImage()" type="file" id="fileUpload" name="fileUpload">
-                <span id="displayImagePre"></span>
+                <input onchange="DisPlayImage()" type="file" id="fileUpload" name="fileUpload">
+                <span id="displayImage"></span>
             </div>
 
 
@@ -182,7 +182,7 @@ if (isset($_POST['addSP'])) {
                     <?php
                     foreach ($cate as $value):
                     ?>
-                    <option value="<?php echo $value['id'] ?>"><?php echo $value['categary'] ?></option>
+                        <option value="<?php echo $value['id'] ?>"><?php echo $value['categary'] ?></option>
                     <?php endforeach ?>
                 </select>
             </div>
@@ -202,23 +202,7 @@ if (isset($_POST['addSP'])) {
             <a href="quanlisanpham.php" class="btn btn-danger">Quay lại</a>
         </form>
     </div>
-    <script>
-    function DisLayImage() {
-        let fileUpLoad = document.getElementById("fileUpload").files;
-        if (fileUpLoad.length > 0) {
-            const fileToImage = fileUpLoad[0];
-            const fileReader = new FileReader();
-            fileReader.onload = function(fileEvent) {
-                var a = fileEvent.target.result;
-                var b = document.createElement('img');
-                b.src = a;
-
-                document.getElementById('displayImagePre').innerHTML = b.outerHTML;
-            }
-            fileReader.readAsDataURL(fileToImage);
-        }
-    }
-    </script>
+    <script src="../Component/js/loadImage.js"></script>
 </body>
 
 </html>

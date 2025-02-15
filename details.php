@@ -21,99 +21,11 @@ $product = new product;
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="Website icon" type="jpg" href="public/img/logoShoes.jpg">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./Component/css/detail.css">
 
-    <style>
-        body a {
-            text-decoration: none;
-            color: black;
-        }
-
-        .icon {
-            border: 1px solid #28a745;
-            border-radius: 5px;
-            padding: 10px;
-            color: #28a745;
-            transition: background 0.3s;
-        }
-
-        .icon:hover {
-            background-color: #e2f0e2;
-        }
-
-        .Qty-details button,
-        .Qty-details input {
-            padding: 5px 10px;
-            width: 40px;
-        }
-
-        .Qty-details input {
-            margin: 0 10px;
-            border: 1px solid #ccc;
-            text-align: center;
-        }
-
-        .addcart p {
-            padding: 10px;
-            border: 1px solid #28a745;
-            text-align: center;
-            transition: background-color 0.3s, color 0.4s;
-        }
-
-        .addcart p:hover {
-            color: white;
-            background-color: #28a745;
-        }
-
-        .info,
-        .imagedetails {
-            padding: 40px;
-        }
-
-        .rating {
-            margin-left: 0;
-            cursor: pointer;
-        }
-
-        .rating i {
-            color: #FFD700;
-            /* Gold color for stars */
-        }
-
-        .product img {
-            height: 200px;
-            object-fit: cover;
-        }
-
-        #a,
-        #b,
-        #c,
-        #d {
-            cursor: pointer;
-        }
-
-        .chooseSize {
-            background-color: #28a745;
-            color: #000;
-            padding: 10px;
-            cursor: pointer;
-        }
-    </style>
 </head>
 
 <body>
-    <style>
-        #cart {
-            cursor: pointer;
-            transition: color 0.25s linear;
-            /* margin: 0 0 0px 1000px; */
-
-        }
-
-        #cart:hover {
-            color: #FFD700;
-        }
-    </style>
-
     <div class="container mt-5">
         <h1 class="d-flex justify-content-center">Detail Shoe</h1>
         <div class="d-flex justify-content-between ">

@@ -134,4 +134,12 @@ class cart extends Db
         $result = $sql->get_result()->fetch_all(MYSQLI_ASSOC);
         return  $result;
     }
+
+    // handle item sẽ delivery trong 1 ngày
+    public function Delivery($user_id)
+    {
+        $sql = self::$connection->prepare("DELETE FROM `cartuser` WHERE user_id = ? AND `created_at` < NOW() - INTERVAL 1 DAY");
+        $sql->bind_param("s", $user_id);
+        return $sql->execute();
+    }
 }
