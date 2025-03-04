@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th12 13, 2024 lúc 03:30 PM
+-- Thời gian đã tạo: Th3 04, 2025 lúc 04:28 PM
 -- Phiên bản máy phục vụ: 10.4.32-MariaDB
 -- Phiên bản PHP: 8.2.12
 
@@ -53,23 +53,37 @@ CREATE TABLE `cart` (
   `quantiy` int(11) NOT NULL,
   `name` text NOT NULL,
   `price` int(11) NOT NULL,
-  `image` text NOT NULL
+  `image` text NOT NULL,
+  `productID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+-- --------------------------------------------------------
+
 --
--- Đang đổ dữ liệu cho bảng `cart`
+-- Cấu trúc bảng cho bảng `cartuser`
 --
 
-INSERT INTO `cart` (`id`, `user_id`, `quantiy`, `name`, `price`, `image`) VALUES
-(141576, 7, 1, 'Puma Caven', 1400000, 'puma.png'),
-(141579, 7, 1, 'Fusce aliquam', 2000000, 'fusce.png'),
-(141580, 7, 1, 'Fusce aliquam', 2000000, 'fusce.png'),
-(141581, 7, 1, 'Puma Caven', 1400000, 'puma.png'),
-(141583, 9, 1, 'Puma Rebound', 2000000, 'pumare.png'),
-(141584, 9, 1, 'Puma Caven', 1400000, 'puma.png'),
-(141586, 2, 1, 'siêu phẩm nike2', 500000, 'store9.jpg'),
-(141587, 2, 1, 'siêu phẩm nike', 500000, 'store5.png'),
-(141588, 2, 1, 'siêu phẩm nike2', 500000, 'store9.jpg');
+CREATE TABLE `cartuser` (
+  `id` int(11) NOT NULL,
+  `name` varchar(250) NOT NULL,
+  `image` varchar(255) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `totalSL` int(11) NOT NULL,
+  `totalPrice` int(11) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf32 COLLATE=utf32_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `cartuser`
+--
+
+INSERT INTO `cartuser` (`id`, `name`, `image`, `user_id`, `totalSL`, `totalPrice`, `created_at`) VALUES
+(48, 'Nike Air Force 1', 'FC_Barcelona_logo.svg.png', 10, 2, 2500000, '2025-02-15 09:03:57'),
+(49, 'Puma Suede Classic', 'store5.png', 15, 4, 6600000, '2025-02-15 09:04:29'),
+(50, 'Nike Air Force 1', 'store2.png', 15, 7, 7500000, '2025-02-15 09:04:29'),
+(51, 'Adidas Ultra Boost 21', 'store3.png', 15, 12, 4000000, '2025-02-15 09:04:29'),
+(52, 'Adidas Ultra Boost 21', 'store3.png', 17, 1, 4000000, '2025-03-04 13:40:44'),
+(53, 'Adidas Yeezy Boost 350 V2', 'store4.png', 17, 1, 5000000, '2025-03-04 13:41:58');
 
 -- --------------------------------------------------------
 
@@ -87,13 +101,44 @@ CREATE TABLE `categary` (
 --
 
 INSERT INTO `categary` (`id`, `categary`) VALUES
+(1, 'Messi'),
 (2, 'MEN'),
 (4, 'FOOTWEAR'),
 (5, 'JEVELRY'),
 (6, 'DRESSES'),
 (7, 'SHOES'),
 (8, 'HANDBAGS'),
-(9, 'WOMEN');
+(9, 'WOMEN'),
+(12, 'LGBT');
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `listheart`
+--
+
+CREATE TABLE `listheart` (
+  `id` int(11) NOT NULL,
+  `image` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `size` int(11) NOT NULL,
+  `amount` int(11) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf32 COLLATE=utf32_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `listheart`
+--
+
+INSERT INTO `listheart` (`id`, `image`, `email`, `name`, `size`, `amount`, `created_at`) VALUES
+(45, 'store2.png', 'tranvietgiang', 'Nike Air Force 1', 40, 1, '2025-02-13 10:01:06'),
+(48, 'store4.png', 'tranvietgiang', 'Adidas Yeezy Boost 350 V2', 40, 1, '2025-02-13 13:29:21'),
+(49, 'store4.png', 'tranvietgiang', 'Adidas Yeezy Boost 350 V2', 40, 1, '2025-02-13 13:29:21'),
+(50, 'realmadrid.png', 'tranvietgiang', 'Shoe ronaldo', 40, 1, '2025-02-15 08:08:53'),
+(51, 'realmadrid.png', 'tranvietgiang', 'Shoe ronaldo', 40, 1, '2025-02-15 08:08:53'),
+(52, 'FC_Barcelona_logo.svg.png', 'tranvietgiang123', 'Nike Air Force 1', 40, 1, '2025-03-04 13:40:22'),
+(53, 'FC_Barcelona_logo.svg.png', 'tranvietgiang123', 'Nike Air Force 1', 40, 1, '2025-03-04 13:40:22');
 
 -- --------------------------------------------------------
 
@@ -109,7 +154,7 @@ CREATE TABLE `product` (
   `catalogue` int(11) DEFAULT NULL,
   `detail` text DEFAULT NULL,
   `createdate` timestamp NULL DEFAULT current_timestamp(),
-  `star` varchar(225) NOT NULL
+  `star` varchar(400) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -117,19 +162,48 @@ CREATE TABLE `product` (
 --
 
 INSERT INTO `product` (`id`, `name`, `price`, `image`, `catalogue`, `detail`, `createdate`, `star`) VALUES
-(1, 'cr7-khoc-to', 100000, 'store7.png', 1, '1', '2024-10-19 17:00:00', ' <i class=\"fas fa-star\"></i>\r\n                                            <i class=\"fas fa-star\"></i>\r\n                                            <i class=\"fas fa-star\"></i>\r\n                                            <i cl'),
-(2, 'NIKE COURT ROYALE NAM', 2000000, 'NIKEROY.png', 2, 'The Nike Dunk Low is an easy score for your wardrobe. This mid-\'80s hoops icon returns with super-durable construction and a built-in gift tag ready for that someone special.\r\n\r\n', '2024-01-19 17:00:00', ' <i class=\"fas fa-star\"></i>\r\n                                            <i class=\"fas fa-star\"></i>\r\n                                            <i class=\"fas fa-star\"></i>\r\n                                            <i cl'),
-(3, 'Nike Dunk Low', 2300000, 'nikedunk.png', 7, 'Created for the hardwood but taken to the streets, the \'80s b-ball icon returns with perfectly shined overlays and classic team colours. With its iconic hoops design, the Nike Dunk Low channels \'80s vintage back onto the streets while its padded, low-cut collar lets you take your game anywhere—in comfort.', '2024-11-19 17:00:00', ' <i class=\"fas fa-star\"></i>\r\n                                            <i class=\"fas fa-star\"></i>\r\n                                            <i class=\"fas fa-star\"></i>\r\n                                            <i cl'),
-(4, 'Nike Dunk Low Retro', 2300000, 'NIKERETO.png', 4, 'Created for the hardwood but taken to the streets, the basketball icon returns with classic details and throwback hoops flair. Channelling \'80s vibes, its padded, low-cut collar lets you take your game anywhere—in comfort.', '2024-11-19 17:00:00', ' <i class=\"fas fa-star\"></i>\r\n                                            <i class=\"fas fa-star\"></i>\r\n                                            <i class=\"fas fa-star\"></i>\r\n                                            <i cl'),
-(5, 'Nike Dunk Low SE', 1800000, 'nikese.png', 5, 'Wildly versatile, strikingly clean and oh-so classic. The Dunk Low mixes suede and leather for a flawless finish. It comes complete with a padded collar, lightweight cushioning and a gum sole. Lace up and bring the beach vibes with you.\r\n\r\n', '2024-11-19 17:00:00', ' <i class=\"fas fa-star\"></i>\r\n                                            <i class=\"fas fa-star\"></i>\r\n                                            <i class=\"fas fa-star\"></i>\r\n                                            <i cl'),
-(6, 'Fusce aliquam', 2000000, 'fusce.png', 6, 'Nunc facilisis sagittis ullamcorper. Proin lectus ipsum, gravida et mattis vulputate, tristique ut lectus. Sed et lorem nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aenean eleifend laoreet congue. Vivamus adipiscing nisl ut dolor dignissim semper. Nulla luctus malesuada tincidunt. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Integer enim purus, posuere at ultricies eu, placerat a felis. Suspendisse aliquet urna pretium eros convallis interdum. Quisque in arcu id dui vulputate mollis eget non arcu. Aenean et nulla purus. Mauris vel tellus non nunc mattis lobortis.', '2024-11-20 05:20:42', ' <i class=\"fas fa-star\"></i>\r\n                                            <i class=\"fas fa-star\"></i>\r\n                                            <i class=\"fas fa-star\"></i>\r\n                                            <i cl'),
-(7, 'Adidas Runfalcon 5', 2000000, 'adidas.png', 6, 'The Adidas Runfalcon 5 is the ideal shoe for those who want to conquer any challenge, from the jogging track to the gym or walking on the street with a beautiful, youthful and dynamic design.\r\n\r\nThese shoes stand out:\r\n\r\nCloudfoam midsole: Provides a smooth, optimal support as soon as you put it on.\r\nBreathable mesh upper: Keep your feet cool and comfortable.\r\nOrthoLite® Shoe Lining: Enhances comfort and antibacterial ability.\r\nAdiwear outsole: Abrasion resistant, ensuring superior durability.', '2024-11-24 04:04:46', ' <i class=\"fas fa-star\"></i>\r\n                                            <i class=\"fas fa-star\"></i>\r\n                                            <i class=\"fas fa-star\"></i>\r\n                                            <i cl'),
-(8, 'adidas NY 90', 1890000, 'adidas1.png', 6, 'The adidas NY 90 shoes are sneakers inspired by the style of the 90s. A shoe that never goes out of fashion has a classic basic design but with high-end modern material technology.\r\n\r\nAdidas NY 90 with a high-quality leather upper combined with delicate suede, a toe with small holes to make the shoe ventilated and comfortable to use. The high-quality rubber sole has very good traction and abrasion resistance.', '2024-11-24 04:23:26', ' <i class=\"fas fa-star\"></i>\r\n                                            <i class=\"fas fa-star\"></i>\r\n                                            <i class=\"fas fa-star\"></i>\r\n                                            <i cl'),
-(9, 'Nike Juniper Trail 3', 2300000, 'nike1.png', 6, 'The Nike Juniper Trail 3 is the perfect shoe for those who love to explore rough terrain. With the Nike Trail ATC outsole design, the shoes provide superior grip on any surface, even in wet weather, ensuring stability and safety on every ride.', '2024-11-24 04:25:10', ' <i class=\"fas fa-star\"></i>\r\n                                            <i class=\"fas fa-star\"></i>\r\n                                            <i class=\"fas fa-star\"></i>\r\n                                            <i cl'),
-(10, 'Puma Caven', 1400000, 'puma.png', 2, 'Puma Caven Shoes is a classic shoe model developed in the 1980s by Puma. The high-quality leather and durable rubber sole are sure to satisfy the most demanding customers. You will always be assured that it never goes out of fashion.', '2024-11-24 07:20:26', ' <i class=\"fas fa-star\"></i>\r\n                                            <i class=\"fas fa-star\"></i>\r\n                                            <i class=\"fas fa-star\"></i>\r\n                                            <i cl'),
-(11, 'Puma Rebound', 2000000, 'pumare.png', 6, 'The Puma Rebound v6 Low shoe is a shoe with a beautiful classic design that is very sophisticated. Premium materials and durable rubber soles are sure to satisfy the most demanding customers. You will always be assured that it never goes out of fashion.', '2024-11-24 07:23:15', ' <i class=\"fas fa-star\"></i>\r\n                                            <i class=\"fas fa-star\"></i>\r\n                                            <i class=\"fas fa-star\"></i>\r\n                                            <i cl'),
-(12, 'Adidas messi ', 400000, 'messi.png', 1, 'Messi world cup', '2024-12-08 03:53:58', ''),
-(19, 'siêu phẩm nike', 500000, 'store5.png', 2, '2', '2024-12-08 11:23:38', '');
+(5, 'Nike Dunk Low SE', 1800000, 'nikese.png', 5, 'Wildly versatile, strikingly clean and oh-so classic. The Dunk Low mixes suede and leather for a flawless finish. It comes complete with a padded collar, lightweight cushioning and a gum sole. Lace up and bring the beach vibes with you.\r\n\r\n', '2024-11-19 17:00:00', '<i class=\"fas fa-star\"></i> <i class=\"fas fa-star\"></i> <i class=\"fas fa-star\"></i> <i class=\"far fa-star\"></i><iclass=\"far fa-star\"></i>'),
+(7, 'Adidas Runfalcon 5', 2000000, 'adidas.png', 6, 'The Adidas Runfalcon 5 is the ideal shoe for those who want to conquer any challenge, from the jogging track to the gym or walking on the street with a beautiful, youthful and dynamic design.\r\n\r\nThese shoes stand out:\r\n\r\nCloudfoam midsole: Provides a smooth, optimal support as soon as you put it on.\r\nBreathable mesh upper: Keep your feet cool and comfortable.\r\nOrthoLite® Shoe Lining: Enhances comfort and antibacterial ability.\r\nAdiwear outsole: Abrasion resistant, ensuring superior durability.', '2024-11-24 04:04:46', '<i class=\"fas fa-star\"></i> <i class=\"fas fa-star\"></i> <i class=\"fas fa-star\"></i> <i class=\"far fa-star\"></i><iclass=\"far fa-star\"></i>'),
+(8, 'adidas NY 90', 1890000, 'adidas1.png', 6, 'The adidas NY 90 shoes are sneakers inspired by the style of the 90s. A shoe that never goes out of fashion has a classic basic design but with high-end modern material technology.\r\n\r\nAdidas NY 90 with a high-quality leather upper combined with delicate suede, a toe with small holes to make the shoe ventilated and comfortable to use. The high-quality rubber sole has very good traction and abrasion resistance.', '2024-11-24 04:23:26', '<i class=\"fas fa-star\"></i> <i class=\"fas fa-star\"></i> <i class=\"fas fa-star\"></i> <i class=\"far fa-star\"></i><iclass=\"far fa-star\"></i>'),
+(9, 'Nike Juniper Trail 3', 2300000, 'nike1.png', 6, 'The Nike Juniper Trail 3 is the perfect shoe for those who love to explore rough terrain. With the Nike Trail ATC outsole design, the shoes provide superior grip on any surface, even in wet weather, ensuring stability and safety on every ride.', '2024-11-24 04:25:10', '<i class=\"fas fa-star\"></i> <i class=\"fas fa-star\"></i> <i class=\"fas fa-star\"></i> <i class=\"far fa-star\"></i><iclass=\"far fa-star\"></i>'),
+(10, 'Puma Caven', 1400000, 'store12.jpg', 1, '12321321321321', '2024-11-24 07:20:26', '<i class=\"fas fa-star\"></i> <i class=\"fas fa-star\"></i> <i class=\"fas fa-star\"></i> <i class=\"far fa-star\"></i><iclass=\"far fa-star\"></i>'),
+(19, 'siêu phẩm nike', 500000, 'store5.png', 2, '2', '2024-12-08 11:23:38', '<i class=\"fas fa-star\"></i> <i class=\"fas fa-star\"></i> <i class=\"fas fa-star\"></i> <i class=\"far fa-star\"></i><iclass=\"far fa-star\"></i>'),
+(55, 'Under Armour Curry One', 500000, 'store7.png', 2, '1', '2024-12-22 06:20:44', '<i class=\"fas fa-star\"></i> <i class=\"fas fa-star\"></i> <i class=\"fas fa-star\"></i> <i class=\"far fa-star\"></i><iclass=\"far fa-star\"></i>'),
+(57, 'Nike Air Force 1', 2500000, 'FC_Barcelona_logo.svg.png', 2, 'Một trong những mẫu giày thể thao huyền thoại của Nike, được yêu thích trên toàn cầu.', '2024-12-22 06:32:44', '<i class=\"fas fa-star\"></i> <i class=\"fas fa-star\"></i> <i class=\"fas fa-star\"></i> <i class=\"far fa-star\"></i><iclass=\"far fa-star\"></i>'),
+(58, 'Adidas Ultra Boost 21', 4000000, 'store3.png', 3, 'Mẫu giày chạy nổi tiếng của Adidas với công nghệ đệm Boost siêu êm ái.', '2024-12-22 06:32:44', '<i class=\"fas fa-star\"></i> <i class=\"fas fa-star\"></i> <i class=\"fas fa-star\"></i> <i class=\"far fa-star\"></i><iclass=\"far fa-star\"></i>'),
+(59, 'Adidas Yeezy Boost 350 V2', 5000000, 'store4.png', 4, 'Dòng giày hợp tác giữa Adidas và rapper Kanye West, rất được yêu thích.', '2024-12-22 06:32:44', '<i class=\"fas fa-star\"></i> <i class=\"fas fa-star\"></i> <i class=\"fas fa-star\"></i> <i class=\"far fa-star\"></i><iclass=\"far fa-star\"></i>'),
+(60, 'Puma Suede Classic', 2200000, 'store5.png', 5, 'Một mẫu giày thể thao cổ điển với thiết kế đơn giản nhưng mang lại sự thoải mái.', '2024-12-22 06:32:44', '<i class=\"fas fa-star\"></i> <i class=\"fas fa-star\"></i> <i class=\"fas fa-star\"></i> <i class=\"far fa-star\"></i><iclass=\"far fa-star\"></i>'),
+(61, 'Reebok Classic Leather', 2100000, 'store11.jpg', 6, 'Một mẫu giày thể thao cổ điển và rất phổ biến của Reebok.', '2024-12-22 06:32:44', '<i class=\"fas fa-star\"></i> <i class=\"fas fa-star\"></i> <i class=\"fas fa-star\"></i> <i class=\"far fa-star\"></i><iclass=\"far fa-star\"></i>'),
+(62, 'New Balance 990v5', 4500000, 'store7.png', 7, 'Mẫu giày chạy bộ cao cấp của New Balance, được nhiều vận động viên và người yêu thích chạy bộ ưa chuộng.', '2024-12-22 06:32:44', '<i class=\"fas fa-star\"></i> <i class=\"fas fa-star\"></i> <i class=\"fas fa-star\"></i> <i class=\"far fa-star\"></i><iclass=\"far fa-star\"></i>'),
+(64, 'Converse Chuck Taylor All-Star 70', 1500000, 'store9.jpg', 9, 'Mẫu giày thể thao cổ điển, được yêu thích bởi sự thoải mái và phong cách retro.', '2024-12-22 06:32:44', '<i class=\"fas fa-star\"></i> <i class=\"fas fa-star\"></i> <i class=\"fas fa-star\"></i> <i class=\"far fa-star\"></i><iclass=\"far fa-star\"></i>'),
+(65, 'Vans Old Skool', 1600000, 'store10.png', 10, 'Mẫu giày skate rất phổ biến của Vans, nổi bật với sọc bên hông và phong cách dễ phối đồ.', '2024-12-22 06:32:44', '<i class=\"fas fa-star\"></i> <i class=\"fas fa-star\"></i> <i class=\"fas fa-star\"></i> <i class=\"far fa-star\"></i><iclass=\"far fa-star\"></i>'),
+(66, 'Asics Gel-Kayano 28', 4700000, 'store8.jpg', 1, 'Mẫu giày chạy bộ nổi bật với công nghệ Gel giúp giảm chấn động và tăng sự thoải mái.', '2024-12-22 06:32:44', '<i class=\"fas fa-star\"></i> <i class=\"fas fa-star\"></i> <i class=\"fas fa-star\"></i> <i class=\"far fa-star\"></i><iclass=\"far fa-star\"></i>'),
+(67, 'Saucony Kinvara 12', 3800000, 'store9.jpg', 12, 'Giày chạy nhẹ và linh hoạt của Saucony, phù hợp cho những người yêu thích tốc độ.', '2024-12-22 06:32:44', '<i class=\"fas fa-star\"></i> <i class=\"fas fa-star\"></i> <i class=\"fas fa-star\"></i> <i class=\"far fa-star\"></i><iclass=\"far fa-star\"></i>'),
+(72, 'cr7-khoc-to', 500000, 'realmadrid.png', 0, '123', '2025-02-13 13:31:26', '');
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `tb_addressdetail`
+--
+
+CREATE TABLE `tb_addressdetail` (
+  `id` int(11) NOT NULL,
+  `nameUser` varchar(150) NOT NULL,
+  `sdtUser` varchar(12) NOT NULL,
+  `nameOrder` varchar(200) NOT NULL,
+  `province` varchar(225) NOT NULL,
+  `district` varchar(255) NOT NULL,
+  `wards` varchar(255) NOT NULL,
+  `diaChiCuThe` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf32 COLLATE=utf32_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `tb_addressdetail`
+--
+
+INSERT INTO `tb_addressdetail` (`id`, `nameUser`, `sdtUser`, `nameOrder`, `province`, `district`, `wards`, `diaChiCuThe`) VALUES
+(9, 'tranvietgiang25@gmail.com', '0336833827', 'Tran Viet Giang', ' Hà Nội', 'Huyện Cô Tô', 'Xã Đại Bình', '12');
 
 -- --------------------------------------------------------
 
@@ -183,7 +257,62 @@ INSERT INTO `tb_comment` (`id`, `nameUser`, `comment`, `idShoes`, `star`) VALUES
 (286, 'admin', '123', 13, '1'),
 (287, 'admin', 'lk', 20, '5'),
 (288, 'tranvietgiang', 'shoe dep qua', 12, '5'),
-(289, 'tranvietgiang', 'cv', 12, '2');
+(289, 'tranvietgiang', 'cv', 12, '2'),
+(290, 'tranvietgiang', '123', 40, '2'),
+(291, 'tranvietgiang', 'Giafy đẹp quá', 40, '5'),
+(292, 'tranvietgiang', 'Giafy đẹp quá', 40, '5'),
+(293, 'tranvietgiang', 'Giafy đẹp quá', 40, '5'),
+(294, 'tranvietgiang', 'Hi', 40, '3'),
+(295, 'tranvietgiang', 'Hi', 40, '3'),
+(296, 'tranvietgiang', 'Hi', 40, '3'),
+(297, 'tranvietgiang', 'Hi', 40, '3'),
+(298, 'tranvietgiang', 'Hi', 40, '3'),
+(299, 'tranvietgiang', 'Hi', 40, '3'),
+(300, 'tranvietgiang', 'hi', 45, '5'),
+(301, 'tranvietgiang', '45', 45, '2'),
+(302, 'tranvietgiang', '54', 45, '3'),
+(303, 'tranvietgiang', '54', 45, '3'),
+(304, 'tranvietgiang', '54', 45, '3'),
+(305, 'tranvietgiang', '54', 45, '3'),
+(306, 'tranvietgiang', '54', 45, '3'),
+(307, 'tranvietgiang', '54', 45, '3'),
+(308, 'tranvietgiang', '54', 45, '3'),
+(309, 'tranvietgiang', '1', 45, '2'),
+(310, 'tranvietgiang', '1', 45, '2'),
+(311, 'tranvietgiang', '123', 45, '5'),
+(312, 'capham123', '123', 12, '5'),
+(313, 'capham123', '123', 47, '5'),
+(314, 'capham123', '1', 47, '1'),
+(315, 'tranvietgiang', '1', 9, '5'),
+(316, 'tranvietgiang', '1', 9, '5'),
+(317, 'tranvietgiang', '123', 56, '5'),
+(318, 'tranvietgiang', '123', 56, '1'),
+(319, 'tranvietgiang', '1', 9, '5'),
+(320, 'tranvietgiang', '2', 9, '5'),
+(321, 'tranvietgiang', '5454', 9, '5'),
+(322, 'tranvietgiang', '45', 9, '5'),
+(323, 'tranvietgiang', '4545', 9, '5'),
+(324, 'tranvietgiang', '45454', 9, '5'),
+(325, 'tranvietgiang', '1', 57, '5'),
+(326, 'tranvietgiang', '122', 57, '5'),
+(327, 'tranvietgiang', '21', 57, '1'),
+(328, 'tranvietgiang', '1', 68, '5'),
+(329, 'tranvietgiang', '1', 68, '5'),
+(330, 'tranvietgiang', '1', 68, '1'),
+(331, 'tranvietgiang', '1', 70, '1'),
+(332, 'tranvietgiang', '1', 70, '1'),
+(333, 'tranvietgiang', '1233', 58, '5'),
+(334, 'tranvietgiang', '45', 65, '5'),
+(335, 'tranvietgiang', '123', 7, '5'),
+(336, 'tranvietgiang', '123', 7, '5'),
+(337, 'tranvietgiang', '123', 7, '5'),
+(338, 'tranvietgiang', '123', 7, '5'),
+(339, 'tranvietgiang', '123', 7, '5'),
+(340, 'tranvietgiang', '123', 58, '5'),
+(341, 'tranvietgiang', '123', 58, '5'),
+(342, 'hi', '123', 58, '4'),
+(343, 'hi', '123', 58, '4'),
+(344, 'tranvietgiang', '12312', 58, '3');
 
 -- --------------------------------------------------------
 
@@ -916,9 +1045,9 @@ INSERT INTO `tb_district` (`district_id`, `province_id`, `name`) VALUES
 
 CREATE TABLE `tb_fileimg` (
   `id` int(11) NOT NULL,
-  `name` varchar(255) NOT NULL,
+  `name` varchar(255) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `username` varchar(100) NOT NULL
+  `username` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf32 COLLATE=utf32_unicode_ci;
 
 --
@@ -926,9 +1055,10 @@ CREATE TABLE `tb_fileimg` (
 --
 
 INSERT INTO `tb_fileimg` (`id`, `name`, `created_at`, `username`) VALUES
-(1, 'messi.png', '2024-12-08 04:25:16', 'tranvietgiang25@gmail.com'),
-(2, 'ronaldokhoc.png', '2024-12-08 06:49:09', 'capham123456@gmail.com'),
-(3, 'ronaldokhoc.png', '2024-12-08 06:49:25', 'capham123456@gmail.com');
+(39, 'sanTocDo.png', '2025-01-01 14:33:09', 'hi25@gmail.com'),
+(42, 'FC_Barcelona_logo.svg.png', '2025-01-25 08:28:38', 'tranvietgiang25@gmail.com'),
+(43, 'FC_Barcelona_logo.svg.png', '2025-02-15 09:04:54', 'capham@gmail.com'),
+(44, 'realmadrid.png', '2025-03-04 13:40:05', 'giang123@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -1228,12 +1358,12 @@ CREATE TABLE `tb_users` (
 --
 
 INSERT INTO `tb_users` (`id`, `nameUser`, `username`, `password`, `email_id`, `role`) VALUES
-(1, 'Ca', 'capham123', '$2y$10$6afss6HLFp3QSSJRKHnRNO3Y/kr5sMxNZZfV2hFB4taU03GxTfGpe', 'capham@gmail.com', 'Customer'),
-(2, 'Trần Viết Giang', 'tranvietgiang', '$2y$10$H7MMsxIIkjejhvWmLxdmEumSGK1irKRswDEEcGcthVsdsTft2Grfm', 'tranvietgiang25@gmail.com', 'Customer'),
-(3, 'PhuongThao', 'pthao123', '$2y$10$I15GkJnqcHG3B8c6FMwdTO/PGiKGpvkLe3jmVW5lpATr/Oh.7L29u', 'pthao123@gmail.com', 'Customer'),
-(7, 'ca123', '2', '$2y$10$820eBwLbTWI.xC0/I15cyu7hxxtUrGByfLuiKPHDcQoVK0SEz5xbu', '1232222213@gmail.com', 'Customer'),
-(8, 'Ca', 'admin', '$2y$10$UjOlV5NB/hvmqrzBfkU23O2aYPr1NIPGrtKzu0zRRPAEImqJS7zV2', 'capham123@gmail.com', 'Customer'),
-(9, 'Ca', 'capham111', '$2y$10$3DcNNYvi5pL4HQJ5puFeNO49XDAy4saPip5KctSgOtb/425jOMoxW', 'capham123456@gmail.com', 'Customer');
+(10, 'Trần Viết Giang', 'tranvietgiang', '$2y$10$f4ahNskXa/KFmyOpXU7XmOZl7HxkQvTnVKEHmRlGRAwYdFbnv33Cy', 'tranvietgiang25@gmail.com', 'Customer'),
+(11, 'PhuongThao', 'phuongthao', '$2y$10$sHf7.Cb9XO5iauintWYTz.DCvuLAEssY7qzT52Mr//OGoUGXsAsFy', 'phuongthao11@gmail.com', 'Customer'),
+(13, 'Trần Viết Giang', 'admin123', '', 'admin123@gmail.com', 'admin'),
+(15, 'Phạm Cả', 'capham123', '$2y$10$H6avl1ZT2iqIxIS9QTepv.5pC7.6dNRb2OK0IYM686C/xqiyVRj5e', 'capham@gmail.com', 'Customer'),
+(16, 'hi', 'hi', '$2y$10$l9G8BkG81htSUcdlcMWF3eeL/cCZkf8vzYzhuR/kLII3Hp4p8HblC', 'hi25@gmail.com', 'Customer'),
+(17, 'Trần Viết Giang', 'tranvietgiang123', '$2y$10$innMFSkVnI7/irNWf9iTLerv82EGnRNB4J.dCBJPQEaJRZkPEaFaK', 'giang123@gmail.com', 'Customer');
 
 -- --------------------------------------------------------
 
@@ -11853,15 +11983,33 @@ ALTER TABLE `cart`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Chỉ mục cho bảng `cartuser`
+--
+ALTER TABLE `cartuser`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Chỉ mục cho bảng `categary`
 --
 ALTER TABLE `categary`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Chỉ mục cho bảng `listheart`
+--
+ALTER TABLE `listheart`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Chỉ mục cho bảng `product`
 --
 ALTER TABLE `product`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Chỉ mục cho bảng `tb_addressdetail`
+--
+ALTER TABLE `tb_addressdetail`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -11951,25 +12099,43 @@ ALTER TABLE `tb_wards`
 -- AUTO_INCREMENT cho bảng `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=141589;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=138;
+
+--
+-- AUTO_INCREMENT cho bảng `cartuser`
+--
+ALTER TABLE `cartuser`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
 
 --
 -- AUTO_INCREMENT cho bảng `categary`
 --
 ALTER TABLE `categary`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+
+--
+-- AUTO_INCREMENT cho bảng `listheart`
+--
+ALTER TABLE `listheart`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
 
 --
 -- AUTO_INCREMENT cho bảng `product`
 --
 ALTER TABLE `product`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
+
+--
+-- AUTO_INCREMENT cho bảng `tb_addressdetail`
+--
+ALTER TABLE `tb_addressdetail`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT cho bảng `tb_comment`
 --
 ALTER TABLE `tb_comment`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=290;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=345;
 
 --
 -- AUTO_INCREMENT cho bảng `tb_district`
@@ -11981,7 +12147,7 @@ ALTER TABLE `tb_district`
 -- AUTO_INCREMENT cho bảng `tb_fileimg`
 --
 ALTER TABLE `tb_fileimg`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 
 --
 -- AUTO_INCREMENT cho bảng `tb_myaccount`
@@ -12035,7 +12201,7 @@ ALTER TABLE `tb_shoes`
 -- AUTO_INCREMENT cho bảng `tb_users`
 --
 ALTER TABLE `tb_users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT cho bảng `tb_wards`
